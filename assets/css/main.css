@@ -223,7 +223,7 @@ video {
 		@media screen and (max-width: 480px) {
 
 			html {
-				font-size: 9pt;
+				font-size: 10pt;
 			}
 
 		}
@@ -231,7 +231,7 @@ video {
 		@media screen and (max-width: 360px) {
 
 			html {
-				font-size: 9pt;
+				font-size: 10pt;
 			}
 
 		}
