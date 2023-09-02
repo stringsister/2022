@@ -61,12 +61,14 @@
 					// Images (in the format of 'url': 'alignment').
 						images: {
 									
-							'images/slides/2.jpg': '70% 25%',
-					'images/slides/noms.jpg': '90% 35%',
-							'images/slides/8.jpg': '60% 20%',
 							
-							'images/slides/7.jpg': '99% 20%',
-							'images/slides/4.jpg': 'right 5%',
+							
+							
+							'images/slides/1.jpg': '60% 30%',
+							'images/slides/2.jpg': '80% 30%',
+							'images/slides/3.jpg': '80% 30%',
+							'images/slides/4.jpg': '5% 50%',
+							'images/slides/5.jpg': '60% 5%',
 					
 							
 							
