@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>FAQ</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
+    <link rel="manifest" href="images/favi/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px; /* Adjust based on header height */
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+            text-align: center;
+            background-color: #f9f9f900;
+            border-radius: 10px;
+            display: none; /* Hide all items initially */
+            transition: opacity 1.5s ease-in-out; /* Slow fade in/out transition */
+        }
+
+        .carousel-item.active {
+            display: block; /* Display only the active item */
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            position: fixed;
+            top: 100px;
+            color: #000;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .carousel-control-prev {
+            left: 30px; /* Increase spacing on the left */
+        }
+
+        .carousel-control-next {
+            right: 30px; /* Increase spacing on the right */
+        }
+
+        #footer {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .inner {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .faq {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <!-- Page wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
+            <a href="#menu"><span>Menu</span></a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="bookings">Book Us</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="FAQ">FAQ</a></li>
+                </ul>
+                <a class="close"><span>Close</span></a>
+            </div>
+        </nav>
+
+       
+        <!-- Main content -->
+<div class="main-content" style="padding-top: 10px; position: relative;">
+    <div id="faq-carousel" class="carousel">
+        <div style="position: fixed; top: 10px; width: 100%; display: flex; justify-content: space-between; padding: 10px 10px; z-index: 1000;">
+            <a class="carousel-control-prev" href="#" role="button" style="padding: 10px;">&#x2190; <!-- ◀ --></a>
+            <a class="carousel-control-next" href="#" role="button" style="padding: 10px;">&#x2192; <!-- ▶ --></a>
+        </div>
+        <div class="carousel-inner" style="margin-top: 20px;">
+            <div class="carousel-item active">
+                <h3>How does the music selection work / how many songs should / can we pick?</h3>
+                <p>Special requests are songs currently not on our repertoire. We accept two special requests songs as a part of the package price.</p>
+                <p>If you are hiring our services for the ceremony, we recommend you choose what you would like us to play for all the apply:</p>
+             
+                    <p>Bridal Party entrance<br>
+                    Groom entrance<br>
+                    Bride entrance<br>
+                    Signing of the registrar<br>
+                    Bride and Groom recessional</p>
+             
+                <p>This is a basic template and can be adjusted for your personalized ceremony needs.</p>
+            </div>
+            <div class="carousel-item">
+                <h3>How do I Book The StringSisters?</h3>
+                <p>We make a customized quote and contract for each event we book. In order to book our services, a $250 deposit must be sent to <a href="mailto:payments@stringsisters.ca">payments@stringsisters.ca</a> and all documents must be signed. Then we are all set!</p>
+            </div>
+            <div class="carousel-item">
+                <h3>Can the harp and cello be moved from one location to another (example, from ceremony to cocktail hour location)?</h3>
+                <p>Yes! We are able to set up and perform at one location and then relocate when needed. It is usually a 15-minute process (depending on the distance between two spots) to relocate and quickly re-tune our instruments after they have been packed up and unloaded.</p>
+            </div>
+            <div class="carousel-item">
+                <h3>Do musicians come with AV set up? Do musicians need to be mic’d?</h3>
+                <p>At this time, we are a completely acoustic duo and do not offer any AV support. However, we are in the works to have a sound system for 2025 events.</p>
+                <p>We do not necessarily require to be mic’d, but we always recommend it when possible. Ceremonies do not require us to be mic’d but for a louder setting like a cocktail hour or reception, we recommend being mic’d.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+       <!-- Bottom Section -->
+<section id="footer" class="wrapper style2 copyright">
+    <div class="inner">
+        <header>
+            <br><br>
+        </header>
+        <p>"Transform your events with the captivating sounds of live harp and cello, adding a touch of elegance to every moment."</p>
+        <div style="margin-bottom: 10px;">
+            <a href="https://www.instagram.com/stringsisterz" target="_blank">
+                <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
+            </a>
+            <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
+                <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
+            </a>
+            <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
+                <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
+            </a>
+        </div>
+        <p>&copy; The StringSisters 2024</p>
+    </div>
+</section>
+
+</div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.selectorr.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-control-prev');
+            const nextBtn = document.querySelector('.carousel-control-next');
+            let currentIndex = 0;
+            const intervalTime = 500000; // 5 seconds
+
+            function showItem(index) {
+                items.forEach(item => item.classList.remove('active'));
+                items[index].classList.add('active');
+            }
+
+            function showNextItem() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showItem(currentIndex);
+            }
+
+            function showPrevItem() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showItem(currentIndex);
+            }
+
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showNextItem();
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPrevItem();
+            });
+
+            setInterval(showNextItem, intervalTime);
+        });
+    </script>
+
+</body>
+</html>

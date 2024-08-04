@@ -1,0 +1,54 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar for all browsers */
+.carousel-inner::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-inner {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    text-align: center;
+    background-color: transparent; /* Transparent background */
+    border-radius: 10px;
+    scroll-snap-align: start;
+}
+
+.review-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: black; /* Ensure the text is black */
+}
+
+.review-author {
+    font-size: 1em;
+    font-weight: bold;
+    color: black; /* Ensure the text is black */
+}
+
+/* Centering the title */
+.wrapper h2 {
+    text-align: center;
+}
