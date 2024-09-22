@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>The StringSisters</title>
+        <title>The StringSisters | Live Wedding Music & Event Musicians in Toronto</title>
     
         <!-- Meta Information -->
         <meta charset="utf-8" />
-        <meta name="description" content="Discover Toronto's Harp and Cello Duo for Unforgettable Live Music at Weddings & Events. Elevate Your Special Occasion with The StringSisters. Book Now!" />
+        <meta name="description" content="Hire Toronto's premier harp and cello duo, The StringSisters, for live wedding music, corporate events, and special occasions. Elevate your event with unforgettable live music in Toronto and the GTA. Book today!" />
+        <meta name="keywords" content="wedding music Toronto, live wedding musicians, harp and cello duo Toronto, musicians for weddings Toronto, event musicians Toronto, live music for corporate events, live event music GTA, Toronto wedding entertainment, wedding ceremony music, harpist and cellist Toronto, The StringSisters, Toronto musicians for hire, Toronto event music, classical music for weddings Toronto" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         
         <!-- Favicon Links -->
@@ -15,18 +16,29 @@
         <link rel="manifest" href="/images/favi/site.webmanifest">
         <link rel="mask-icon" href="/images/favi/safari-pinned-tab.svg" color="#5bbad5">
         <link rel="shortcut icon" href="/images/favi/favicon.ico">
-        
+    
         <!-- Browser Configurations -->
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="/images/favi/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
     
+        <!-- Open Graph Meta Tags for Social Sharing -->
+        <meta property="og:title" content="The StringSisters | Live Wedding Music & Event Musicians in Toronto" />
+        <meta property="og:description" content="Looking for elegant live music for your Toronto wedding or event? The StringSisters, a harp and cello duo, provide live music for weddings, corporate events, and special occasions. Book now for an unforgettable experience." />
+        <meta property="og:image" content="/images/social-share.png" />
+        <meta property="og:url" content="https://www.stringsisters.ca" />
+        <meta property="og:type" content="website" />
+    
+        <!-- Twitter Card Data -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="The StringSisters | Live Wedding Music & Event Musicians in Toronto" />
+        <meta name="twitter:description" content="Hire Toronto's best live wedding and event musicians for your special day. The StringSisters, a harp and cello duo, offer elegant live music for weddings and events in Toronto and the GTA." />
+        <meta name="twitter:image" content="/images/social-share.png" />
+    
         <!-- CSS Stylesheets -->
         <link rel="stylesheet" href="assets/css/main.css" />
         <link rel="stylesheet" href="assets/css/reviews.css" />
     
-        
-        </style>
     </head>
 <body class="is-preload">
     <!-- Page wrapper -->
@@ -61,7 +73,7 @@
                 </div>
             </div>
         </section>
-     <!-- Google Reviews Section -->
+<!-- Google Reviews Section -->
 <section id="footer" class="wrapper" style="margin-bottom: 0;">
     <div class="inner">
         <h2>
@@ -110,31 +122,25 @@
     .review-item {
         position: absolute;
         opacity: 0;
-        left: 100%;
         width: 100%;
-        transition: all 1s ease;
+        transition: opacity 1s ease;
         font-size: 1.2em;
         color: #333;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 20px; /* Padding for better spacing */
+        padding: 20px;
     }
 
     .review-item.active {
         opacity: 1;
-        left: 0;
-    }
-
-    .review-item.exit {
-        opacity: 0;
-        left: -100%;
+        z-index: 1;
     }
 
     .review-text {
         font-style: italic;
-        margin-bottom: 10px; /* Add spacing between the text and author */
+        margin-bottom: 10px;
     }
 
     .review-author {
@@ -145,11 +151,11 @@
     .line-operator {
         width: 75%;
         margin: 10px auto;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Lighter color for subtle effect */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 </style>
 
-<!-- JavaScript for sliding and fading reviews -->
+<!-- JavaScript for fading reviews and swipe functionality -->
 <script>
     // Sample review data (you will dynamically fetch reviews here)
     const reviews = [
@@ -171,33 +177,43 @@
         `;
     });
 
-    // Carousel functionality with sliding and fading effect
+    // Carousel functionality with fade effect
     let currentIndex = 0;
     const reviewItems = document.querySelectorAll('.review-item');
 
     function showNextReview() {
-        // Current active review
-        const currentReview = reviewItems[currentIndex];
-        currentReview.classList.remove('active');
-        currentReview.classList.add('exit');
-
-        // Move to the next review
+        reviewItems[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % reviewItems.length;
-
-        // Reset position for the previous review and hide it after transition
-        setTimeout(() => {
-            currentReview.classList.remove('exit');
-            currentReview.style.left = '100%'; // Move it back to the right side
-        }, 1000); // Timing matches the transition duration
-
-        // Show the next review
-        const nextReview = reviewItems[currentIndex];
-        nextReview.classList.add('active');
-        nextReview.style.left = '0'; // Move it into view
+        reviewItems[currentIndex].classList.add('active');
     }
 
     // Rotate reviews every 5 seconds
     setInterval(showNextReview, 5000);
+
+    // Swipe functionality for mobile
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    const swipeThreshold = 50;
+
+    document.getElementById('google-reviews-carousel').addEventListener('touchstart', function(e) {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    document.getElementById('google-reviews-carousel').addEventListener('touchend', function(e) {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchendX < touchstartX - swipeThreshold) {
+            showNextReview();  // Swipe left
+        } else if (touchendX > touchstartX + swipeThreshold) {
+            currentIndex = (currentIndex - 1 + reviewItems.length) % reviewItems.length;  // Swipe right
+            reviewItems.forEach(item => item.classList.remove('active'));
+            reviewItems[currentIndex].classList.add('active');
+        }
+    }
 </script>
 <!-- Include the Google Places API script with your API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
