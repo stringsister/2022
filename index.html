@@ -109,7 +109,7 @@
     </div>
 </footer>
 
-<!-- Add CSS for animation and centering the reviews -->
+<!-- Add CSS for animation, stars, and centering the reviews -->
 <style>
     .carousel-inner {
         position: relative;
@@ -147,6 +147,12 @@
         font-weight: bold;
     }
 
+    .review-stars {
+        color: black;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
     /* Subtle faded line below reviews */
     .line-operator {
         width: 75%;
@@ -155,7 +161,7 @@
     }
 </style>
 
-<!-- JavaScript for fading reviews and swipe functionality -->
+<!-- JavaScript for fading reviews, swipe functionality, and adding stars -->
 <script>
     // Sample review data (you will dynamically fetch reviews here)
     const reviews = [
@@ -169,6 +175,7 @@
     reviews.forEach((review, index) => {
         reviewsContainer.innerHTML += `
             <div class="review-item ${index === 0 ? 'active' : ''}">
+                <div class="review-stars">★★★★★</div>
                 <div class="review-content">
                     <div class="review-text">"${review.text}"</div>
                     <div class="review-author">- ${review.author}</div>
@@ -193,7 +200,6 @@
     // Swipe functionality for mobile
     let touchstartX = 0;
     let touchendX = 0;
-
     const swipeThreshold = 50;
 
     document.getElementById('google-reviews-carousel').addEventListener('touchstart', function(e) {
@@ -209,8 +215,8 @@
         if (touchendX < touchstartX - swipeThreshold) {
             showNextReview();  // Swipe left
         } else if (touchendX > touchstartX + swipeThreshold) {
+            reviewItems[currentIndex].classList.remove('active');
             currentIndex = (currentIndex - 1 + reviewItems.length) % reviewItems.length;  // Swipe right
-            reviewItems.forEach(item => item.classList.remove('active'));
             reviewItems[currentIndex].classList.add('active');
         }
     }
