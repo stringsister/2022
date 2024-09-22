@@ -37,52 +37,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewsContainer = document.getElementById('reviews-container');
         reviewsContainer.innerHTML = '';  // Clear any existing content
 
-        const loopedReviews = [...reviews];
-
-        // Duplicate reviews infinitely to the right
-        for (let i = 0; i < 5; i++) {
-            loopedReviews.push(...reviews);
-        }
-
-        loopedReviews.forEach((review, index) => {
+        reviews.forEach((review, index) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
+            if (index === 0) reviewItem.classList.add('active');  // First item is active
+
             const cleanText = removeEmojis(review.text);
-            reviewItem.innerHTML = `<p class="review-text">${cleanText}</p><p class="review-author">- ${review.author_name}</p>`;
+            reviewItem.innerHTML = `
+                <div class="review-stars">★★★★★</div> <!-- 5 Black Stars added -->
+                <p class="review-text">${cleanText}</p>
+                <p class="review-author">- ${review.author_name}</p>
+            `;
             reviewsContainer.appendChild(reviewItem);
         });
     }
 
     function startCarousel() {
-        const reviewsContainer = document.querySelector('.carousel-inner');
         const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
         let currentIndex = 0;
         const intervalTime = 5000;
 
-        function scrollToItem(index) {
-            const scrollPosition = reviewsContainer.scrollWidth / totalItems * index;
-            reviewsContainer.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-        }
-
         function showNextItem() {
-            currentIndex++;
-            scrollToItem(currentIndex);
-
-            // Reset the scroll position when reaching the end
-            if (currentIndex === totalItems) {
-                currentIndex = 0;
-                setTimeout(() => {
-                    reviewsContainer.scrollLeft = 0;
-                }, 500); // Delay to allow smooth scroll to finish
-            }
+            items[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % items.length;
+            items[currentIndex].classList.add('active');
         }
 
         let autoSlide = setInterval(showNextItem, intervalTime);
 
+        const reviewsContainer = document.querySelector('.carousel-inner');
         reviewsContainer.addEventListener('mouseover', () => {
             clearInterval(autoSlide);
         });
