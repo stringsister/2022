@@ -68,7 +68,7 @@
                 </div>
             </div>
         </section>
-     <!-- Google Reviews Section -->
+<!-- Google Reviews Section -->
 <section id="footer" class="wrapper" style="margin-bottom: 0;">
     <div class="inner">
         <h2>
@@ -81,7 +81,7 @@
                 <!-- Reviews will be dynamically inserted here -->
             </div>
         </div>
-        <div style="width: 75%; margin: 10px auto; border-bottom: 1px solid rgba(0, 0, 0, 0.2);"></div> <!-- Subtle line operator -->
+        <div class="line-operator"></div> <!-- Subtle line operator -->
     </div>
 </section>
 
@@ -109,9 +109,14 @@
     .carousel-inner {
         position: relative;
         width: 100%;
-        overflow: hidden;
         text-align: center;
-        height: auto; /* Dynamically adjust height based on content */
+        height: auto;
+        transition: height 0.5s ease; /* Smooth height transition */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* Add padding to make the content visually pleasant */
+        min-height: 150px; /* Minimum height for consistency */
     }
 
     .review-item {
@@ -119,14 +124,15 @@
         opacity: 0;
         left: 100%;
         width: 100%;
-        transition: all 1s ease;
+        transition: opacity 1s ease, left 1s ease;
         font-size: 1.2em;
         color: #333;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 20px; /* Padding for better spacing */
+        padding: 0 20px;
+        box-sizing: border-box; /* Prevent padding from expanding the width */
     }
 
     .review-item.active {
@@ -141,7 +147,7 @@
 
     .review-text {
         font-style: italic;
-        margin-bottom: 10px; /* Add spacing between the text and author */
+        margin-bottom: 10px; /* Space between review text and author */
     }
 
     .review-author {
@@ -152,7 +158,7 @@
     .line-operator {
         width: 75%;
         margin: 10px auto;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Lighter color for subtle effect */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 </style>
 
@@ -181,6 +187,15 @@
     // Carousel functionality with sliding and fading effect
     let currentIndex = 0;
     const reviewItems = document.querySelectorAll('.review-item');
+    const carouselInner = document.querySelector('.carousel-inner');
+
+    function adjustCarouselHeight() {
+        // Adjust the height of the carousel based on the active review's height
+        const activeReview = document.querySelector('.review-item.active');
+        if (activeReview) {
+            carouselInner.style.height = activeReview.offsetHeight + 'px';
+        }
+    }
 
     function showNextReview() {
         // Current active review
@@ -191,7 +206,7 @@
         // Move to the next review
         currentIndex = (currentIndex + 1) % reviewItems.length;
 
-        // Reset position for the previous review and hide it after transition
+        // Reset position for the previous review
         setTimeout(() => {
             currentReview.classList.remove('exit');
             currentReview.style.left = '100%'; // Move it back to the right side
@@ -201,10 +216,16 @@
         const nextReview = reviewItems[currentIndex];
         nextReview.classList.add('active');
         nextReview.style.left = '0'; // Move it into view
+
+        // Adjust carousel height based on the next review's content
+        adjustCarouselHeight();
     }
 
     // Rotate reviews every 5 seconds
     setInterval(showNextReview, 5000);
+
+    // Adjust carousel height on page load
+    window.onload = adjustCarouselHeight;
 </script>
 <!-- Include the Google Places API script with your API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
