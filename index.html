@@ -68,43 +68,136 @@
                 </div>
             </div>
         </section>
-        <!-- Google Reviews Section -->
-        <section id="footer" class="wrapper" style="margin-bottom: 0;">
-            <div class="inner">
-                <h2>
-                    <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank">
-                        Latest Reviews →
-                    </a>
-                </h2>
-                <div id="google-reviews-carousel" class="carousel">
-                    <div class="carousel-inner" id="reviews-container">
-                        <!-- Reviews will be dynamically inserted here -->
-                    </div>
-                </div>
-                <div style="width: 75%; margin: 20px auto; border-bottom: 1px solid #000;"></div>
+     <!-- Google Reviews Section -->
+<section id="footer" class="wrapper" style="margin-bottom: 0;">
+    <div class="inner">
+        <h2>
+            <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank">
+                Latest Reviews →
+            </a>
+        </h2>
+        <div id="google-reviews-carousel" class="carousel">
+            <div class="carousel-inner" id="reviews-container">
+                <!-- Reviews will be dynamically inserted here -->
             </div>
-        </section>
+        </div>
+        <div style="width: 75%; margin: 20px auto; border-bottom: 1px solid #000;"></div>
     </div>
-    <!-- Footer -->
-    <footer>
-        <div style="text-align: center; margin-bottom: 10px;">
-            <a href="https://www.instagram.com/stringsisterz" target="_blank">
-                <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-			<a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
-                <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-            <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
-                <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-           
-        </div>
-        <div style="text-align: center;">
-            &copy; The StringSisters 2024
-            <br><br>
-        </div>
-    </footer>
-</div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div style="text-align: center; margin-bottom: 10px;">
+        <a href="https://www.instagram.com/stringsisterz" target="_blank">
+            <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+        <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
+            <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+        <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
+            <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+    </div>
+    <div style="text-align: center;">
+        &copy; The StringSisters 2024
+        <br><br>
+    </div>
+</footer>
+
+<!-- Add CSS for animation and centering the reviews -->
+<style>
+    .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        height: 150px; /* Set a fixed height for consistent display */
+    }
+
+    .review-item {
+        position: absolute;
+        opacity: 0;
+        left: 100%;
+        width: 100%;
+        transition: all 1s ease;
+        font-size: 1.2em;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .review-item.active {
+        opacity: 1;
+        left: 0;
+    }
+
+    .review-item.exit {
+        opacity: 0;
+        left: -100%;
+    }
+
+    .review-text {
+        font-style: italic;
+    }
+
+    .review-author {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<!-- JavaScript for sliding and fading reviews -->
+<script>
+    // Sample review data (you will dynamically fetch reviews here)
+    const reviews = [
+        { text: "Amazing service! Will definitely recommend to others.", author: "John Doe" },
+        { text: "Great experience overall, very satisfied.", author: "Jane Smith" },
+        { text: "Fast and reliable, highly recommended.", author: "Alex Johnson" }
+    ];
+
+    // Insert reviews dynamically into the container
+    const reviewsContainer = document.getElementById('reviews-container');
+    reviews.forEach((review, index) => {
+        reviewsContainer.innerHTML += `
+            <div class="review-item ${index === 0 ? 'active' : ''}">
+                <div class="review-content">
+                    <div class="review-text">"${review.text}"</div>
+                    <div class="review-author">- ${review.author}</div>
+                </div>
+            </div>
+        `;
+    });
+
+    // Carousel functionality with sliding and fading effect
+    let currentIndex = 0;
+    const reviewItems = document.querySelectorAll('.review-item');
+
+    function showNextReview() {
+        // Current active review
+        const currentReview = reviewItems[currentIndex];
+        currentReview.classList.remove('active');
+        currentReview.classList.add('exit');
+
+        // Move to the next review
+        currentIndex = (currentIndex + 1) % reviewItems.length;
+
+        // Reset position for the previous review and hide it after transition
+        setTimeout(() => {
+            currentReview.classList.remove('exit');
+            currentReview.style.left = '100%'; // Move it back to the right side
+        }, 1000); // Timing matches the transition duration
+
+        // Show the next review
+        const nextReview = reviewItems[currentIndex];
+        nextReview.classList.add('active');
+        nextReview.style.left = '0'; // Move it into view
+    }
+
+    // Rotate reviews every 5 seconds
+    setInterval(showNextReview, 5000);
+</script>
 <!-- Include the Google Places API script with your API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
 <script src="assets/js/reviews.js"></script>
