@@ -2,6 +2,24 @@
 <html>
 <head>
     <title>The StringSisters</title>
+
+
+
+    <style>
+        @keyframes rain {
+          0% { transform: translateY(-100px); opacity: 1; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }
+      
+        .music-note {
+          position: absolute;
+          font-size: 20px;
+          animation: rain 5s linear infinite;
+          color: #000;
+        }
+      </style>
+
+      
     <meta charset="utf-8" />
     <meta name="description" content="Discover Toronto's Harp and Cello Duo for Unforgettable Live Music at Weddings & Events. Elevate Your Special Occasion with The StringSisters. Book Now!">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -55,7 +73,7 @@
             <div class="inner">
                 <h2>
                     <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank">
-                        Latest Reviews &#10140;
+                        Latest Reviews →
                     </a>
                 </h2>
                 <div id="google-reviews-carousel" class="carousel">
@@ -97,5 +115,33 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+    document.getElementById('google-reviews-carousel').addEventListener('scroll', function() {
+      createRain();
+    });
+  
+    function createRain() {
+      for (let i = 0; i < 10; i++) {
+        const note = document.createElement('div');
+        note.classList.add('music-note');
+        note.textContent = getRandomNote();
+        note.style.left = Math.random() * 100 + 'vw';
+        note.style.animationDuration = Math.random() * 2 + 3 + 's';
+        note.style.fontSize = Math.random() * 10 + 20 + 'px';
+        document.body.appendChild(note);
+  
+        setTimeout(() => {
+          note.remove();
+        }, 5000);
+      }
+    }
+  
+    function getRandomNote() {
+      const notes = ['♪', '♫', '♩', '♬', '♭'];
+      return notes[Math.floor(Math.random() * notes.length)];
+    }
+  </script>
+
 </body>
 </html>
