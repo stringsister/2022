@@ -43,58 +43,79 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayReviews(reviews) {
         const reviewsContainer = document.getElementById('reviews-container');
         reviewsContainer.innerHTML = '';  // Clear any existing content
-
-        const loopedReviews = [...reviews];
-
-        // Duplicate reviews infinitely to the right
-        for (let i = 0; i < 5; i++) {
-            loopedReviews.push(...reviews);
-        }
-
-        loopedReviews.forEach((review, index) => {
+    
+        reviews.forEach((review, index) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
+            if (index === 0) {
+                reviewItem.style.opacity = '1'; // Make the first review visible by default
+                reviewItem.style.display = 'block'; 
+            } else {
+                reviewItem.style.opacity = '0'; // Hide other reviews
+                reviewItem.style.display = 'none'; 
+            }
             const cleanText = removeEmojis(review.text);
-            reviewItem.innerHTML = `<p class="review-text">${cleanText}</p><p class="review-author">- ${review.author_name}</p>`;
+            
+            // Dynamically create the star rating based on the review rating
+            const starRating = Math.round(review.rating); // Round the rating to the nearest integer
+            let starHTML = '';
+            for (let i = 0; i < starRating; i++) {
+                starHTML += '★';
+            }
+            for (let i = starRating; i < 5; i++) {
+                starHTML += '☆'; // Fill in empty stars if less than 5 stars
+            }
+    
+            // Insert the review text, author, and dynamically generated stars with reduced spacing
+            reviewItem.innerHTML = `
+                <p class="review-text">${cleanText}</p>
+                <p class="review-author" style="margin-bottom: 2px;">- ${review.author_name}</p>
+                <div class="review-stars" style="font-size: 1.5em; margin-top: 2px;">${starHTML}</div>
+            `;
             reviewsContainer.appendChild(reviewItem);
         });
     }
 
     function startCarousel() {
-        const reviewsContainer = document.querySelector('.carousel-inner');
         const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
         let currentIndex = 0;
-        const intervalTime = 5000;
-
-        function scrollToItem(index) {
-            const scrollPosition = reviewsContainer.scrollWidth / totalItems * index;
-            reviewsContainer.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-        }
-
+        const intervalTime = 7000; // Increased interval time to allow more time between transitions
+    
+        // Function to fade out current item and fade in next item
         function showNextItem() {
-            currentIndex++;
-            scrollToItem(currentIndex);
-
-            // Reset the scroll position when reaching the end
-            if (currentIndex === totalItems) {
-                currentIndex = 0;
+            const currentItem = items[currentIndex];
+            const nextIndex = (currentIndex + 1) % items.length;
+            const nextItem = items[nextIndex];
+    
+            // Fade out current item
+            currentItem.style.transition = 'opacity 1.5s ease'; // Slower fade-out
+            currentItem.style.opacity = '0';
+    
+            // After fade-out, hide the current item and show the next one
+            setTimeout(() => {
+                currentItem.style.display = 'none'; // Hide the current item
+    
+                // Fade in the next item
+                nextItem.style.display = 'block';
                 setTimeout(() => {
-                    reviewsContainer.scrollLeft = 0;
-                }, 500); // Delay to allow smooth scroll to finish
-            }
+                    nextItem.style.transition = 'opacity 1.5s ease'; // Slower fade-in
+                    nextItem.style.opacity = '1'; // Fade in
+                }, 50); // Delay for display to take effect before fading in
+            }, 1500); // Wait for the fade-out effect to complete (1.5s)
+    
+            currentIndex = nextIndex;
         }
-
+    
+        // Start the automatic sliding of reviews
         let autoSlide = setInterval(showNextItem, intervalTime);
-
-        reviewsContainer.addEventListener('mouseover', () => {
+    
+        // Pause auto-slide on hover
+        document.querySelector('.carousel').addEventListener('mouseover', () => {
             clearInterval(autoSlide);
         });
-
-        reviewsContainer.addEventListener('mouseout', () => {
+    
+        // Resume auto-slide on mouse out
+        document.querySelector('.carousel').addEventListener('mouseout', () => {
             autoSlide = setInterval(showNextItem, intervalTime);
         });
     }
