@@ -68,43 +68,80 @@
                 </div>
             </div>
         </section>
-        <!-- Google Reviews Section -->
-        <section id="footer" class="wrapper" style="margin-bottom: 0;">
-            <div class="inner">
-                <h2>
-                    <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank">
-                        Latest Reviews →
-                    </a>
-                </h2>
-                <div id="google-reviews-carousel" class="carousel">
-                    <div class="carousel-inner" id="reviews-container">
-                        <!-- Reviews will be dynamically inserted here -->
-                    </div>
-                </div>
-                <div style="width: 75%; margin: 20px auto; border-bottom: 1px solid #000;"></div>
+     <!-- Google Reviews Section -->
+<section id="footer" class="wrapper" style="margin-bottom: 0;">
+    <div class="inner">
+        <h2>
+            <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank">
+                Latest Reviews →
+            </a>
+        </h2>
+        <div id="google-reviews-carousel" class="carousel">
+            <div class="carousel-inner" id="reviews-container">
+                <!-- Reviews will be dynamically inserted here -->
             </div>
-        </section>
+        </div>
+        <div style="width: 75%; margin: 20px auto; border-bottom: 1px solid #000;"></div>
     </div>
-    <!-- Footer -->
-    <footer>
-        <div style="text-align: center; margin-bottom: 10px;">
-            <a href="https://www.instagram.com/stringsisterz" target="_blank">
-                <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-			<a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
-                <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-            <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
-                <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
-            </a>
-           
-        </div>
-        <div style="text-align: center;">
-            &copy; The StringSisters 2024
-            <br><br>
-        </div>
-    </footer>
+</section>
 </div>
+<!-- Footer -->
+<footer>
+    <div style="text-align: center; margin-bottom: 10px;">
+        <a href="https://www.instagram.com/stringsisterz" target="_blank">
+            <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+        <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
+            <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+        <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
+            <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
+        </a>
+    </div>
+    <div style="text-align: center;">
+        &copy; The StringSisters 2024
+        <br><br>
+    </div>
+</footer>
+</div>
+
+<!-- Add CSS to dynamically adjust review height -->
+<style>
+    .carousel-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .review-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        min-height: 150px; /* Minimum height for uniformity */
+        max-height: 100%; /* Allow dynamic growth */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .review-text {
+        flex-grow: 1; /* Makes the text section fill the available space */
+    }
+
+    .review-author {
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: right;
+    }
+</style>
+
+
 <!-- Include the Google Places API script with your API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
 <script src="assets/js/reviews.js"></script>
