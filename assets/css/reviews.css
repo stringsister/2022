@@ -8,27 +8,32 @@
 }
 
 .carousel-inner {
-    position: relative;
+    display: flex;
+    transition: transform 0.5s ease;
     width: 100%;
-    height: auto;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar for all browsers */
+.carousel-inner::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-inner {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .carousel-item {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    transform: translateY(20px); /* Minimalistic slide-up effect */
     min-width: 100%;
     box-sizing: border-box;
     padding: 40px;
     text-align: center;
     background-color: transparent; /* Transparent background */
     border-radius: 10px;
-}
-
-.carousel-item.active {
-    opacity: 1;
-    transform: translateY(0);
+    scroll-snap-align: start;
 }
 
 .review-text {
@@ -41,13 +46,6 @@
     font-size: 1em;
     font-weight: bold;
     color: black; /* Ensure the text is black */
-}
-
-/* Adding stars for reviews */
-.review-stars {
-    color: black;
-    font-size: 1.5em;
-    margin-bottom: 10px;
 }
 
 /* Centering the title */
