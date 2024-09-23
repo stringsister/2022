@@ -86,16 +86,21 @@
             text-align: left;
         }
 
+       
         /* Minimalistic Arrow Styling */
-        .faq-question::after {
-            content: '\25B6'; /* Right-pointing triangle */
-            font-size: 14px;
-            transition: transform 0.3s ease;
-        }
+.faq-question::after {
+    content: '';
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg); /* Right-pointing arrow when inactive */
+    transition: transform 0.3s ease;
+}
 
-        .faq-question.active::after {
-            transform: rotate(90deg); /* Rotate right-pointing triangle */
-        }
+.faq-question.active::after {
+    transform: rotate(135deg); /* Downward-pointing arrow when active */
+}
 
         /* Expanded FAQ by default */
         .faq-item:first-child .faq-answer {
