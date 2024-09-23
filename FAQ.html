@@ -126,14 +126,26 @@
 </head>
 <body>
 
-    <!-- Page wrapper -->
-    <div id="page-wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu"><span>Menu</span></a>
-        </header>
+    <header id="header">
+        <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
+        <a href="#menu" id="menu-toggle"><span>Menu</span></a>
+    </header>
+    
+    <!-- Nav -->
+    <nav id="menu">
+        <div class="inner">
+            <h2>Menu</h2>
+            
+            <ul class="links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/bookings">Book Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+               
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
+        
 
         <!-- Title -->
         <div class="main-content">
@@ -254,5 +266,21 @@
             });
         });
     </script>
+
+    <!-- Include the Google Places API script with your API key -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
+<script src="assets/js/reviews.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+</body>
+</html>
+
 </body>
 </html>
