@@ -189,6 +189,52 @@
     </div>
 
     <!-- Scripts -->
+
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const carouselInner = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+    
+        // Clone the first and last items to create the looping effect
+        const firstClone = items[0].cloneNode(true);
+        const lastClone = items[items.length - 1].cloneNode(true);
+    
+        carouselInner.appendChild(firstClone); // Append the clone of the first item at the end
+        carouselInner.insertBefore(lastClone, items[0]); // Insert the clone of the last item at the beginning
+    
+        let currentIndex = 1; // Start from the first real item
+        const itemWidth = items[0].offsetWidth; // Width of each item
+    
+        // Initialize the scroll position to the first real item (skipping the clone at the beginning)
+        carousel.scrollLeft = itemWidth;
+    
+        const scrollCarousel = () => {
+            currentIndex++;
+    
+            // Smooth scroll to the next item
+            carousel.scrollTo({
+                left: itemWidth * currentIndex,
+                behavior: 'smooth'
+            });
+    
+            // Reset to the first real item if the last real item is reached
+            if (currentIndex === items.length + 1) {
+                setTimeout(() => {
+                    // Jump to the first real item without animation
+                    carousel.scrollTo({
+                        left: itemWidth,
+                        behavior: 'auto'
+                    });
+                    currentIndex = 1;
+                }, 500); // Wait for the smooth scroll to finish
+            }
+        };
+    
+        // Auto-scroll every 3 seconds
+        setInterval(scrollCarousel, 3000); // Adjust timing here as needed
+    </script>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
