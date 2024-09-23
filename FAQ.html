@@ -50,12 +50,18 @@
             justify-content: flex-start;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-        }
+            scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
+}
+
 
         .carousel-inner {
             display: flex;
             width: 100%;
-            scroll-snap-align: start;
+           
             scroll-behavior: smooth;
         }
 
