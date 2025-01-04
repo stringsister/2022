@@ -86,9 +86,14 @@
 
 				<!-- Copyright -->
 					<section class="wrapper style2 copyright">
-						<div class="inner">
-							&copy; String Sisters. All rights reserved.
-						</div>
+					</div>
+					<p style="text-align: center; color: grey; margin: 20px 0;">
+						&copy; <span id="current-year"></span> The StringSisters. All rights reserved.
+					</p>
+					<script>
+						document.getElementById("current-year").textContent = new Date().getFullYear();
+					</script>
+					</div>
 					</section>
 
 			</div>
