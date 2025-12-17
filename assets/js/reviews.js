@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI';
     const placeId = 'ChIJc_dVAcckZ2gR54d2HZTTKrQ';
     let allReviews = [];
 
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             placeId: placeId,
             fields: ['reviews']
         };
-
         service.getDetails(request, (place, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
                 allReviews = place.reviews;
@@ -42,36 +40,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayReviews(reviews) {
         const reviewsContainer = document.getElementById('reviews-container');
-        reviewsContainer.innerHTML = '';  // Clear any existing content
-    
+        reviewsContainer.innerHTML = ''; // Clear placeholder
+
         reviews.forEach((review, index) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
+
+            // Visibility for fade
             if (index === 0) {
-                reviewItem.style.opacity = '1'; // Make the first review visible by default
-                reviewItem.style.display = 'block'; 
+                reviewItem.style.opacity = '1';
+                reviewItem.style.display = 'block';
             } else {
-                reviewItem.style.opacity = '0'; // Hide other reviews
-                reviewItem.style.display = 'none'; 
+                reviewItem.style.opacity = '0';
+                reviewItem.style.display = 'none';
             }
-            const cleanText = removeEmojis(review.text);
-            
-            // Dynamically create the star rating based on the review rating
-            const starRating = Math.round(review.rating); // Round the rating to the nearest integer
+
+            const cleanText = removeEmojis(review.text || '');
+
+            // Star rating
+            const starRating = Math.round(review.rating || 5);
             let starHTML = '';
-            for (let i = 0; i < starRating; i++) {
-                starHTML += '★';
+            for (let i = 0; i < 5; i++) {
+                starHTML += i < starRating ? '★' : '☆';
             }
-            for (let i = starRating; i < 5; i++) {
-                starHTML += '☆'; // Fill in empty stars if less than 5 stars
-            }
-    
-            // Insert the review text, author, and dynamically generated stars with reduced spacing
+
+            // Match HTML design exactly
             reviewItem.innerHTML = `
-                <p class="review-text">${cleanText}</p>
-                <p class="review-author" style="margin-bottom: 2px;">- ${review.author_name}</p>
-                <div class="review-stars" style="font-size: 1.5em; margin-top: 2px;">${starHTML}</div>
+                <div style="
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 30px 20px;
+                    text-align: center;
+                    font-family: Georgia, serif;
+                ">
+                    <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 24px;">
+                        ${starHTML}
+                    </div>
+                    <p style="font-size: 1.2rem; line-height: 1.9; color: #444; margin: 0 0 28px 0; font-style: italic;">
+                        "${cleanText}"
+                    </p>
+                    <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
+                        — ${review.author_name}
+                    </p>
+                </div>
             `;
+
             reviewsContainer.appendChild(reviewItem);
         });
     }
@@ -79,42 +92,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function startCarousel() {
         const items = document.querySelectorAll('.carousel-item');
         let currentIndex = 0;
-        const intervalTime = 7000; // Increased interval time to allow more time between transitions
-    
-        // Function to fade out current item and fade in next item
+        const intervalTime = 7000;
+
         function showNextItem() {
             const currentItem = items[currentIndex];
             const nextIndex = (currentIndex + 1) % items.length;
             const nextItem = items[nextIndex];
-    
-            // Fade out current item
-            currentItem.style.transition = 'opacity 1.5s ease'; // Slower fade-out
+
+            currentItem.style.transition = 'opacity 1.5s ease';
             currentItem.style.opacity = '0';
-    
-            // After fade-out, hide the current item and show the next one
+
             setTimeout(() => {
-                currentItem.style.display = 'none'; // Hide the current item
-    
-                // Fade in the next item
+                currentItem.style.display = 'none';
+
                 nextItem.style.display = 'block';
                 setTimeout(() => {
-                    nextItem.style.transition = 'opacity 1.5s ease'; // Slower fade-in
-                    nextItem.style.opacity = '1'; // Fade in
-                }, 50); // Delay for display to take effect before fading in
-            }, 1500); // Wait for the fade-out effect to complete (1.5s)
-    
+                    nextItem.style.transition = 'opacity 1.5s ease';
+                    nextItem.style.opacity = '1';
+                }, 50);
+            }, 1500);
+
             currentIndex = nextIndex;
         }
-    
-        // Start the automatic sliding of reviews
+
         let autoSlide = setInterval(showNextItem, intervalTime);
-    
-        // Pause auto-slide on hover
+
+        // Pause on hover
         document.querySelector('.carousel').addEventListener('mouseover', () => {
             clearInterval(autoSlide);
         });
-    
-        // Resume auto-slide on mouse out
         document.querySelector('.carousel').addEventListener('mouseout', () => {
             autoSlide = setInterval(showNextItem, intervalTime);
         });
