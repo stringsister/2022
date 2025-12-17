@@ -1,22 +1,24 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const placeId = 'ChIJc_dVAcckZ2gR54d2HZTTKrQ';
     let allReviews = [];
 
     function fetchReviews() {
         const service = new google.maps.places.PlacesService(document.createElement('div'));
-        service.getDetails(
-            { placeId, fields: ['reviews'] },
-            (place, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
-                    allReviews = place.reviews;
-                    shuffleArray(allReviews);
-                    displayReviews(allReviews.slice(0, 5));
-                    startCarousel();
-                }
+        const request = {
+            placeId: placeId,
+            fields: ['reviews']
+        };
+        service.getDetails(request, (place, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
+                allReviews = place.reviews;
+                shuffleArray(allReviews);
+                const selectedReviews = getRandomReviews(allReviews, 5);
+                displayReviews(selectedReviews);
+                startCarousel();
+            } else {
+                console.error('Failed to fetch reviews:', status);
             }
-        );
+        });
     }
 
     function shuffleArray(array) {
@@ -26,66 +28,96 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function getRandomReviews(reviews, num) {
+        const shuffled = [...reviews];
+        shuffleArray(shuffled);
+        return shuffled.slice(0, num);
+    }
+
     function removeEmojis(text) {
-        return text.replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '');
+        return text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{2B50}\u{2B55}\u{2934}\u{2935}\u{2B05}-\u{2B07}\u{2B1B}\u{2B1C}\u{2B50}\u{2B55}\u{3030}\u{303D}\u{3297}\u{3299}\u{25B6}\u{25C0}\u{25FB}-\u{25FE}\u{25AA}\u{25AB}\u{25B6}\u{25C0}\u{25FB}-\u{25FE}\u{2B50}\u{2B55}\u{2600}-\u{26FF}\u{2702}-\u{27B0}\u{1F004}\u{1F0CF}]+/gu, '');
     }
 
     function displayReviews(reviews) {
-        const container = document.getElementById('reviews-container');
-        container.innerHTML = '';
+        const reviewsContainer = document.getElementById('reviews-container');
+        reviewsContainer.innerHTML = ''; // Clear placeholder
 
-        [...reviews, ...reviews].forEach(review => {
-            const item = document.createElement('div');
-            item.className = 'carousel-item';
+        reviewsContainer.style.display = 'flex';
+        reviewsContainer.style.width = '100%';
+        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
 
-            const stars = '★★★★★'.slice(0, review.rating || 5);
+        // Duplicate for infinite loop
+        [...reviews, ...reviews].forEach((review) => {
+            const reviewItem = document.createElement('div');
+            reviewItem.classList.add('carousel-item');
+            reviewItem.style.minWidth = '100%';
+            reviewItem.style.flexShrink = '0';
+            reviewItem.style.boxSizing = 'border-box';
 
-            item.innerHTML = `
-                <div>
-                    <div class="review-stars">${stars}</div>
-                    <p class="review-quote">"${removeEmojis(review.text || '')}"</p>
-                    <p class="review-author">— ${review.author_name}</p>
+            const cleanText = removeEmojis(review.text || '');
+
+            const starRating = Math.round(review.rating || 5);
+            let starHTML = '';
+            for (let i = 0; i < 5; i++) {
+                starHTML += i < starRating ? '★' : '☆';
+            }
+
+            // Exact same structure and styling as placeholder
+            reviewItem.innerHTML = `
+                <div style="
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px 15px;
+                    text-align: center;
+                    font-family: Georgia, serif;
+                ">
+                    <div style="font-size: 1.6rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 16px;">
+                        ${starHTML}
+                    </div>
+                    <p style="font-size: 1.15rem; line-height: 1.7; color: #444; margin: 0 0 20px 0; font-style: italic;">
+                        "${cleanText}"
+                    </p>
+                    <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
+                        — ${review.author_name}
+                    </p>
                 </div>
             `;
 
-            container.appendChild(item);
+            reviewsContainer.appendChild(reviewItem);
         });
+
+        reviewsContainer.style.transform = 'translateX(0%)';
     }
 
     function startCarousel() {
-        const track = document.getElementById('reviews-container');
-        const items = track.querySelectorAll('.carousel-item');
-        let index = 0;
-        const visibleCount = items.length / 2;
-        const interval = 7000;
+        const container = document.getElementById('reviews-container');
+        const items = container.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        const totalRealReviews = items.length / 2;
+        const intervalTime = 7000;
 
-        function resizeToActiveSlide() {
-            const active = items[index];
-            const content = active.querySelector('div');
-            track.style.height = content.offsetHeight + 'px';
-        }
+        function showNextItem() {
+            currentIndex++;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        function next() {
-            index++;
-            track.style.transform = `translateX(-${index * 100}vw)`;
-            resizeToActiveSlide();
-
-            if (index >= visibleCount) {
+            if (currentIndex >= totalRealReviews) {
                 setTimeout(() => {
-                    track.style.transition = 'none';
-                    index = 0;
-                    track.style.transform = 'translateX(0)';
-                    resizeToActiveSlide();
-                    requestAnimationFrame(() => {
-                        track.style.transition = 'transform 1.2s ease-in-out';
-                    });
+                    container.style.transition = 'none';
+                    currentIndex = 0;
+                    container.style.transform = 'translateX(0%)';
+                    setTimeout(() => {
+                        container.style.transition = 'transform 1.2s ease-in-out';
+                    }, 50);
                 }, 1200);
             }
         }
 
-        resizeToActiveSlide();
-        setInterval(next, interval);
-        window.addEventListener('resize', resizeToActiveSlide);
+        let autoSlide = setInterval(showNextItem, intervalTime);
+
+        document.querySelector('.carousel').addEventListener('mouseover', () => clearInterval(autoSlide));
+        document.querySelector('.carousel').addEventListener('mouseout', () => {
+            autoSlide = setInterval(showNextItem, intervalTime);
+        });
     }
 
     fetchReviews();
