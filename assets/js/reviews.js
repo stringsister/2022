@@ -42,26 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewsContainer = document.getElementById('reviews-container');
         reviewsContainer.innerHTML = ''; // Clear placeholder
 
-        // Make container flex for horizontal slide
+        // Set up flex for sliding
         reviewsContainer.style.display = 'flex';
-        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
+        reviewsContainer.style.width = '100%';
 
-        reviews.forEach((review, index) => {
+        // Append reviews twice for seamless infinite loop
+        [...reviews, ...reviews].forEach((review, index) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
             reviewItem.style.minWidth = '100%';
             reviewItem.style.boxSizing = 'border-box';
+            reviewItem.style.flexShrink = '0';
 
             const cleanText = removeEmojis(review.text || '');
 
-            // Star rating
             const starRating = Math.round(review.rating || 5);
             let starHTML = '';
             for (let i = 0; i < 5; i++) {
                 starHTML += i < starRating ? '★' : '☆';
             }
 
-            // Wider review – increased max-width to 800px
             reviewItem.innerHTML = `
                 <div style="
                     max-width: 800px;
@@ -84,25 +84,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
             reviewsContainer.appendChild(reviewItem);
         });
+
+        // Start at first real review
+        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
+        reviewsContainer.style.transform = 'translateX(0%)';
     }
 
     function startCarousel() {
         const container = document.getElementById('reviews-container');
         const items = container.querySelectorAll('.carousel-item');
         let currentIndex = 0;
+        const totalRealReviews = items.length / 2; // Because we duplicated
         const intervalTime = 7000;
 
         function showNextItem() {
-            currentIndex = (currentIndex + 1) % items.length;
+            currentIndex++;
             container.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Seamless loop: when we reach the duplicate set, jump back instantly
+            if (currentIndex >= totalRealReviews) {
+                setTimeout(() => {
+                    container.style.transition = 'none';
+                    currentIndex = 0;
+                    container.style.transform = 'translateX(0%)';
+                    // Re-enable transition after reset
+                    setTimeout(() => {
+                        container.style.transition = 'transform 1.2s ease-in-out';
+                    }, 50);
+                }, 1200);
+            }
         }
 
         let autoSlide = setInterval(showNextItem, intervalTime);
 
         // Pause on hover
-        document.querySelector('.carousel').addEventListener('mouseover', () => {
-            clearInterval(autoSlide);
-        });
+        document.querySelector('.carousel').addEventListener('mouseover', () => clearInterval(autoSlide));
         document.querySelector('.carousel').addEventListener('mouseout', () => {
             autoSlide = setInterval(showNextItem, intervalTime);
         });
