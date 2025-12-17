@@ -9,43 +9,54 @@
 
 .carousel-inner {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 1.2s ease-in-out;
     width: 100%;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
 }
 
 /* Hide scrollbar for all browsers */
 .carousel-inner::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
-
 .carousel-inner {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .carousel-item {
     min-width: 100%;
     box-sizing: border-box;
-    padding: 40px;
+    flex-shrink: 0;
     text-align: center;
-    background-color: transparent; /* Transparent background */
-    border-radius: 10px;
-    scroll-snap-align: start;
+    background-color: transparent;
 }
 
-.review-text {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: black; /* Ensure the text is black */
+/* Responsive review content */
+.carousel-item > div {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 15px;
 }
 
-.review-author {
-    font-size: 1em;
-    font-weight: bold;
-    color: black; /* Ensure the text is black */
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .carousel-item > div {
+        max-width: 90%; /* Use most of mobile screen width */
+        padding: 15px 10px;
+    }
+
+    .carousel-item p {
+        font-size: 1rem !important; /* Smaller text to fit */
+        line-height: 1.6 !important;
+    }
+
+    .carousel-item .review-stars {
+        font-size: 1.4rem !important; /* Smaller stars */
+        margin-bottom: 12px !important;
+    }
+
+    .carousel-item .review-author {
+        font-size: 0.95rem !important;
+    }
 }
 
 /* Centering the title */
