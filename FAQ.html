@@ -5,27 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="Frequently Asked Questions about The StringSisters, including details on booking, music selection, moving between event locations, and more." />
-    <meta name="keywords" content="StringSisters, FAQ, music selection, booking, harp and cello, wedding music, live musicians, Toronto, event music, acoustic duo, String Sisters FAQ" />
-    <meta name="author" content="The StringSisters" />
-    
-    <meta property="og:title" content="The StringSisters | FAQ" />
-    <meta property="og:description" content="Learn more about booking The StringSisters, music selection, and event setup. Explore frequently asked questions about our services." />
-    <meta property="og:image" content="/images/favi/apple-touch-icon.png" />
-    <meta property="og:url" content="https://www.stringsisters.ca/faq" />
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favi/favicon-16x16.png">
-    <link rel="manifest" href="/images/favi/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
+
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
+            background-color: #ffffff;
+            color: #444;
         }
 
         #page-wrapper {
@@ -42,67 +30,82 @@
             z-index: 1000;
         }
 
+        .logo a {
+            font-family: inherit; /* Keep website font for nav title */
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            margin-top: 100px; /* Adjusted spacing for the header and title */
+            align-items: flex-start;
+            padding: 120px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         h1 {
             font-size: 32px;
             margin-bottom: 40px;
             color: #333;
+            text-align: left;
         }
 
         .faq-item {
             width: 100%;
-            max-width: 800px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            margin-bottom: 12px;
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid #e0d8dc;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .faq-question {
-            background-color: #f9f9f9;
-            padding: 20px;
+            padding: 18px 25px;
             font-size: 18px;
             cursor: pointer;
-            text-align: left;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: 500;
+            background-color: #faf5f6; /* soft pink */
+            text-align: left;
         }
 
         .faq-answer {
             display: none;
-            padding: 20px;
+            padding: 18px 25px;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #555;
             background-color: #fff;
-            text-align: left;
         }
 
-       
-        /* Minimalistic Arrow Styling */
-.faq-question::after {
-    content: '';
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    transform: rotate(-45deg); /* Right-pointing arrow when inactive */
-    transition: transform 0.3s ease;
-}
+        .faq-answer p {
+            margin: 10px 0;
+        }
 
-.faq-question.active::after {
-    transform: rotate(45deg); /* Downward-pointing arrow when active */
-}
+        .faq-question::after {
+            content: '';
+            border: solid #b07788;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 5px;
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease;
+        }
 
-        /* Expanded FAQ by default */
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
         .faq-item:first-child .faq-answer {
             display: block;
         }
@@ -111,165 +114,172 @@
             transform: rotate(90deg);
         }
 
+        a {
+            color: #b07788;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer with diagonal style */
         #footer {
-            background-color: #f9f9f9;
-            padding: 20px 0;
-            margin-top: auto;
-        }
-
-        .inner {
-            padding: 20px;
+            position: relative;
+            background: #fcf8f9;
+            padding: 80px 20px 50px;
+            margin-top: 50px;
             text-align: center;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
         }
 
+        #footer p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0 0 25px;
+        }
+
+        #footer .socials img {
+            width: 38px;
+            height: 38px;
+            margin: 0 10px;
+        }
+
+        #footer hr {
+            border:none;
+            height:1px;
+            background:#eee;
+            width:50%;
+            margin:35px auto;
+        }
+
+        #footer .copyright {
+            color:#8c8c8c;
+            font-size: 0.95rem;
+            margin: 15px 0 0;
+        }
     </style>
 </head>
 <body>
-
     <header id="header">
         <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
         <a href="#menu" id="menu-toggle"><span>Menu</span></a>
     </header>
-    
+
     <!-- Nav -->
     <nav id="menu">
         <div class="inner">
             <h2>Menu</h2>
-            
             <ul class="links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/bookings">Book Us</a></li>
                 <li><a href="/services">About Us</a></li>
-               
             </ul>
             <a href="#" class="close">Close</a>
         </div>
     </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <strong><h1><strong>Frequently Asked Questions</strong></h1></strong>
+
+        <div class="faq-item">
+            <div class="faq-question">How Does The Music Selection Work, And How Many Songs Can We Choose?</div>
+            <div class="faq-answer">
+                <p>We include two special requests as part of the package price. Submit them three weeks before your event.</p>
+                <p>For ceremonies, consider key moments: Bridal Party entrance, Groom’s entrance, Bride’s entrance, Signing of the register, and Recessional.</p>
+                <p>For prelude or cocktail hour, each song lasts 3–5 minutes. Select individual songs or a preferred genre, and we curate the playlist accordingly.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How Do I Book The StringSisters?</div>
+            <div class="faq-answer">
+                <p>We provide a personalized quote and contract. A $200 deposit via eTransfer to <a href="mailto:payments@stringsisters.ca">payments@stringsisters.ca</a> secures your date.</p>
+                <p><a href="/bookings">Request a Quote &rarr;</a></p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What Payment Methods Do You Accept?</div>
+            <div class="faq-answer">
+                <p>Interac eTransfer, cheque, or cash.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Are The StringSisters Actually Sisters?</div>
+            <div class="faq-answer">
+                <p>Yes, we are twins!</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How Many Songs Should We Choose?</div>
+            <div class="faq-answer">
+                <p>Each song is approximately 3–5 minutes. Consider timing when selecting your playlist to fit the event.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can The Harp And Cello Be Moved Within A Single Venue?</div>
+            <div class="faq-answer">
+                <p>Yes! Moving within the same venue, such as from ceremony to cocktail hour, typically takes 15 minutes including packing, moving, and retuning.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can The Harp And Cello Be Moved Between Different Venues?</div>
+            <div class="faq-answer">
+                <p>Yes, we can move between venues. Transition time depends on distance and logistics, but we ensure everything is packed, transported, and set up efficiently.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do You Provide AV Equipment? Do You Need To Be Mic’d?</div>
+            <div class="faq-answer">
+                <p>We are fully acoustic. For louder settings, two standard microphones or clip-on mics are recommended. Solo cello can use a sound system if desired.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">When Do The Musicians Arrive On-Site For An Event?</div>
+            <div class="faq-answer">
+                <p>We arrive approximately 45 minutes before the start time to ensure everything is perfectly set up.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do You Attend The Rehearsal?</div>
+            <div class="faq-answer">
+                <p>No, we do not attend the rehearsal. We coordinate directly with you beforehand but are happy to discuss any details for a smooth day.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <section id="footer">
         
+        <div class="socials">
+            <a href="https://www.instagram.com/stringsisterz" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank"><img src="images/socials/youtube.png" alt="YouTube"></a>
+            <a href="https://www.tiktok.com/@stringsisterz" target="_blank"><img src="images/socials/tiktok.png" alt="TikTok"></a>
+        </div>
+        <hr>
+        <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
+        <script>
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+        </script>
+    </section>
 
-        <!-- Title -->
-        <div class="main-content">
-            <h1>Frequently Asked Questions</h1>
-
-           <!-- FAQ items -->
-<div class="faq-item">
-    <div class="faq-question">How Does The Music Selection Work, And How Many Songs Can We Choose?</div>
-    <div class="faq-answer">
-        <p>We include two special requests as part of the package price. Special requests are songs not currently in our <a href="/repertoire" style="color: #000; text-decoration: none; font-weight: bold;">repertoire</a>, and we kindly ask that they be submitted three weeks prior to your event.</p>
-        <p>For ceremonies, we suggest choosing music for key moments, such as:</p>
-        <p>Bridal Party entrance<br> Groom’s entrance<br> Bride’s entrance<br> Signing of the register<br> Bride and Groom's recessional</p>
-        <p>This template can be customized to fit your unique ceremony. For prelude or cocktail hour music, each song lasts 3-5 minutes. You may select individual songs to fill the time or provide a preferred genre, and we will curate the playlist accordingly.</p>
-        <p>Please finalize all music selections three weeks before the event. Thank you!</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">How Do I Book The StringSisters?</div>
-    <div class="faq-answer">
-        <p>To book our services, we create a personalized quote and contract for each event. A $200 deposit is required via eTransfer to <a href="mailto:payments@stringsisters.ca">payments@stringsisters.ca</a>, and once the documents are signed, you're all set!</p>
-        <p><a href="/bookings" style="color: #000; text-decoration: none; font-weight: bold;">Request a Quote &rarr;</a></p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">What Payment Methods Do You Accept?</div>
-    <div class="faq-answer">
-        <p>We accept Interac eTransfer, cheque, or cash.</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">Are The StringSisters Actually Sisters?</div>
-    <div class="faq-answer">
-        <p>Yes! We are twins!</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">How Many Songs Should We Choose?</div>
-    <div class="faq-answer">
-        <p>Each song is approximately 3-5 minutes in length. Please consider this when selecting your playlist to ensure it fits the timeframe.</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">Can The Harp And Cello Be Moved Within A Single Venue (e.g., From Ceremony To Cocktail Hour)?</div>
-    <div class="faq-answer">
-        <p>Yes! We can easily relocate within the same venue, such as moving from the ceremony to the cocktail hour. The process typically takes around 15 minutes, which includes packing, moving, and quickly retuning our instruments before we resume playing.</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">Can The Harp And Cello Be Moved Between Different Venues?</div>
-    <div class="faq-answer">
-        <p>Yes, we are also able to move between different venues. The time required for the transition will depend on the distance and logistics, but we aim to ensure everything is packed, transported, and set up efficiently to maintain the flow of your event.</p>
-    </div>
-</div>
-<div class="faq-item">
-    <div class="faq-question">Do You Provide AV Equipment? Do You Need To Be Mic’d?</div>
-    <div class="faq-answer">
-        <p>Currently, we are a fully acoustic duo and do not provide AV equipment.</p>
-        <p>While we don’t always need to be mic'd, we recommend using microphones for louder settings, such as cocktail hours or receptions. For these occasions, two standard microphones on adjustable stands, or clip-on mics, would work well.</p>
-        <p>If you're interested in solo cello, our cellist has a sound system and microphone available and can perform alongside pre-recorded (canned) music for a more amplified experience.</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">When Do The Musicians Arrive On-Site For An Event?</div>
-    <div class="faq-answer">
-        <p>We arrive approximately 45 minutes before the start time to ensure everything is perfectly set up.</p>
-    </div>
-</div>
-
-<div class="faq-item">
-    <div class="faq-question">Do You Attend The Rehearsal?</div>
-    <div class="faq-answer">
-        <p>No, we do not attend the rehearsal, as we are able to coordinate everything directly with you beforehand. However, we’re always available to discuss any specific details or timing to ensure the day goes smoothly.</p>
-    </div>
-</div>
-</div>
-
-        <br>  <br>  <br>
-
-        <!-- Footer -->
-        <section id="footer" class="wrapper style2">
-            <div class="inner">
-                <p>"Transform your events with the captivating sounds of live harp and cello, adding a touch of elegance to every moment."</p>
-                <div style="margin-bottom: 10px;">
-                    <a href="https://www.instagram.com/stringsisterz" target="_blank">
-                        <img src="images/socials/instagram.png" alt="Instagram" style="width: 50px; height: 50px; margin: 0 10px;">
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
-                        <img src="images/socials/youtube.png" alt="YouTube" style="width: 50px; height: 50px; margin: 0 10px;">
-                    </a>
-                    <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
-                        <img src="images/socials/tiktok.png" alt="TikTok" style="width: 50px; height: 50px; margin: 0 10px;">
-                    </a>
-                </div>
-                <p style="text-align: center; color: grey; margin: 20px 0;">
-                    &copy; <span id="current-year"></span> The StringSisters. All rights reserved.
-                </p>
-                <script>
-                    document.getElementById("current-year").textContent = new Date().getFullYear();
-                </script>
-                </div>
-        </section>
-    </div>
-
-    <!-- Scripts -->
     <script>
         const faqQuestions = document.querySelectorAll('.faq-question');
-
-        faqQuestions.forEach((question) => {
+        faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
                 const isVisible = answer.style.display === 'block';
-                
-                // Close all open answers
-                document.querySelectorAll('.faq-answer').forEach((faq) => faq.style.display = 'none');
-                document.querySelectorAll('.faq-question').forEach((q) => q.classList.remove('active'));
 
-                // Toggle the current one
+                document.querySelectorAll('.faq-answer').forEach(faq => faq.style.display = 'none');
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+
                 if (!isVisible) {
                     answer.style.display = 'block';
                     question.classList.add('active');
@@ -277,21 +287,5 @@
             });
         });
     </script>
-
-    <!-- Include the Google Places API script with your API key -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWyfZTApDj2-IU-qAyIYVRQLVtRwq_cjI&libraries=places"></script>
-<script src="assets/js/reviews.js"></script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-
-</body>
-</html>
-
 </body>
 </html>
