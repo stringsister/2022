@@ -42,18 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewsContainer = document.getElementById('reviews-container');
         reviewsContainer.innerHTML = ''; // Clear placeholder
 
+        // Make container flex for horizontal slide
+        reviewsContainer.style.display = 'flex';
+        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
+
         reviews.forEach((review, index) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
-
-            // Visibility for fade
-            if (index === 0) {
-                reviewItem.style.opacity = '1';
-                reviewItem.style.display = 'block';
-            } else {
-                reviewItem.style.opacity = '0';
-                reviewItem.style.display = 'none';
-            }
+            reviewItem.style.minWidth = '100%';
+            reviewItem.style.boxSizing = 'border-box';
 
             const cleanText = removeEmojis(review.text || '');
 
@@ -64,19 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 starHTML += i < starRating ? '★' : '☆';
             }
 
-            // Match HTML design exactly
+            // Wider review – increased max-width to 800px
             reviewItem.innerHTML = `
                 <div style="
-                    max-width: 600px;
+                    max-width: 800px;
                     margin: 0 auto;
-                    padding: 30px 20px;
+                    padding: 20px 20px;
                     text-align: center;
                     font-family: Georgia, serif;
                 ">
-                    <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 24px;">
+                    <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 20px;">
                         ${starHTML}
                     </div>
-                    <p style="font-size: 1.2rem; line-height: 1.9; color: #444; margin: 0 0 28px 0; font-style: italic;">
+                    <p style="font-size: 1.25rem; line-height: 1.8; color: #444; margin: 0 0 24px 0; font-style: italic;">
                         "${cleanText}"
                     </p>
                     <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
@@ -90,29 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startCarousel() {
-        const items = document.querySelectorAll('.carousel-item');
+        const container = document.getElementById('reviews-container');
+        const items = container.querySelectorAll('.carousel-item');
         let currentIndex = 0;
         const intervalTime = 7000;
 
         function showNextItem() {
-            const currentItem = items[currentIndex];
-            const nextIndex = (currentIndex + 1) % items.length;
-            const nextItem = items[nextIndex];
-
-            currentItem.style.transition = 'opacity 1.5s ease';
-            currentItem.style.opacity = '0';
-
-            setTimeout(() => {
-                currentItem.style.display = 'none';
-
-                nextItem.style.display = 'block';
-                setTimeout(() => {
-                    nextItem.style.transition = 'opacity 1.5s ease';
-                    nextItem.style.opacity = '1';
-                }, 50);
-            }, 1500);
-
-            currentIndex = nextIndex;
+            currentIndex = (currentIndex + 1) % items.length;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
         let autoSlide = setInterval(showNextItem, intervalTime);
