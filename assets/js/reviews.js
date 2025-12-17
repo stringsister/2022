@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         reviewsContainer.style.width = '100%';
         reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
 
-        // Duplicate reviews for infinite loop
+        // Duplicate for infinite loop
         [...reviews, ...reviews].forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
             reviewItem.style.minWidth = '100%';
-            reviewItem.style.boxSizing = 'border-box';
             reviewItem.style.flexShrink = '0';
+            reviewItem.style.boxSizing = 'border-box';
 
             const cleanText = removeEmojis(review.text || '');
 
@@ -62,21 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 starHTML += i < starRating ? '★' : '☆';
             }
 
-            // Mobile-responsive max-width
+            // Exact same structure and styling as placeholder
             reviewItem.innerHTML = `
                 <div style="
-                    width: 100%;
-                    max-width: 800px;
+                    max-width: 600px;
                     margin: 0 auto;
-                    padding: 20px;
+                    padding: 20px 15px;
                     text-align: center;
                     font-family: Georgia, serif;
-                    box-sizing: border-box;
                 ">
-                    <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 20px;">
+                    <div style="font-size: 1.6rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 16px;">
                         ${starHTML}
                     </div>
-                    <p style="font-size: 1.25rem; line-height: 1.8; color: #444; margin: 0 0 24px 0; font-style: italic; word-wrap: break-word;">
+                    <p style="font-size: 1.15rem; line-height: 1.7; color: #444; margin: 0 0 20px 0; font-style: italic;">
                         "${cleanText}"
                     </p>
                     <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
