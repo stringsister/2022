@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewsContainer = document.getElementById('reviews-container');
         reviewsContainer.innerHTML = ''; // Clear placeholder
 
-        // Set up flex for sliding
         reviewsContainer.style.display = 'flex';
         reviewsContainer.style.width = '100%';
+        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
 
-        // Append reviews twice for seamless infinite loop
-        [...reviews, ...reviews].forEach((review, index) => {
+        // Duplicate reviews for infinite loop
+        [...reviews, ...reviews].forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.classList.add('carousel-item');
             reviewItem.style.minWidth = '100%';
@@ -62,18 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 starHTML += i < starRating ? '★' : '☆';
             }
 
+            // Mobile-responsive max-width
             reviewItem.innerHTML = `
                 <div style="
+                    width: 100%;
                     max-width: 800px;
                     margin: 0 auto;
-                    padding: 20px 20px;
+                    padding: 20px;
                     text-align: center;
                     font-family: Georgia, serif;
+                    box-sizing: border-box;
                 ">
                     <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 20px;">
                         ${starHTML}
                     </div>
-                    <p style="font-size: 1.25rem; line-height: 1.8; color: #444; margin: 0 0 24px 0; font-style: italic;">
+                    <p style="font-size: 1.25rem; line-height: 1.8; color: #444; margin: 0 0 24px 0; font-style: italic; word-wrap: break-word;">
                         "${cleanText}"
                     </p>
                     <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
@@ -85,8 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
             reviewsContainer.appendChild(reviewItem);
         });
 
-        // Start at first real review
-        reviewsContainer.style.transition = 'transform 1.2s ease-in-out';
         reviewsContainer.style.transform = 'translateX(0%)';
     }
 
@@ -94,20 +95,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('reviews-container');
         const items = container.querySelectorAll('.carousel-item');
         let currentIndex = 0;
-        const totalRealReviews = items.length / 2; // Because we duplicated
+        const totalRealReviews = items.length / 2;
         const intervalTime = 7000;
 
         function showNextItem() {
             currentIndex++;
             container.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-            // Seamless loop: when we reach the duplicate set, jump back instantly
             if (currentIndex >= totalRealReviews) {
                 setTimeout(() => {
                     container.style.transition = 'none';
                     currentIndex = 0;
                     container.style.transform = 'translateX(0%)';
-                    // Re-enable transition after reset
                     setTimeout(() => {
                         container.style.transition = 'transform 1.2s ease-in-out';
                     }, 50);
@@ -117,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let autoSlide = setInterval(showNextItem, intervalTime);
 
-        // Pause on hover
         document.querySelector('.carousel').addEventListener('mouseover', () => clearInterval(autoSlide));
         document.querySelector('.carousel').addEventListener('mouseout', () => {
             autoSlide = setInterval(showNextItem, intervalTime);
