@@ -1,5 +1,8 @@
 
-/* Hard lock viewport width */
+/* =========================
+   GLOBAL SAFETY
+   ========================= */
+
 html,
 body {
     width: 100%;
@@ -7,41 +10,69 @@ body {
     overflow-x: hidden;
 }
 
-/* Carousel shell */
+
+/* =========================
+   CAROUSEL CONTAINER
+   ========================= */
+
 .carousel {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-/* Kill ALL accidental overflow */
+/* Ensure nothing inside can force width */
 .carousel,
 .carousel * {
     box-sizing: border-box;
     max-width: 100%;
 }
 
-/* Flex track */
+
+/* =========================
+   CAROUSEL TRACK
+   ========================= */
+
 .carousel-inner {
     display: flex;
     width: 100%;
-    transform: translateX(0);
+    align-items: flex-start;      /* CRITICAL: prevents tall-slide height locking */
     transition: transform 1.2s ease-in-out;
     will-change: transform;
 }
 
-/* Slides MUST be viewport width */
-.carousel-item {
-    width: 100vw;          /* CRITICAL FIX */
-    min-width: 100vw;
-    flex-shrink: 0;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    background: transparent;
+/* Hide scrollbar */
+.carousel-inner::-webkit-scrollbar {
+    display: none;
+}
+.carousel-inner {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Review card */
+
+/* =========================
+   SLIDES
+   ========================= */
+
+.carousel-item {
+    width: 100vw;
+    min-width: 100vw;
+    flex-shrink: 0;
+    display: flex;               /* CRITICAL */
+    justify-content: center;
+    align-items: flex-start;     /* CRITICAL: removes vertical centering gap */
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    text-align: center;
+}
+
+
+/* =========================
+   REVIEW CARD
+   ========================= */
+
 .carousel-item > div {
     width: 100%;
     max-width: 640px !important;
@@ -49,20 +80,22 @@ body {
     padding: 24px 20px;
 }
 
-/* Text safety */
+
+/* =========================
+   TEXT SAFETY
+   ========================= */
+
 .carousel-item p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
 }
 
-/* Author name — mobile safe */
 .carousel-item .review-author {
     width: 100%;
     max-width: 100%;
     text-align: left !important;
-    padding-right: 0;
-    margin-right: 0;
+    margin-top: 12px;
 }
 
 
@@ -76,6 +109,16 @@ body {
         padding: 20px 16px !important;
     }
 
+    .carousel-item p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .carousel-item .review-stars {
+        font-size: 1.4rem !important;
+        margin-bottom: 12px !important;
+    }
+
     .carousel-item .review-author {
         font-size: 0.95rem !important;
     }
@@ -83,16 +126,9 @@ body {
 
 
 /* =========================
-   SCROLLBAR KILL SWITCH
+   TITLE ALIGNMENT ONLY
    ========================= */
 
-::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-
-/* Title alignment only */
 .wrapper h2 {
     text-align: center;
 }
