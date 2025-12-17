@@ -1,57 +1,79 @@
+
+/* Hard lock viewport width */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Carousel shell */
 .carousel {
     position: relative;
     width: 100%;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.carousel-inner {
-    display: flex;
-    transition: transform 1.2s ease-in-out;
-    width: 100%;
-}
-
-/* Hide scrollbar for all browsers */
-.carousel-inner::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-.carousel-inner {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-.carousel-item {
-    min-width: 100%;
+/* Kill ALL accidental overflow */
+.carousel,
+.carousel * {
     box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* Flex track */
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    transform: translateX(0);
+    transition: transform 1.2s ease-in-out;
+    will-change: transform;
+}
+
+/* Slides MUST be viewport width */
+.carousel-item {
+    width: 100vw;          /* CRITICAL FIX */
+    min-width: 100vw;
     flex-shrink: 0;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    background-color: transparent;
+    background: transparent;
 }
 
-/* Responsive review content */
+/* Review card */
 .carousel-item > div {
-    max-width: 800px;
+    width: 100%;
+    max-width: 640px !important;
     margin: 0 auto;
-    padding: 20px 15px;
+    padding: 24px 20px;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
+/* Text safety */
+.carousel-item p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/* Author name — mobile safe */
+.carousel-item .review-author {
+    width: 100%;
+    max-width: 100%;
+    text-align: left !important;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+
+/* =========================
+   MOBILE TUNING
+   ========================= */
+
+@media (max-width: 600px) {
     .carousel-item > div {
-        max-width: 90%; /* Use most of mobile screen width */
-        padding: 15px 10px;
-    }
-
-    .carousel-item p {
-        font-size: 1rem !important; /* Smaller text to fit */
-        line-height: 1.6 !important;
-    }
-
-    .carousel-item .review-stars {
-        font-size: 1.4rem !important; /* Smaller stars */
-        margin-bottom: 12px !important;
+        max-width: calc(100vw - 32px) !important;
+        padding: 20px 16px !important;
     }
 
     .carousel-item .review-author {
@@ -59,7 +81,18 @@
     }
 }
 
-/* Centering the title */
+
+/* =========================
+   SCROLLBAR KILL SWITCH
+   ========================= */
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+
+/* Title alignment only */
 .wrapper h2 {
     text-align: center;
 }
