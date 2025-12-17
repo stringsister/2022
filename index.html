@@ -104,28 +104,30 @@
     </div>
 </section>
 <!-- Google Reviews Section -->
-<section id="footer" class="wrapper" style="margin-bottom: 0; padding:80px 0; background:#ffffff;">
+<section class="wrapper" style="margin-bottom: 0; padding:60px 0; background:#ffffff;">
     <div class="inner">
-        <h2 style="font-family:Georgia, serif; font-size:2.4rem; font-weight:normal; text-align:center; color:#444; margin-bottom:50px;">
+        <h2 style="font-family:Georgia, serif; font-size:2.4rem; font-weight:normal; text-align:center; color:#444; margin-bottom:40px;">
             <a href="https://maps.app.goo.gl/Jis5sQ6UGGzLbQ9v8" target="_blank" style="color:#666; text-decoration:none;">
                 Latest Reviews →
             </a>
         </h2>
-        <div id="google-reviews-carousel" class="carousel">
-            <div class="carousel-inner" id="reviews-container">
-                <!-- Placeholder – now looks like a real review -->
-                <div class="carousel-item" style="display:block; opacity:1;">
+        <div id="google-reviews-carousel" class="carousel" style="overflow:hidden;">
+            <div class="carousel-inner" id="reviews-container" style="display:flex; width:100%; transition: transform 1.2s ease-in-out;">
+                <!-- Placeholder – mobile-safe narrow width -->
+                <div class="carousel-item" style="min-width:100%; flex-shrink:0; box-sizing:border-box;">
                     <div style="
-                        max-width: 600px;
+                        max-width: 90vw;
+                        width: 100%;
                         margin: 0 auto;
-                        padding: 30px 20px;
+                        padding: 30px 15px;
                         text-align: center;
                         font-family: Georgia, serif;
+                        box-sizing: border-box;
                     ">
-                        <div style="font-size: 1.8rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 24px;">
+                        <div style="font-size: 1.6rem; color: #F6D9E5; letter-spacing: 5px; margin-bottom: 16px;">
                             ★★★★★
                         </div>
-                        <p style="font-size: 1.2rem; line-height: 1.9; color: #444; margin: 0 0 28px 0; font-style: italic;">
+                        <p style="font-size: 1.15rem; line-height: 1.7; color: #444; margin: 0 0 20px 0; font-style: italic;">
                             "The StringSisters brought such elegance and warmth to our wedding ceremony. Their music was absolutely beautiful and made the moment unforgettable."
                         </p>
                         <p style="font-size: 1.1rem; color: #777; margin: 0; text-align: right;">
