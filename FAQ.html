@@ -8,178 +8,52 @@
 
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            color: #444;
-        }
-
-        #page-wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #fff;
-            z-index: 1000;
-        }
-
-        .logo a {
-            font-family: inherit; /* Keep website font for nav title */
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 120px 20px 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: #333;
-            text-align: left;
-        }
-
-        .faq-item {
-            width: 100%;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e0d8dc;
-            transition: box-shadow 0.2s ease;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            padding: 18px 25px;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            background-color: #faf5f6; /* soft pink */
-            text-align: left;
-        }
-
-        .faq-answer {
-            display: none;
-            padding: 18px 25px;
-            font-size: 16px;
-            line-height: 1.75;
-            color: #555;
-            background-color: #fff;
-        }
-
-        .faq-answer p {
-            margin: 10px 0;
-        }
-
-        .faq-question::after {
-            content: '';
-            border: solid #b07788;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 5px;
-            transform: rotate(-45deg);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-question.active::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-item:first-child .faq-answer {
-            display: block;
-        }
-
-        .faq-item:first-child .faq-question::after {
-            transform: rotate(90deg);
-        }
-
-        a {
-            color: #b07788;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Footer with diagonal style */
-        #footer {
-            position: relative;
-            background: #fcf8f9;
-            padding: 80px 20px 50px;
-            margin-top: 50px;
-            text-align: center;
-            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        #footer p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.7;
-            margin: 0 0 25px;
-        }
-
-        #footer .socials img {
-            width: 38px;
-            height: 38px;
-            margin: 0 10px;
-        }
-
-        #footer hr {
-            border:none;
-            height:1px;
-            background:#eee;
-            width:50%;
-            margin:35px auto;
-        }
-
-        #footer .copyright {
-            color:#8c8c8c;
-            font-size: 0.95rem;
-            margin: 15px 0 0;
-        }
+        html, body { height:100%; margin:0; padding:0; background:#fff; color:#444; }
+        #page-wrapper { display:flex; flex-direction:column; min-height:100vh; }
+        header { position:fixed; top:0; width:100%; background:#fff; z-index:1000; }
+        .logo a { font-family:inherit; text-decoration:none; color:#000; font-weight:bold; }
+        .main-content { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:120px 20px 40px; max-width:800px; margin:0 auto; }
+        h1 { font-size:32px; margin-bottom:40px; color:#333; text-align:left; }
+        .faq-item { width:100%; margin-bottom:12px; border-radius:12px; overflow:hidden; border:1px solid #e0d8dc; transition:box-shadow 0.2s ease; }
+        .faq-item:hover { box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .faq-question { padding:18px 25px; font-size:18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:500; background-color:#faf5f6; text-align:left; }
+        .faq-answer { display:none; padding:18px 25px; font-size:16px; line-height:1.75; color:#555; background-color:#fff; }
+        .faq-answer p { margin:10px 0; }
+        .faq-question::after { content:''; border:solid #b07788; border-width:0 2px 2px 0; display:inline-block; padding:5px; transform:rotate(-45deg); transition:transform 0.3s ease; }
+        .faq-question.active::after { transform:rotate(45deg); }
+        .faq-item:first-child .faq-answer { display:block; }
+        .faq-item:first-child .faq-question::after { transform:rotate(90deg); }
+        a { color:#b07788; text-decoration:none; font-weight:bold; }
+        #footer { position:relative; background:#fcf8f9; padding:80px 20px 50px; margin-top:50px; text-align:center; clip-path:polygon(0 10%,100% 0,100% 100%,0% 100%); }
+        #footer p { color:#666; font-size:16px; line-height:1.7; margin:0 0 25px; }
+        #footer .socials img { width:38px; height:38px; margin:0 10px; }
+        #footer hr { border:none; height:1px; background:#eee; width:50%; margin:35px auto; }
+        #footer .copyright { color:#8c8c8c; font-size:0.95rem; margin:15px 0 0; }
     </style>
 </head>
 <body>
-    <header id="header">
-        <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-        <a href="#menu" id="menu-toggle"><span>Menu</span></a>
-    </header>
+    <div id="page-wrapper">
+        <header id="header">
+            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
+            <a href="#menu"><span>Menu</span></a>
+        </header>
 
-    <!-- Nav -->
-    <nav id="menu">
-        <div class="inner">
-            <h2>Menu</h2>
-            <ul class="links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/bookings">Book Us</a></li>
-                <li><a href="/services">About Us</a></li>
-            </ul>
-            <a href="#" class="close">Close</a>
-        </div>
-    </nav>
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/bookings">Book Us</a></li>
+                    <li><a href="/services">About Us</a></li>
+                </ul>
+                <a class="close"><span>Close</span></a>
+            </div>
+        </nav>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <strong><h1><strong>Frequently Asked Questions</strong></h1></strong>
+        <div class="main-content">
+            <h1><strong>Frequently Asked Questions</strong></h1>
+
+      
 
         <div class="faq-item">
             <div class="faq-question">How Does The Music Selection Work, And How Many Songs Can We Choose?</div>
@@ -256,21 +130,28 @@
     </div>
 
     <!-- Footer -->
-    <section id="footer">
-        
-        <div class="socials">
-            <a href="https://www.instagram.com/stringsisterz" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a>
-            <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank"><img src="images/socials/youtube.png" alt="YouTube"></a>
-            <a href="https://www.tiktok.com/@stringsisterz" target="_blank"><img src="images/socials/tiktok.png" alt="TikTok"></a>
-        </div>
-        <hr>
-        <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
-        <script>
-            document.getElementById("current-year").textContent = new Date().getFullYear();
-        </script>
-    </section>
+     <section id="footer">
+            <div class="socials">
+                <a href="https://www.instagram.com/stringsisterz" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank"><img src="images/socials/youtube.png" alt="YouTube"></a>
+                <a href="https://www.tiktok.com/@stringsisterz" target="_blank"><img src="images/socials/tiktok.png" alt="TikTok"></a>
+            </div>
+            <hr>
+            <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <script>
+        // FAQ accordion
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
@@ -286,6 +167,8 @@
                 }
             });
         });
+
+        document.getElementById("current-year").textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
