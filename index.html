@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="assets/css/reviews.css" />
 
 <style>
-/* 1. Thin White Header Logo - Initial State */
+/* 1. Initial State - Thin White Logo */
 #header .logo, #header .logo a {
     color: #ffffff !important;
     font-weight: 300 !important;
@@ -23,22 +23,25 @@
     text-transform: uppercase !important;
 }
 
-/* 2. FIX: Speed up reveal and FORCE black logo on scroll */
-/* Removes the delay for the menu bar appearing */
-#header.reveal {
-    transition: transform 0.2s ease, background-color 0.2s ease !important;
-    animation: none !important;
-}
-
-/* Forces the logo to be dark grey (#444) when the bar turns white on scroll */
-body.is-scrolled #header .logo,
-body.is-scrolled #header .logo a,
+/* 2. Scroll State - FORCE Logo to Black */
+/* This triggers as soon as the 'alt' class is removed or 'reveal' is added by the theme's JS */
 #header.reveal .logo, 
-#header.reveal .logo a {
-    color: #444444 !important;
+#header.reveal .logo a,
+#header:not(.alt) .logo,
+#header:not(.alt) .logo a {
+    color: #000000 !important; /* Pure black for maximum visibility */
 }
 
-/* 3. Original Review styling */
+/* 3. Speed up the Menu Bar transition */
+#header {
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease !important;
+}
+
+#header.reveal {
+    animation: none !important; /* Removes the standard theme delay */
+}
+
+/* 4. Original Review styling */
 .review-table-card {
     width: 100%;
     max-width: 520px;
