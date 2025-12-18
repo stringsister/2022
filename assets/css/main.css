@@ -3906,8 +3906,12 @@ input[type=button] {
 }
 
 @media screen and (max-width: 736px) {
-  #header.alt {
+  #header, #header.alt {
     border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  #header:before, #header:after, #header.alt:before, #header.alt:after {
+    display: none !important;
   }
 }
 
