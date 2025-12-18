@@ -22,7 +22,14 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
-        /* Bold, Colored, Larger, and Tight Titles */
+        /* 1. Consistent Header & Logo Styling */
+        #header .logo, #header .logo a {
+            font-weight: 300 !important;
+            letter-spacing: 0.1rem !important;
+            text-transform: uppercase !important;
+        }
+
+        /* 2. Pink Titles */
         h4 {
             color: #CDA4A0 !important;
             font-weight: 600 !important;
@@ -32,7 +39,7 @@
             line-height: 1.2 !important;
         }
         
-        /* Fix first 'Book Us' button alignment on narrow screens */
+        /* 3. Button Alignment */
         .wrapper.style1 .content .button {
             display: inline-block !important;
             width: auto !important;
@@ -40,7 +47,9 @@
             text-align: center;
         }
 
-        /* Force Social Icons to stay in a row on mobile */
+        /* 4. Footer & Social Row alignment */
+        #footer { text-align: center; padding: 40px 20px; background: #fff; border-top: 1px solid #eee; }
+
         .social-row {
             display: flex !important;
             flex-direction: row !important;
@@ -55,13 +64,20 @@
             padding: 0 10px !important;
         }
 
-        /* Italicize the footer quote */
+        .social-row img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
         .footer-quote {
             font-style: italic !important;
             opacity: 0.9;
+            color: #666;
+            margin-bottom: 30px;
         }
 
-        /* Prevent template from forcing vertical buttons on mobile */
+        /* Prevent vertical buttons on mobile */
         ul.actions {
             display: flex !important;
             flex-direction: row !important;
@@ -133,25 +149,25 @@
             </div>
         </section>
 
-        <section id="footer" class="wrapper">
+        <section id="footer">
             <div class="inner" style="text-align: center;">
                 <div class="content">
                     <p class="footer-quote">"Transform your events with the captivating sounds of live harp and cello, adding a touch of elegance to every moment."</p>
                     
                     <ul class="social-row">
                         <li>
-                            <a href="https://www.instagram.com/stringsisterz" target="_blank">
-                                <img src="images/socials/instagram.png" alt="Instagram" style="width: 40px; height: 40px; display: block;">
+                            <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener">
+                                <img src="images/socials/pastel-instagram.svg" alt="Instagram">
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank">
-                                <img src="images/socials/youtube.png" alt="YouTube" style="width: 40px; height: 40px; display: block;">
+                            <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener">
+                                <img src="images/socials/pastel-youtube.svg" alt="YouTube">
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.tiktok.com/@stringsisterz" target="_blank">
-                                <img src="images/socials/tiktok.png" alt="TikTok" style="width: 40px; height: 40px; display: block;">
+                            <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener">
+                                <img src="images/socials/pastel-tiktok.svg" alt="TikTok">
                             </a>
                         </li>
                     </ul>
