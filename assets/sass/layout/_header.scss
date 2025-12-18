@@ -210,3 +210,10 @@
 			}
 		}
 	}
+
+	/* Fix thin line under header on small screens */
+@include breakpoint('<=small') {
+	#header > a[href="#menu"] {
+		height: 3rem;
+	}
+}
