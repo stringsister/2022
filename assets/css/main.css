@@ -3858,7 +3858,7 @@ h1, h2, h3, h4, h5, h6,
 #header .logo,
 #header .logo a {
   font-family: "Raleway", sans-serif !important;
-  font-weight: 250 !important;
+  font-weight: 275 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.25rem !important;
 }
@@ -3871,7 +3871,7 @@ h1, h2, h3, h4, h5, h6,
 
 #banner h1 {
   font-family: "Raleway", sans-serif !important;
-  font-weight: 250 !important;
+  font-weight: 275 !important;
   text-transform: none !important;
   display: table !important;
   margin: 0 auto 2rem auto !important;
