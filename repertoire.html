@@ -1,243 +1,275 @@
 <!DOCTYPE HTML>
 <html>
-
-<link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
-<link rel="manifest" href="images/favi/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
 <head>
-  <title>The StringSisters | Music Repertoire</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+    <title>The StringSisters | Music Repertoire</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
+    <link rel="manifest" href="images/favi/site.webmanifest">
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+        /* 1. Consistent Header & Logo Styling */
+        #header .logo, #header .logo a {
+            font-weight: 300 !important;
+            letter-spacing: 0.1rem !important;
+            text-transform: uppercase !important;
+        }
+
+        /* 2. Top Header Section (White) */
+        .wrapper.style1 {
+            padding: 120px 0 60px 0 !important;
+            background-color: #ffffff !important; 
+        }
+
+        .wrapper.style1 .inner {
+            text-align: right !important;
+        }
+
+        .first-title-large {
+            color: #444444 !important;
+            font-weight: 600 !important;
+            font-size: 2.25rem !important; 
+            letter-spacing: -0.02rem !important;
+            text-transform: none !important;
+            line-height: 1.2 !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .subtitle-grey {
+            color: #8c8c8c;
+            font-size: 1rem;
+            display: block;
+        }
+
+        /* 3. Repertoire Content Area (Off-White) */
+        #main.wrapper.style2 {
+            background-color: #f9f9f9 !important; 
+            padding: 40px 0 80px 0 !important;
+        }
+
+        h3 {
+            margin-top: 50px !important;
+            margin-bottom: 20px !important;
+            color: #444 !important;
+            font-weight: 600 !important;
+            font-size: 1.4rem !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            border-bottom: 1px solid #e5e5e5;
+            display: block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        ul.song-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul.song-list li {
+            width: 50%;
+            padding: 5px 15px 5px 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        @media screen and (max-width: 736px) {
+            ul.song-list li {
+                width: 100%;
+            }
+        }
+
+        /* 4. Diagonal Footer & Pink Animation */
+        #footer-wrapper {
+            background-color: #ffffff !important;
+            padding: 100px 0 60px 0 !important;
+        }
+
+        #footer-wrapper .inner {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-quote {
+            font-style: italic !important;
+            color: #666 !important;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-row {
+            display: flex !important;
+            justify-content: center !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 20px 0 !important;
+        }
+
+        .social-row li { padding: 0 15px !important; }
+
+        .social-row img { 
+            width: 40px; 
+            height: 40px; 
+            display: block; 
+            filter: grayscale(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-row img:hover {
+            filter: grayscale(1);
+            opacity: 0.7;
+            transform: scale(1.15);
+        }
+
+        .copyright { color:#8c8c8c; font-size:0.8rem; margin-top: 20px; }
+    </style>
 </head>
 
 <body class="is-preload">
-  <div id="page-wrapper">
+    <div id="page-wrapper">
 
-    <header id="header">
-      <span class="logo"><a href="/">STRINGSISTERS <span></span></a></span>
-      <a href="#menu"><span>Menu</span></a>
-    </header>
+        <header id="header">
+            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
+            <a href="#menu"><span>Menu</span></a>
+        </header>
 
-    <nav id="menu">
-      <div class="inner">
-        <h2>Menu</h2>
-        <ul class="links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/bookings">Book Us</a></li>
-          <li><a href="/services">About Us</a></li>
-        </ul>
-      </div>
-    </nav>
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/bookings">Book Us</a></li>
+                    <li><a href="/services">About Us</a></li>
+                    <li><a href="/FAQ">FAQ</a></li>
+                </ul>
+                <a class="close"><span>Close</span></a>
+            </div>
+        </nav>
 
-    <section id="main" class="wrapper style2">
-      <div class="inner">
-
-        <section id="songselection">
-          <br>
-          <h2>Repertoire</h2>
-
-          <p>
-            Experience a wide selection of music across multiple genres. We also welcome requests and are happy to learn new pieces for your event.
-          </p>
-          <br>
-
-          <!-- List Styling -->
-          <style>
-            ul {
-              list-style-type: none;
-              margin: 0;
-              padding: 0;
-              display: flex;
-              flex-wrap: wrap;
-            }
-
-            li {
-              width: 50%;
-            }
-
-            @media screen and (max-width: 480px) {
-              li {
-                width: 100%;
-              }
-            }
-
-            h3 {
-              margin-top: 40px;
-              margin-bottom: 10px;
-              color: #444;
-              font-weight: 600;
-            }
-          </style>
-
-          <!-- TOP 15 -->
-          <h3>Top 15</h3>
-          <ul>
-            <li><strong>A Thousand Years</strong> – <em>Christina Perri</em></li>
-            <li><strong>Perfect</strong> – <em>Ed Sheeran</em></li>
-            <li><strong>Marry You</strong> – <em>Bruno Mars</em></li>
-            <li><strong>How Long Will I Love You</strong> – <em>Ellie Goulding</em></li>
-            <li><strong>I Was Made for Loving You</strong> – <em>Ed Sheeran & Tori Kelly</em></li>
-            <li><strong>Can’t Help Falling in Love</strong> – <em>Elvis Presley</em></li>
-            <li><strong>The Prayer</strong> – <em>David Foster</em></li>
-            <li><strong>Love Me Tender</strong> – <em>Elvis Presley</em></li>
-            <li><strong>Hallelujah</strong> – <em>Leonard Cohen</em></li>
-            <li><strong>All of Me</strong> – <em>John Legend</em></li>
-            <li><strong>Canon in D</strong> – <em>Pachelbel</em></li>
-            <li><strong>Moon River</strong> – <em>Henry Mancini</em></li>
-            <li><strong>Kiss the Rain</strong> – <em>Yiruma</em></li>
-            <li><strong>All I Ask of You</strong> – <em>Andrew Lloyd Webber</em></li>
-            <li><strong>Comptine d'un autre été</strong> – <em>Yann Tiersen</em></li>
-          </ul>
-
-          <!-- RECENTLY ADDED -->
-          <h3>Recently Added</h3>
-          <ul>
-            <li><strong>Love on the Brain</strong> – <em>Rihanna</em></li>
-            <li><strong>Diamonds</strong> – <em>Rihanna</em></li>
-            <li><strong>The Ordinary</strong> – <em>Alex Warren</em></li>
-            <li><strong>Stuck With U</strong> – <em>Ariana Grande</em></li>
-            <li><strong>Make You Feel My Love</strong> – <em>Adele</em></li>
-            <li><strong>Falling Like the Stars</strong> – <em>James Arthur</em></li>
-            <li><strong>Golden Hour</strong> – <em>JVKE</em></li>
-            <li><strong>Nervous</strong> – <em>John Legend</em></li>
-            <li><strong>Into the West</strong> – <em>LOTR</em></li>
-          </ul>
-
-          <!-- CLASSICAL MIX -->
-          <h3>Classical Mix</h3>
-          <ul>
-            <li><strong>Claire de Lune</strong> – <em>Debussy</em></li>
-            <li><strong>The Swan</strong> – <em>Saint-Saëns</em></li>
-            <li><strong>Pas de Deux</strong> – <em>Tchaikovsky</em></li>
-            <li><strong>Jesu Joy of Man’s Desiring</strong> – <em>Bach</em></li>
-            <li><strong>Arioso</strong> – <em>Bach</em></li>
-            <li><strong>Prelude in C</strong> – <em>Bach</em></li>
-            <li><strong>Canon in D</strong> – <em>Pachelbel</em></li>
-            <li><strong>Ave Maria</strong> – <em>Schubert</em></li>
-            <li><strong>Air on the G String</strong> – <em>Bach</em></li>
-            <li><strong>Military Night Watch</strong> – <em>Boccherini</em></li>
-            <li><strong>Solace</strong> – <em>Curcio</em></li>
-            <li><strong>Kiss the Rain</strong> – <em>Yiruma</em></li>
-            <li><strong>River Flows in You</strong> – <em>Yiruma</em></li>
-            <li><strong>Jay Chou Wedding Song</strong> – <em>Jay Chou</em></li>
-            <li><strong>Siciliana No. 2</strong> – <em>Waddington</em></li>
-            <li><strong>Erev Shel Shoshanim</strong> – <em>Traditional</em></li>
-            <li><strong>Wedding March</strong> – <em>Mendelssohn</em></li>
-            <li><strong>Bridal Chorus</strong> – <em>Wagner</em></li>
-            <li><strong>Marriage d’Amour</strong> – <em>Paul de Senneville</em></li>
-          </ul>
-
-          <!-- FILM SCORE -->
-          <h3>Film Score / Soundtrack</h3>
-          <ul>
-            <li><strong>A Million Dreams</strong> – <em>The Greatest Showman</em></li>
-            <li><strong>Comptine d'un autre été</strong> – <em>Amélie</em></li>
-            <li><strong>Think of Me</strong> – <em>Phantom of the Opera</em></li>
-            <li><strong>All I Ask of You</strong> – <em>Phantom of the Opera</em></li>
-            <li><strong>Angel of Music</strong> – <em>Phantom of the Opera</em></li>
-            <li><strong>City of Stars</strong> – <em>La La Land</em></li>
-            <li><strong>The Ludlows</strong> – <em>Legends of the Fall</em></li>
-            <li><strong>Earth</strong> – <em>Hans Zimmer</em></li>
-            <li><strong>Married Life</strong> – <em>Up</em></li>
-            <li><strong>Game of Thrones Theme</strong> – <em>Ramin Djawadi</em></li>
-            <li><strong>Colours of the Wind</strong> – <em>Pocahontas</em></li>
-            <li><strong>Beauty and the Beast</strong> – <em>Alan Menken</em></li>
-            <li><strong>A Whole New World</strong> – <em>Aladdin</em></li>
-            <li><strong>I See the Light</strong> – <em>Tangled</em></li>
-            <li><strong>Storybook Love</strong> – <em>Princess Bride</em></li>
-            <li><strong>For the Love of a Princess</strong> – <em>Braveheart</em></li>
-          </ul>
-
-          <!-- POP / R&B -->
-          <h3>Pop / R&B</h3>
-          <ul>
-            <li><strong>Wildest Dreams</strong> – <em>Taylor Swift</em></li>
-            <li><strong>Halo</strong> – <em>Beyoncé</em></li>
-            <li><strong>You Are the Reason</strong> – <em>Calum Scott</em></li>
-            <li><strong>Young and Beautiful</strong> – <em>Lana Del Rey</em></li>
-            <li><strong>No Woman No Cry</strong> – <em>Bob Marley</em></li>
-            <li><strong>All My Life</strong> – <em>K-Ci & JoJo</em></li>
-            <li><strong>Ain’t No Sunshine</strong> – <em>Bill Withers</em></li>
-            <li><strong>Lifetime</strong> – <em>Justin Bieber</em></li>
-            <li><strong>Sunflower</strong> – <em>Post Malone</em></li>
-            <li><strong>Die for You</strong> – <em>The Weeknd</em></li>
-            <li><strong>Lucid Dreams</strong> – <em>Juice WRLD</em></li>
-            <li><strong>Viva la Vida</strong> – <em>Coldplay</em></li>
-            <li><strong>Iris</strong> – <em>Goo Goo Dolls</em></li>
-            <li><strong>I Get to Love You</strong> – <em>Ruelle</em></li>
-            <li><strong>Thinking Out Loud</strong> – <em>Ed Sheeran</em></li>
-          </ul>
-
-          <!-- CROONER / JAZZ -->
-          <h3>Crooner / Jazz</h3>
-          <ul>
-            <li><strong>Here Comes the Sun</strong> – <em>The Beatles</em></li>
-            <li><strong>The Way You Look Tonight</strong> – <em>Jerome Kern</em></li>
-            <li><strong>Stand By Me</strong> – <em>Ben E. King</em></li>
-            <li><strong>Moon River</strong> – <em>Henry Mancini</em></li>
-            <li><strong>La Vie en Rose</strong> – <em>Louiguy</em></li>
-            <li><strong>What a Wonderful World</strong> – <em>Louis Armstrong</em></li>
-            <li><strong>Somewhere Over the Rainbow</strong> – <em>Israel Kamakawiwo'ole</em></li>
-            <li><strong>Unchained Melody</strong> – <em>Alex North</em></li>
-            <li><strong>Take Five</strong> – <em>Paul Desmond</em></li>
-            <li><strong>Don’t Know Why</strong> – <em>Norah Jones</em></li>
-          </ul>
-
-          <!-- ROMANTIC MIX -->
-          <h3>Romantic Mix</h3>
-          <ul>
-            <li><strong>The Prayer</strong> – <em>David Foster</em></li>
-            <li><strong>Vivo Per Lei</strong> – <em>Andrea Bocelli</em></li>
-            <li><strong>Young and Beautiful</strong> – <em>Lana Del Rey</em></li>
-            <li><strong>Love Me Tender</strong> – <em>Elvis Presley</em></li>
-            <li><strong>Kiss the Rain</strong> – <em>Yiruma</em></li>
-            <li><strong>Moon River</strong> – <em>Henry Mancini</em></li>
-            <li><strong>I Get to Love You</strong> – <em>Ruelle</em></li>
-            <li><strong>The Way You Look Tonight</strong> – <em>Jerome Kern</em></li>
-          </ul>
-
-          <!-- BOLLYWOOD -->
-          <h3>Bollywood</h3>
-          <ul>
-            <li><strong>Teri Meri Prem Kahani</strong></li>
-            <li><strong>Pehla Nasha Pehla Khumar</strong></li>
-          </ul>
-
-          <br><br>
-
-          <ul class="actions">
-            <li><a href="bookings" class="button scrolly icon solid fa-arrow-right">Inquire for Booking</a></li>
-          </ul>
-
-          <br><br><br><br>
+        <section class="wrapper style1">
+            <div class="inner">
+                <header>
+                    <h4 class="first-title-large">Music Repertoire</h4>
+                    <span class="subtitle-grey">A curated collection of pieces for every occasion.</span>
+                </header>
+            </div>
         </section>
-      </div>
-    </section>
 
-    <section class="wrapper style2 copyright">
-      <p style="text-align: center; color: grey; margin: 20px 0;">
-        &copy; <span id="current-year"></span> The StringSisters. All rights reserved.
-      </p>
-      <script>
+        <section id="main" class="wrapper style2">
+            <div class="inner">
+                <p>Experience a wide selection of music across multiple genres. We also welcome requests and are happy to learn new pieces for your event.</p>
+
+                <h3>Top 15</h3>
+                <ul class="song-list">
+                    <li><strong>A Thousand Years</strong> – <em>Christina Perri</em></li>
+                    <li><strong>Perfect</strong> – <em>Ed Sheeran</em></li>
+                    <li><strong>Marry You</strong> – <em>Bruno Mars</em></li>
+                    <li><strong>How Long Will I Love You</strong> – <em>Ellie Goulding</em></li>
+                    <li><strong>I Was Made for Loving You</strong> – <em>Ed Sheeran & Tori Kelly</em></li>
+                    <li><strong>Can’t Help Falling in Love</strong> – <em>Elvis Presley</em></li>
+                    <li><strong>The Prayer</strong> – <em>David Foster</em></li>
+                    <li><strong>Love Me Tender</strong> – <em>Elvis Presley</em></li>
+                    <li><strong>Hallelujah</strong> – <em>Leonard Cohen</em></li>
+                    <li><strong>All of Me</strong> – <em>John Legend</em></li>
+                    <li><strong>Canon in D</strong> – <em>Pachelbel</em></li>
+                    <li><strong>Moon River</strong> – <em>Henry Mancini</em></li>
+                    <li><strong>Kiss the Rain</strong> – <em>Yiruma</em></li>
+                    <li><strong>All I Ask of You</strong> – <em>Andrew Lloyd Webber</em></li>
+                    <li><strong>Comptine d'un autre été</strong> – <em>Yann Tiersen</em></li>
+                </ul>
+
+                <h3>Recently Added</h3>
+                <ul class="song-list">
+                    <li><strong>Love on the Brain</strong> – <em>Rihanna</em></li>
+                    <li><strong>Diamonds</strong> – <em>Rihanna</em></li>
+                    <li><strong>The Ordinary</strong> – <em>Alex Warren</em></li>
+                    <li><strong>Stuck With U</strong> – <em>Ariana Grande</em></li>
+                    <li><strong>Make You Feel My Love</strong> – <em>Adele</em></li>
+                    <li><strong>Falling Like the Stars</strong> – <em>James Arthur</em></li>
+                    <li><strong>Golden Hour</strong> – <em>JVKE</em></li>
+                    <li><strong>Nervous</strong> – <em>John Legend</em></li>
+                    <li><strong>Into the West</strong> – <em>LOTR</em></li>
+                </ul>
+
+                <h3>Classical Mix</h3>
+                <ul class="song-list">
+                    <li><strong>Claire de Lune</strong> – <em>Debussy</em></li>
+                    <li><strong>The Swan</strong> – <em>Saint-Saëns</em></li>
+                    <li><strong>Pas de Deux</strong> – <em>Tchaikovsky</em></li>
+                    <li><strong>Jesu Joy of Man’s Desiring</strong> – <em>Bach</em></li>
+                    <li><strong>Arioso</strong> – <em>Bach</em></li>
+                    <li><strong>Prelude in C</strong> – <em>Bach</em></li>
+                    <li><strong>Canon in D</strong> – <em>Pachelbel</em></li>
+                    <li><strong>Ave Maria</strong> – <em>Schubert</em></li>
+                    <li><strong>Air on the G String</strong> – <em>Bach</em></li>
+                    <li><strong>Military Night Watch</strong> – <em>Boccherini</em></li>
+                    <li><strong>Solace</strong> – <em>Curcio</em></li>
+                    <li><strong>Kiss the Rain</strong> – <em>Yiruma</em></li>
+                    <li><strong>River Flows in You</strong> – <em>Yiruma</em></li>
+                    <li><strong>Jay Chou Wedding Song</strong> – <em>Jay Chou</em></li>
+                    <li><strong>Siciliana No. 2</strong> – <em>Waddington</em></li>
+                    <li><strong>Erev Shel Shoshanim</strong> – <em>Traditional</em></li>
+                    <li><strong>Wedding March</strong> – <em>Mendelssohn</em></li>
+                    <li><strong>Bridal Chorus</strong> – <em>Wagner</em></li>
+                    <li><strong>Marriage d’Amour</strong> – <em>Paul de Senneville</em></li>
+                </ul>
+
+                <h3>Film Score / Soundtrack</h3>
+                <ul class="song-list">
+                    <li><strong>A Million Dreams</strong> – <em>The Greatest Showman</em></li>
+                    <li><strong>Comptine d'un autre été</strong> – <em>Amélie</em></li>
+                    <li><strong>Think of Me</strong> – <em>Phantom of the Opera</em></li>
+                    <li><strong>All I Ask of You</strong> – <em>Phantom of the Opera</em></li>
+                    <li><strong>Angel of Music</strong> – <em>Phantom of the Opera</em></li>
+                    <li><strong>City of Stars</strong> – <em>La La Land</em></li>
+                    <li><strong>The Ludlows</strong> – <em>Legends of the Fall</em></li>
+                    <li><strong>Earth</strong> – <em>Hans Zimmer</em></li>
+                    <li><strong>Married Life</strong> – <em>Up</em></li>
+                    <li><strong>Game of Thrones Theme</strong> – <em>Ramin Djawadi</em></li>
+                    <li><strong>Colours of the Wind</strong> – <em>Pocahontas</em></li>
+                    <li><strong>Beauty and the Beast</strong> – <em>Alan Menken</em></li>
+                    <li><strong>A Whole New World</strong> – <em>Aladdin</em></li>
+                    <li><strong>I See the Light</strong> – <em>Tangled</em></li>
+                    <li><strong>Storybook Love</strong> – <em>Princess Bride</em></li>
+                    <li><strong>For the Love of a Princess</strong> – <em>Braveheart</em></li>
+                </ul>
+
+                <ul class="actions" style="margin-top: 3rem;">
+                    <li><a href="bookings" class="button primary icon solid fa-arrow-right">Inquire for Booking</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="footer-wrapper" class="wrapper style1">
+            <div class="inner">
+                <p class="footer-quote">Captivating music for weddings, corporate events, and private gatherings.</p>
+                <ul class="social-row">
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-instagram.svg" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/pastel-youtube.svg" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-tiktok.svg" alt="TikTok"></a></li>
+                </ul>
+                <p class="copyright">&copy; <span id="current-year"></span> THE STRINGSISTERS. All rights reserved.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
         document.getElementById("current-year").textContent = new Date().getFullYear();
-      </script>
-    </section>
-
-  </div>
-
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.scrollex.min.js"></script>
-  <script src="assets/js/jquery.scrolly.min.js"></script>
-  <script src="assets/js/jquery.selectorr.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-
+    </script>
 </body>
 </html>
