@@ -103,6 +103,7 @@
         .faq-question.active::after { content: '−'; }
         
         .faq-answer a { color: #CDA4A0; text-decoration: none; font-weight: 600; }
+        .faq-answer a:hover { text-decoration: underline; }
 
         /* 5. Footer Section (White + Diagonal) */
         #footer-wrapper {
@@ -175,7 +176,6 @@
                     <header>
                         <h4 class="first-title-large">Frequently Asked Questions</h4>
                         <span class="subtitle-grey">Everything you need to know about our services.</span>
-                        <br>
                     </header>
                 </div>
             </div>
@@ -185,17 +185,17 @@
             <div class="main-content">
                 <div class="faq-item">
                     <div class="faq-question">How Does The Music Selection Work?</div>
-                    <div class="faq-answer">
-                        <p>We include two special requests as part of the package price. Submit them three weeks before your event.</p>
-                        <p>For ceremonies, consider key moments: Bridal Party entrance, Groom’s entrance, Bride’s entrance, Signing of the register, and Recessional.</p>
-                        <p>For prelude or cocktail hour, each song lasts 3–5 minutes. Select individual songs or a preferred genre, and we curate the playlist accordingly.</p>
-                    </div>
+                   <div class="faq-answer" style="line-height: 1.5;">
+    <p style="margin-bottom: 0.5rem;">We include two special requests with every booking. Please submit these at least three weeks before your event.</p>
+    <p style="margin-bottom: 0.5rem;">For ceremonies, common selections include the Bridal Party entrance, Groom’s entrance, Bride’s entrance, Signing of the Register, and Recessional.</p>
+    <p style="margin-bottom: 0.5rem;">For cocktail hour or prelude, you can choose unlimited songs from our <a href="repertoire">repertoire list</a>, or simply select a preferred genre and let us curate the perfect playlist for you.</p>
+</div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">How Do I Book The StringSisters?</div>
                     <div class="faq-answer">
-                        <p>We provide a personalized quote and contract. A $200 deposit via eTransfer to <a href="mailto:payments@stringsisters.ca">payments@stringsisters.ca</a> secures your date.</p>
+                        <p>We provide a personalized quote and contract. A deposit via eTransfer to <a href="mailto:payments@stringsisters.ca">payments@stringsisters.ca</a> secures your date.</p>
                         <p><a href="bookings">Request a Quote &rarr;</a></p>
                     </div>
                 </div>
@@ -280,7 +280,6 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // FAQ Accordion Logic
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
