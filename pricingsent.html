@@ -1,113 +1,205 @@
 <!DOCTYPE HTML>
-<!--
-	Standout by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
-<html>
-	
-	<link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
-<link rel="manifest" href="images/favi/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-	<head>
-		<title>The StringSisters | Submitted</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<html lang="en">
+    <head>
+        <title>The StringSisters | Pricing Sent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
+        
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
 
-		<!-- Page wrapper -->
-			<div id="page-wrapper">
+        <style>
+            /* Global Font Override */
+            body, .footer-quote, .copyright, #main h1, #main p {
+                font-family: "Source Sans Pro", sans-serif !important;
+            }
 
-				<!-- Header -->
-					<header id="header">
-						<span class="logo"><a href="/">StringSisters <span></span></a></span>
-					  <a href="/"><span><i class="fas fa-home"></i></span></a>
-					</header>
+            /* Header Branding */
+            #header .logo, #header .logo a {
+                font-weight: 300 !important;
+                letter-spacing: 0.1rem !important;
+                text-transform: uppercase !important;
+            }
 
-			
-				
-				<br><br><br><br><br><br>
-								
-					<center><h1>Pricing Sent</h1>		</center>	
-				
-				<br>
-<center><p><em>Please check your inbox/junk mail to view our packages!</em></p>
-</center>
-<br><br><br><br><br>
-			<!-- Footer -->
-									
-	
-	
-	
-	<section id="footer">
-										
-										
-										
-										
-										
-										
-										
-										
-										
-										
-										
-										
-										
+            /* Clean Content Area */
+            #main.wrapper.style2 {
+                background-color: #ffffff !important;
+                padding: 180px 0 120px 0 !important;
+                text-align: center;
+            }
 
-							</div>
+            #main h1 {
+                font-weight: 600;
+                color: #444;
+                font-size: 2rem;
+                letter-spacing: -0.02rem;
+                margin-bottom: 1rem;
+                text-transform: none !important;
+            }
 
-						</div>
+            #main p {
+                font-weight: 300;
+                color: #888;
+                font-size: 1.1rem;
+                max-width: 500px;
+                margin: 0 auto 2.5rem auto;
+                line-height: 1.6;
+            }
 
-			</div>
-	  
-	  
-	
+            /* Standard Footer */
+            #footer-wrapper {
+                background-color: #ffffff !important;
+                padding: 100px 0 60px 0 !important;
+                border-top: 1px solid #f2f2f2;
+            }
 
-						
+            .footer-quote {
+                font-style: italic !important;
+                color: #666 !important;
+                opacity: 0.9;
+                margin-bottom: 30px;
+                font-size: 1.1rem;
+                text-align: center;
+                font-weight: 300;
+            }
 
-							
-							
-								
-						</div>
-	</section>
+            .social-row {
+                display: flex !important;
+                justify-content: center !important;
+                list-style: none !important;
+                padding: 0 !important;
+                margin: 0 0 20px 0 !important;
+            }
 
-				<!-- Bottom Section -->
-					<section id="footer" class="wrapper style2 copyright">
-						<div class="inner">
-							<div class="split">
-								<div class="content">
-								  <header>
-										<br><br>
-									</header>
-								  <p>Please note that pricing is subject to change, and a valid quote is required to ensure the accuracy and validity of the pricing information.</a></p>
-                                </div>
-							</div>
-							<p style="text-align: center; color: grey; margin: 20px 0;">
-								&copy; <span id="current-year"></span> The StringSisters. All rights reserved.
-							</p>
-							<script>
-								document.getElementById("current-year").textContent = new Date().getFullYear();
-							</script>
-							</div>
-							</div>
-						</div>
-					</section>
+            .social-row li { padding: 0 15px !important; }
 
-			
-		<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/jquery.selectorr.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+            .social-row img { 
+                width: 32px; 
+                height: 32px; 
+                display: block; 
+                filter: grayscale(1); 
+                opacity: 0.6; 
+                transition: all 0.3s ease;
+            }
 
+            .social-row img:hover {
+                filter: grayscale(0);
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            .copyright { 
+                color: #8c8c8c !important; 
+                font-size: 0.85rem !important; 
+                margin-top: 20px !important; 
+                text-align: center;
+                font-weight: 300;
+                text-transform: none !important;
+                letter-spacing: 0 !important;
+            }
+
+            @media screen and (max-width: 736px) {
+                #main.wrapper.style2 { padding: 140px 20px 80px 20px !important; }
+                #main h1 { font-size: 1.75rem; }
+            }
+        </style>
+    </head>
+<body class="is-preload">
+    <div id="page-wrapper">
+        
+        <header id="header">
+            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
+            <a href="#menu" id="menuToggle"><span>Menu</span></a>
+        </header>
+
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/bookings">Book Us</a></li>
+                    <li><a href="/services">About Us</a></li>
+                    <li><a href="/repertoire">Repertoire</a></li>
+                    <li><a href="/FAQ">FAQ</a></li>
+                </ul>
+                <a class="close"><span>Close</span></a>
+            </div>
+        </nav>
+
+        <section id="main" class="wrapper style2">
+            <div class="inner">
+                <h1>Pricing Sent</h1>
+                <p>Our performance packages have been sent to your email. If you don't see them within a few minutes, please check your spam folder.</p>
+                <ul class="actions stacked">
+                    <li><a href="/" class="button small">Return Home</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer id="footer-wrapper">
+            <div class="inner">
+                <p class="footer-quote">
+                    Bringing the elegance of harp and cello to your events, creating memorable live music for every occasion.
+                </p>
+                <ul class="social-row">
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
+                </ul>
+                <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Update Copyright Year
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+
+        // Navbar Backup Trigger
+        // If main.js fails to initialize the sidebar, this script forces it open.
+        $(function() {
+            var $body = $('body'),
+                $menu = $('#menu'),
+                $menuToggle = $('#menuToggle');
+
+            $menuToggle.on('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $menu.addClass('visible');
+                $body.addClass('is-menu-visible');
+            });
+
+            $menu.find('.close').on('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $menu.removeClass('visible');
+                $body.removeClass('is-menu-visible');
+            });
+
+            // Allow clicking outside the menu to close it
+            $body.on('click', function(event) {
+                if ($menu.hasClass('visible')) {
+                    $menu.removeClass('visible');
+                    $body.removeClass('is-menu-visible');
+                }
+            });
+
+            $menu.on('click', function(event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>

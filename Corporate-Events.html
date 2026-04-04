@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>Corporate Event Entertainment Toronto | The StringSisters</title>
-
     <meta charset="utf-8" />
     <meta name="description" content="Elevate your corporate event with professional live music. The StringSisters offer elegant harp and cello performances for networking, galas, and company events in Toronto." />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -11,10 +10,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favi/favicon-16x16.png">
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
-    
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
+        /* Global Font Override */
+        body, input, select, textarea, .first-title-large, .subtitle-grey, #main p, #main li, .footer-quote, .copyright {
+            font-family: "Source Sans Pro", sans-serif !important;
+        }
+
         /* 1. Header & Logo Styling */
         #header .logo, #header .logo a {
             font-weight: 300 !important;
@@ -22,9 +25,9 @@
             text-transform: uppercase !important;
         }
 
-        /* 2. Top Header Section (White) */
+        /* 2. Top Header Section (White) - Fixed Diagonal Cutoff */
         .wrapper.style1 {
-            padding: 120px 0 60px 0 !important;
+            padding: 120px 0 100px 0 !important;
             background-color: #ffffff !important; 
         }
 
@@ -39,12 +42,13 @@
             letter-spacing: -0.02rem !important;
             text-transform: none !important;
             line-height: 1.2 !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 1.5rem !important;
         }
 
         .subtitle-grey {
             color: #8c8c8c;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 300;
             display: block;
         }
 
@@ -55,40 +59,36 @@
         }
 
         #main h2 {
-            color: #444;
-            font-weight: 600;
-            font-size: 1.5rem;
+            color: #444 !important;
+            font-weight: 600 !important;
+            font-size: 1.5rem !important;
             margin-top: 3rem;
             margin-bottom: 1.5rem;
-            text-transform: none;
-            letter-spacing: 0;
+            text-transform: none !important;
+            letter-spacing: -0.02rem !important;
         }
 
         #main p, #main li {
-            font-family: Georgia, serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
+            font-weight: 300;
         }
 
-        /* 4. Footer Styling */
+        /* 4. Footer Styling - Cohesive */
         #footer-wrapper {
             background-color: #ffffff !important;
             padding: 100px 0 60px 0 !important;
-            border-top: 1px solid #eee;
         }
 
         .footer-quote {
-            font-family: Georgia, serif !important;
             font-style: italic !important;
             color: #666 !important;
             opacity: 0.9;
-            margin: 0 auto 30px auto;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-width: 600px; 
-            padding: 0 40px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
             text-align: center;
+            font-weight: 300;
         }
 
         .social-row {
@@ -102,32 +102,33 @@
         .social-row li { padding: 0 15px !important; }
 
         .social-row img { 
-            width: 40px; 
-            height: 40px; 
+            width: 32px; 
+            height: 32px; 
             display: block; 
-            transition: all 0.3s ease-in-out;
+            filter: grayscale(1); 
+            opacity: 0.6; 
+            transition: all 0.3s ease;
         }
 
         .social-row img:hover {
-            filter: grayscale(1);
-            opacity: 0.7;
-            transform: scale(1.15);
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         .copyright { 
             color: #8c8c8c !important; 
-            font-size: 0.8rem !important; 
+            font-size: 0.85rem !important; 
             margin-top: 20px !important; 
-            font-family: "Source Sans Pro", sans-serif !important;
-            text-transform: none !important; 
-            letter-spacing: 0 !important;
             text-align: center;
+            font-weight: 300;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
         }
 
         @media screen and (max-width: 736px) {
             .first-title-large { font-size: 1.75rem !important; }
             .wrapper.style1 { padding: 100px 0 40px 0 !important; }
-            .footer-quote { padding: 0 20px; }
         }
     </style>
 </head>
@@ -136,7 +137,7 @@
 
         <header id="header">
             <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu"><span>Menu</span></a>
+            <a href="#menu" id="menuToggle"><span>Menu</span></a>
         </header>
 
         <nav id="menu">
@@ -198,9 +199,9 @@
             <div class="inner">
                 <p class="footer-quote">Providing the perfect atmospheric soundtrack for Toronto's premier corporate events and functions.</p>
                 <ul class="social-row">
-                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-instagram.svg" alt="Instagram"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/pastel-youtube.svg" alt="YouTube"></a></li>
-                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-tiktok.svg" alt="TikTok"></a></li>
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
                 </ul>
                 <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
             </div>

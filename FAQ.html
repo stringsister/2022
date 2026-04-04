@@ -1,13 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <title>FAQ | The StringSisters</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="Frequently Asked Questions about The StringSisters, including details on booking, music selection, moving between event locations, and more." />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     
     <style>
+        /* Global Font Override */
+        body, input, select, textarea, .first-title-large, .subtitle-grey, .faq-question, .faq-answer, .copyright {
+            font-family: "Source Sans Pro", sans-serif !important;
+        }
+
         /* 1. Header & Logo Styling */
         #header .logo, #header .logo a {
             font-weight: 300 !important;
@@ -15,9 +22,9 @@
             text-transform: uppercase !important;
         }
 
-        /* 2. Top Header Section (White) */
+        /* 2. Top Header Section (White) - Fixed Diagonal Cutoff */
         .wrapper.style1 {
-            padding: 120px 0 60px 0 !important;
+            padding: 120px 0 100px 0 !important;
             background-color: #ffffff !important; 
         }
 
@@ -44,15 +51,15 @@
 
         .subtitle-grey {
             color: #8c8c8c;
-            font-size: 1rem;
-            margin-bottom: 0;
+            font-size: 1.1rem;
+            font-weight: 300;
             display: block;
         }
 
-        /* 3. FAQ Content Area (Off-White) */
+        /* 3. FAQ Content Area (Off-White style2) */
         .wrapper.style2 {
             background-color: #f9f9f9 !important; 
-            padding: 40px 0 80px 0 !important;
+            padding: 60px 0 100px 0 !important;
         }
 
         .main-content { 
@@ -70,7 +77,7 @@
         
         .faq-question { 
             padding: 25px 0; 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             cursor: pointer; 
             display: flex; 
             justify-content: space-between; 
@@ -87,9 +94,10 @@
         .faq-answer { 
             display: none; 
             padding: 0 0 25px 0; 
-            font-size: 16px; 
+            font-size: 1.1rem; 
             line-height: 1.8; 
             color: #555; 
+            font-weight: 300;
         }
         
         .faq-question::after { 
@@ -105,7 +113,7 @@
         .faq-answer a { color: #CDA4A0; text-decoration: none; font-weight: 600; }
         .faq-answer a:hover { text-decoration: underline; }
 
-        /* 5. Footer Section (White + Diagonal) */
+        /* 5. Footer Styling - Cohesive */
         #footer-wrapper {
             background-color: #ffffff !important;
             padding: 100px 0 60px 0 !important;
@@ -113,8 +121,6 @@
 
         #footer-wrapper .inner {
             text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
         
         .social-row {
@@ -124,8 +130,9 @@
             padding: 0 !important;
             margin: 0 0 20px 0 !important;
         }
+
         .social-row li { padding: 0 15px !important; }
-        
+
         .social-row img { 
             width: 32px; 
             height: 32px; 
@@ -134,19 +141,27 @@
             opacity: 0.6; 
             transition: all 0.3s ease;
         }
+
         .social-row img:hover {
             filter: grayscale(0);
             opacity: 1;
             transform: scale(1.1);
         }
         
-        .copyright { color:#8c8c8c; font-size:0.8rem; margin-top: 20px; }
+        .copyright { 
+            color: #8c8c8c !important; 
+            font-size: 0.85rem !important; 
+            margin-top: 20px !important; 
+            text-align: center;
+            font-weight: 300;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+        }
 
         @media screen and (max-width: 736px) {
             .first-title-large { font-size: 1.75rem !important; }
             .wrapper.style1 { padding: 100px 0 40px 0 !important; }
             .wrapper.style2 { padding: 30px 0 60px 0 !important; }
-            #footer-wrapper { padding: 80px 0 40px 0 !important; }
         }
     </style>
 </head>
@@ -154,7 +169,7 @@
     <div id="page-wrapper">
         <header id="header">
             <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu"><span>Menu</span></a>
+            <a href="#menu" id="menuToggle"><span>Menu</span></a>
         </header>
 
         <nav id="menu">
@@ -162,9 +177,9 @@
                 <h2>Menu</h2>
                 <ul class="links">
                     <li><a href="/">Home</a></li>
-                    <li><a href="bookings">Book Us</a></li>
-                    <li><a href="services">About Us</a></li>
-                   
+                    <li><a href="/bookings">Book Us</a></li>
+                    <li><a href="/services">About Us</a></li>
+                    <li><a href="/repertoire">Repertoire</a></li>
                 </ul>
                 <a class="close"><span>Close</span></a>
             </div>
@@ -174,7 +189,7 @@
             <div class="inner">
                 <div class="content">
                     <header>
-                        <h4 class="first-title-large">Frequently Asked Questions</h4>
+                        <h1 class="first-title-large">Frequently Asked Questions</h1>
                         <span class="subtitle-grey">Everything you need to know about our services.</span>
                     </header>
                 </div>
@@ -185,11 +200,11 @@
             <div class="main-content">
                 <div class="faq-item">
                     <div class="faq-question">How Does The Music Selection Work?</div>
-                   <div class="faq-answer" style="line-height: 1.5;">
-    <p style="margin-bottom: 0.5rem;">We include two special requests with every booking. Please submit these at least three weeks before your event.</p>
-    <p style="margin-bottom: 0.5rem;">For ceremonies, common selections include the Bridal Party entrance, Groom’s entrance, Bride’s entrance, Signing of the Register, and Recessional.</p>
-    <p style="margin-bottom: 0.5rem;">For cocktail hour or prelude, you can choose unlimited songs from our <a href="repertoire">repertoire list</a>, or simply select a preferred genre and let us curate the perfect playlist for you.</p>
-</div>
+                    <div class="faq-answer">
+                        <p>We include two special requests with every booking. Please submit these at least three weeks before your event.</p>
+                        <p>For ceremonies, common selections include the Bridal Party entrance, Groom’s entrance, Bride’s entrance, Signing of the Register, and Recessional.</p>
+                        <p>For cocktail hour or prelude, you can choose unlimited songs from our <a href="repertoire">repertoire list</a>, or simply select a preferred genre and let us curate the perfect playlist for you.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
@@ -258,16 +273,16 @@
             </div>
         </section>
 
-        <section id="footer-wrapper" class="wrapper style1">
+        <footer id="footer-wrapper">
             <div class="inner">
                 <ul class="social-row">
-                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
-                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
                 </ul>
                 <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
             </div>
-        </section>
+        </footer>
 
     </div>
 

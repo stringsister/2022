@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>About Us | The StringSisters</title>
+    <title>Professional Harpist in Toronto & GTA | The StringSisters</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Meet Heather and Naomi, the twin sisters behind The StringSisters. Learn about their decade of experience performing harp and cello across the GTA." />
+    <meta name="description" content="Looking for a professional harpist in Toronto? Naomi Jackson offers elegant harp music for weddings and corporate events across the GTA." />
     
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
@@ -15,11 +15,11 @@
 
     <style>
         /* Global Font Override */
-        body, .first-title-large, .footer-quote, .copyright, #main p {
+        body, .first-title-large, .subtitle-grey, .footer-quote, .copyright, #main p, #main li {
             font-family: "Source Sans Pro", sans-serif !important;
         }
 
-        /* 1. Header & Logo Styling */
+        /* 1. Header & Logo */
         #header .logo, #header .logo a {
             font-weight: 300 !important;
             letter-spacing: 0.1rem !important;
@@ -30,10 +30,6 @@
         .wrapper.style1 {
             padding: 120px 0 100px 0 !important;
             background-color: #ffffff !important; 
-        }
-
-        .wrapper.style1 .inner {
-            text-align: right !important;
         }
 
         .wrapper.style1 .content {
@@ -47,36 +43,47 @@
             color: #444444 !important;
             font-weight: 600 !important;
             font-size: 2.25rem !important; 
-            letter-spacing: -0.02rem !important;
+            margin-bottom: 1rem !important;
             text-transform: none !important;
-            line-height: 1.2 !important;
-            margin-bottom: 1.5rem !important;
         }
 
-        /* 3. Main Content Area (Off-White style2) */
+        .subtitle-grey {
+            color: #8c8c8c;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* 3. Main Content - Round Dynamic Image */
         #main.wrapper.style2 {
             background-color: #f9f9f9 !important; 
-            padding: 80px 0 100px 0 !important;
+            padding: 60px 0 100px 0 !important;
         }
 
-        h4 {
-            color: #444 !important;
-            font-weight: 600 !important;
-            font-size: 1.6rem !important;
-            margin-bottom: 1.5rem !important;
-            letter-spacing: -0.01rem !important;
+        .promo-image {
+            float: right;
+            width: 350px;
+            max-width: 45%; 
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            margin: 0 0 2rem 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 4px solid #ffffff; 
         }
 
-        #main p {
+        #main h2 {
+            color: #444;
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        #main p, #main li {
             font-weight: 300;
             font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
-            margin-bottom: 1.5rem;
         }
-
-        .image.right { margin: 0 0 2rem 2rem; }
-        .image.left { margin: 0 2rem 2rem 0; }
 
         /* 4. Footer Styling */
         #footer-wrapper {
@@ -88,7 +95,6 @@
         .footer-quote {
             font-style: italic !important;
             color: #666 !important;
-            opacity: 0.9;
             margin-bottom: 30px;
             font-size: 1.1rem;
             text-align: center;
@@ -99,8 +105,8 @@
             display: flex !important;
             justify-content: center !important;
             list-style: none !important;
-            padding: 0 !important;
             margin: 0 0 20px 0 !important;
+            padding: 0 !important;
         }
 
         .social-row li { padding: 0 15px !important; }
@@ -108,7 +114,6 @@
         .social-row img { 
             width: 32px; 
             height: 32px; 
-            display: block; 
             filter: grayscale(1); 
             opacity: 0.6; 
             transition: all 0.3s ease;
@@ -123,23 +128,23 @@
         .copyright { 
             color: #8c8c8c !important; 
             font-size: 0.85rem !important; 
-            margin-top: 20px !important; 
             text-align: center;
             font-weight: 300;
-            text-transform: none !important;
-            letter-spacing: 0 !important;
         }
 
+        /* MOBILE OPTIMIZATION */
         @media screen and (max-width: 736px) {
+            .promo-image { 
+                float: none !important; 
+                display: block !important;
+                width: 250px !important; 
+                max-width: 80% !important;
+                margin: 0 auto 3rem auto !important; 
+            }
             .first-title-large { font-size: 1.75rem !important; }
             .wrapper.style1 { padding: 100px 0 40px 0 !important; }
             #main.wrapper.style2 { padding: 40px 20px 60px 20px !important; }
-            .image.right, .image.left { 
-                float: none !important; 
-                margin: 0 0 2rem 0 !important; 
-                display: block;
-            }
-            .image img { width: 100%; }
+            .wrapper.style1 .content { align-items: center !important; text-align: center !important; }
         }
     </style>
 </head>
@@ -169,12 +174,9 @@
             <div class="inner">
                 <div class="content">
                     <header>
-                        <h1 class="first-title-large">Who are the StringSisters?</h1>
+                        <h1 class="first-title-large">Professional Harpist in Toronto</h1>
+                        <span class="subtitle-grey">Elevating weddings and events across the GTA.</span>
                     </header>
-                    <p style="max-width: 600px; font-weight: 300; font-size: 1.1rem;">Heather and Naomi are twin sisters who love to travel and perform music together! Over the past decade, they have performed in some of the GTA's most beautiful venues, including Koerner Hall, The ROM, Graydon Hall, and Casa Loma.</p>
-                    <ul class="actions">
-                        <li><a href="/bookings" class="button primary">Check Availability</a></li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -182,28 +184,20 @@
         <section id="main" class="wrapper style2">
             <div class="inner">
                 
-                <div class="bio-section">
-                    <h4>Naomi - The Harpist</h4>
-                    <span class="image right"><img src="images/harplessons.webp" alt="Naomi Jackson Harpist" /></span>
-                    <p>Naomi Jackson is a classically trained harpist who professionally performs for special events and weddings. Beginning with Celtic and Folk genres, Naomi primarily studied Classical repertoire at the Conservatory following the RCM method. However, Naomi enjoys playing most genres, including Contemporary, Jazz, Film Scores, and Pop.</p>
-                    <p>Naomi's musical background includes being a two-time gold medalist for the Royal Conservatory of Music's practical harp exams. Her teaching approach emphasizes musical theory and technique, personally tailoring each lesson to the student's goals and learning style.</p>
-                    <ul class="actions">
-                        <li><a href="/bookings" class="button small">Book a Lesson</a></li>
-                    </ul>
-                </div>
+                <img src="images/slides/3.webp" alt="Professional Harpist Naomi Jackson" class="promo-image">
+                
+                <p>Are you looking to add a touch of timeless elegance to your next event? <strong>Naomi Jackson</strong> is a premier <strong>harpist in Toronto</strong>, providing high-quality live music performances across the Greater Toronto Area. Whether you are walking down the aisle or hosting an upscale corporate reception, the mesmerizing sound of the harp creates an atmosphere that your guests will never forget.</p>
 
-                <hr style="margin: 4rem 0; border: 0; border-top: 1px solid #e5e5e5;">
+                <h2>Wedding Harpist Services</h2>
+                <p>The harp is the quintessential instrument for wedding ceremonies. Naomi specializes in creating seamless transitions between your processional, signing, and recessional music. From traditional classical pieces to modern pop covers, your wedding music is tailored to reflect your personal style.</p>
+                
+                <h2>Events & Corporate Galas</h2>
+                <p>Elevate your brand or celebrate a milestone with live music. Naomi has performed at iconic Toronto venues such as <strong>The ROM, Casa Loma, and Koerner Hall</strong>. The harp provides a perfect volume level—audible and beautiful, yet allowing for easy conversation among your guests.</p>
 
-                <div class="bio-section">
-                    <h4>Heather - The Cellist</h4>
-                    <span class="image left"><img src="images/cellolessons.webp" alt="Heather Jackson Cellist" /></span>
-                    <p>Heather has studied the cello for nearly a decade, fascinated by the instrument's depth and warmth. Her appreciation for film scores led her to pursue the cello as the staple of modern cinematic themes. Apart from hundreds of weddings, Heather has been a part of music recordings, traveling orchestras, and performed with KYGO at VELD in 2019.</p>
-                    <p>Heather offers cello lessons for all ages and backgrounds. Her focus is on the basics of the cello, encouraging good posture and technique while molding each class to the student's capabilities. While Classical and Celtic genres shaped her training, she enjoys exploring all musical styles with her students.</p>
-                    <ul class="actions">
-                        <li><a href="/bookings" class="button small">Book a Lesson</a></li>
-                    </ul>
-                </div>
-
+                <ul class="actions stacked" style="margin-top: 3rem;">
+                    <li><a href="/bookings" class="button primary">Request a Quote</a></li>
+                    <li><a href="/repertoire" class="button">View Repertoire</a></li>
+                </ul>
             </div>
         </section>
 
@@ -235,7 +229,7 @@
             // Update Copyright Year
             document.getElementById("current-year").textContent = new Date().getFullYear();
 
-            // Navbar Trigger Fix
+            // Navbar Manual Fix
             var $body = $('body'),
                 $menu = $('#menu'),
                 $menuToggle = $('#menuToggle');

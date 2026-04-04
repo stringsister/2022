@@ -9,27 +9,28 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
     
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <script src="https://cdn03.jotfor.ms/static/prototype.forms.js?3.3.35031" type="text/javascript"></script>
     <script src="https://cdn01.jotfor.ms/static/jotform.forms.js?3.3.35031" type="text/javascript"></script>
 
     <style>
-        /* 1. Typography & Header */
-        body, input, select, textarea {
-            font-family: "Source Sans Pro", sans-serif;
-            font-weight: 300;
+        /* Global Font Override */
+        body, input, select, textarea, .first-title-large, .subtitle-grey, .footer-quote, .copyright {
+            font-family: "Source Sans Pro", sans-serif !important;
         }
 
+        /* 1. Header & Logo Styling */
         #header .logo, #header .logo a {
             font-weight: 300 !important;
-            letter-spacing: 0.15rem !important;
+            letter-spacing: 0.1rem !important;
             text-transform: uppercase !important;
         }
 
-        /* 2. Top Header Section (White) */
+        /* 2. Top Header Section (White) - Fixed Diagonal Cutoff */
         .wrapper.style1 {
-            padding: 140px 0 80px 0 !important;
+            padding: 120px 0 100px 0 !important;
             background-color: #ffffff !important; 
         }
 
@@ -39,26 +40,29 @@
 
         .first-title-large {
             color: #444444 !important;
-            font-weight: 300 !important;
-            font-size: 2.5rem !important; 
-            letter-spacing: -0.01rem !important;
-            margin-bottom: 1rem !important;
+            font-weight: 600 !important;
+            font-size: 2.25rem !important; 
+            letter-spacing: -0.02rem !important;
+            text-transform: none !important;
+            line-height: 1.2 !important;
+            margin-bottom: 1.5rem !important;
         }
 
         .subtitle-grey {
-            color: #a0a0a0;
-            font-size: 0.9rem;
-            letter-spacing: 0.05rem;
-            text-transform: uppercase;
+            color: #8c8c8c;
+            font-size: 1.1rem;
+            font-weight: 300;
+            display: block;
+            text-transform: none; /* Matches others */
+            letter-spacing: 0;
         }
 
-        /* 3. Form Section (Off-White) */
+        /* 3. Form Section (Off-White style2) */
         #main.wrapper.style2 {
-            background-color: #fcfcfc !important; 
-            padding: 80px 0 120px 0 !important;
+            background-color: #f9f9f9 !important; 
+            padding: 60px 0 100px 0 !important;
         }
 
-        /* REMOVE BULLETS AND LIST STYLING */
         .form-all ul, .form-section {
             list-style: none !important;
             padding-left: 0 !important;
@@ -68,16 +72,14 @@
         .form-line {
             list-style-type: none !important;
             padding: 15px 0 !important;
-            margin-left: 0 !important;
             border: none !important;
         }
 
         .form-label-top {
-            font-family: "Source Sans Pro", sans-serif !important;
             color: #777 !important;
-            font-weight: 300 !important;
-            font-size: 0.9rem !important;
-            margin-bottom: 8px !important;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            margin-bottom: 10px !important;
             text-transform: uppercase;
             letter-spacing: 0.1rem;
             display: block;
@@ -86,7 +88,7 @@
         .form-textbox, .form-textarea {
             background: #ffffff !important;
             border: 1px solid #e0e0e0 !important;
-            border-radius: 0 !important;
+            border-radius: 4px !important;
             padding: 15px !important;
             font-weight: 300 !important;
             color: #555 !important;
@@ -99,80 +101,66 @@
             outline: none !important;
         }
 
-        /* Submit Button Style */
         .form-buttons-wrapper {
             margin-top: 30px !important;
-            padding: 20px 0 !important;
-            border: none !important;
             text-align: center;
         }
 
-        .form-submit-button { 
-            background: #444 !important; 
-            color: #fff !important;
-            border: none !important; 
-            text-transform: uppercase; 
-            letter-spacing: 0.2rem; 
-            font-weight: 300 !important;
-            padding: 18px 45px !important; 
-            cursor: pointer;
-            transition: all 0.3s ease;
-            height: auto !important;
-            min-height: 55px;
-            display: inline-block !important;
-        }
-
-        .form-submit-button:hover {
-            background: #000 !important;
-            letter-spacing: 0.25rem;
-        }
-
-        /* 4. Footer */
+        /* 4. Footer Styling - Cohesive */
         #footer-wrapper {
-            background-color: #ffffff;
-            padding: 100px 0 60px 0;
-            border-top: 1px solid #f0f0f0;
+            background-color: #ffffff !important;
+            padding: 100px 0 60px 0 !important;
         }
 
         .footer-quote {
-            font-family: Georgia, serif !important;
-            font-style: italic;
-            color: #888;
-            font-size: 1rem;
-            max-width: 500px; 
-            margin: 0 auto 40px auto;
+            font-style: italic !important;
+            color: #666 !important;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
             text-align: center;
+            font-weight: 300;
             line-height: 1.6;
         }
 
         .social-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            list-style: none;
-            padding: 0;
-            margin-bottom: 40px;
+            display: flex !important;
+            justify-content: center !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 20px 0 !important;
         }
+
+        .social-row li { padding: 0 15px !important; }
 
         .social-row img { 
-            width: 24px; 
-            height: 24px; 
-            opacity: 0.4;
-            transition: opacity 0.3s;
+            width: 32px; 
+            height: 32px; 
+            display: block; 
+            filter: grayscale(1); 
+            opacity: 0.6; 
+            transition: all 0.3s ease;
         }
 
-        .social-row img:hover { opacity: 0.8; }
+        .social-row img:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
 
         .copyright { 
-            color: #bbb; 
-            font-size: 0.75rem; 
-            letter-spacing: 0.05rem;
-            text-align: center; 
+            color: #8c8c8c !important; 
+            font-size: 0.85rem !important; 
+            margin-top: 20px !important; 
+            text-align: center;
+            font-weight: 300;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
         }
 
         @media screen and (max-width: 736px) {
             .wrapper.style1 { padding: 100px 0 40px 0 !important; }
-            .first-title-large { font-size: 2rem !important; }
+            .first-title-large { font-size: 1.75rem !important; }
         }
     </style>
 </head>
@@ -182,14 +170,16 @@
 
         <header id="header">
             <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu"><span>Menu</span></a>
+            <a href="#menu" id="menuToggle"><span>Menu</span></a>
         </header>
 
         <nav id="menu">
             <div class="inner">
+                <h2>Menu</h2>
                 <ul class="links">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/services">Services</a></li>
+                    <li><a href="/bookings">Book Us</a></li>
+                    <li><a href="/services">About Us</a></li>
                     <li><a href="/repertoire">Repertoire</a></li>
                 </ul>
                 <a class="close"><span>Close</span></a>
@@ -200,7 +190,7 @@
             <div class="inner">
                 <header>
                     <h1 class="first-title-large">Contact Us</h1>
-                    <span class="subtitle-grey">Inquire for your next event</span>
+                    <span class="subtitle-grey">Inquire for your next event.</span>
                 </header>
             </div>
         </section>
@@ -231,7 +221,7 @@
                             </li>
                             <li class="form-line" id="id_38">
                                 <div class="form-buttons-wrapper">
-                                    <button id="input_38" type="submit" class="form-submit-button">Submit Inquiry</button>
+                                    <button id="input_38" type="submit" class="button primary">Submit Inquiry</button>
                                 </div>
                             </li>
                             <li style="display:none">
@@ -248,16 +238,18 @@
             <div class="inner">
                 <p class="footer-quote">Captivating sounds of live harp and cello, adding a touch of elegance to every moment.</p>
                 <ul class="social-row">
-                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
-                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
                 </ul>
-                <p class="copyright">&copy; <span id="current-year"></span> THE STRINGSISTERS. ALL RIGHTS RESERVED.</p>
+                <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
             </div>
         </footer>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>

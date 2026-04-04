@@ -1,20 +1,24 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Live Music for Charity Galas & Fundraisers in Toronto | The StringSisters</title>
-
+    <title>Charity Galas & Fundraisers | The StringSisters</title>
     <meta charset="utf-8" />
     <meta name="description" content="Professional live music for charity galas and fundraisers in Toronto. Elevate your event with elegant harp and cello performances." />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favi/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favi/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favi/favicon-16x16.png">
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
-    
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
+        /* Global Font Override */
+        body, .first-title-large, .subtitle-grey, .footer-quote, .copyright, #main p, #main li {
+            font-family: "Source Sans Pro", sans-serif !important;
+        }
+
         /* 1. Header & Logo Styling */
         #header .logo, #header .logo a {
             font-weight: 300 !important;
@@ -22,13 +26,20 @@
             text-transform: uppercase !important;
         }
 
-        /* 2. Top Header Section (White) */
+        /* 2. Top Header Section (White) - Consistent Diagonal Cutoff */
         .wrapper.style1 {
-            padding: 120px 0 60px 0 !important;
+            padding: 120px 0 100px 0 !important;
             background-color: #ffffff !important; 
         }
 
         .wrapper.style1 .inner {
+            text-align: right !important;
+        }
+
+        .wrapper.style1 .content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-end !important; 
             text-align: right !important;
         }
 
@@ -39,12 +50,13 @@
             letter-spacing: -0.02rem !important;
             text-transform: none !important;
             line-height: 1.2 !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 1.5rem !important;
         }
 
         .subtitle-grey {
             color: #8c8c8c;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 300;
             display: block;
         }
 
@@ -57,25 +69,31 @@
         #main h2 {
             color: #444;
             font-weight: 600;
-            font-size: 1.5rem;
-            margin-top: 3rem;
+            font-size: 1.6rem;
+            margin-top: 3.5rem;
             margin-bottom: 1.5rem;
             text-transform: none;
-            letter-spacing: 0;
+            letter-spacing: -0.01rem;
         }
 
         #main p, #main li {
-            font-family: Georgia, serif;
-            font-size: 1.05rem;
+            font-weight: 300;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #555;
         }
 
         #main ul {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            list-style-type: disc;
+            padding-left: 1.5rem;
         }
 
-        /* 4. Footer Styling */
+        #main ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* 4. Footer Styling - Cohesive */
         #footer-wrapper {
             background-color: #ffffff !important;
             padding: 100px 0 60px 0 !important;
@@ -83,16 +101,13 @@
         }
 
         .footer-quote {
-            font-family: Georgia, serif !important;
             font-style: italic !important;
             color: #666 !important;
             opacity: 0.9;
-            margin: 0 auto 30px auto;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-width: 600px; 
-            padding: 0 40px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
             text-align: center;
+            font-weight: 300;
         }
 
         .social-row {
@@ -106,32 +121,34 @@
         .social-row li { padding: 0 15px !important; }
 
         .social-row img { 
-            width: 40px; 
-            height: 40px; 
+            width: 32px; 
+            height: 32px; 
             display: block; 
-            transition: all 0.3s ease-in-out;
+            filter: grayscale(1); 
+            opacity: 0.6; 
+            transition: all 0.3s ease;
         }
 
         .social-row img:hover {
-            filter: grayscale(1);
-            opacity: 0.7;
-            transform: scale(1.15);
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         .copyright { 
             color: #8c8c8c !important; 
-            font-size: 0.8rem !important; 
+            font-size: 0.85rem !important; 
             margin-top: 20px !important; 
-            font-family: "Source Sans Pro", sans-serif !important;
-            text-transform: none !important; 
-            letter-spacing: 0 !important;
             text-align: center;
+            font-weight: 300;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
         }
 
         @media screen and (max-width: 736px) {
             .first-title-large { font-size: 1.75rem !important; }
             .wrapper.style1 { padding: 100px 0 40px 0 !important; }
-            .footer-quote { padding: 0 20px; }
+            #main.wrapper.style2 { padding: 40px 20px 60px 20px !important; }
         }
     </style>
 </head>
@@ -140,7 +157,7 @@
 
         <header id="header">
             <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu"><span>Menu</span></a>
+            <a href="#menu" id="menuToggle"><span>Menu</span></a>
         </header>
 
         <nav id="menu">
@@ -159,10 +176,12 @@
 
         <section class="wrapper style1">
             <div class="inner">
-                <header>
-                    <h1 class="first-title-large">Charity Galas & Fundraisers</h1>
-                    <span class="subtitle-grey">Elevating non-profit events with elegant live music in Toronto.</span>
-                </header>
+                <div class="content">
+                    <header>
+                        <h1 class="first-title-large">Charity Galas & Fundraisers</h1>
+                        <span class="subtitle-grey">Elevating non-profit events with elegant live music in Toronto.</span>
+                    </header>
+                </div>
             </div>
         </section>
 
@@ -190,22 +209,27 @@
                 <h2>Tailored to Your Vision</h2>
                 <p>Every event is unique, and we work closely with you or your event planner to ensure our music matches the vision of your fundraiser. Whether you’re looking for quiet background music during dinner or an energetic performance to welcome guests, we will craft the perfect setlist for your audience.</p>
 
-                <br><br>
-                <ul class="actions">
-                    <li><a href="bookings" class="button primary">Inquire for Booking</a></li>
+                <ul class="actions stacked" style="margin-top: 3rem;">
+                    <li><a href="/bookings" class="button primary">Inquire for Booking</a></li>
                 </ul>
             </div>
         </section>
 
         <footer id="footer-wrapper">
             <div class="inner">
-                <p class="footer-quote">We look forward to bringing the timeless beauty of harp and cello to your most memorable events.</p>
+                <p class="footer-quote">
+                    Bringing the elegance of harp and cello to your events, creating memorable live music for every occasion.
+                </p>
+                
                 <ul class="social-row">
-                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-instagram.svg" alt="Instagram"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/pastel-youtube.svg" alt="YouTube"></a></li>
-                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/pastel-tiktok.svg" alt="TikTok"></a></li>
+                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
+                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
                 </ul>
-                <p class="copyright">&copy; <span id="current-year"></span> The StringSisters. All rights reserved.</p>
+                
+                <p class="copyright">
+                    &copy; <span id="current-year"></span> The StringSisters. All rights reserved.
+                </p>
             </div>
         </footer>
 

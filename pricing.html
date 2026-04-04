@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
         <title>Pricing & Packages | The StringSisters</title>
         <meta charset="utf-8" />
@@ -7,11 +7,14 @@
         <meta name="description" content="View pricing and performance packages for The StringSisters. Get a transparent quote for live harp and cello music for your wedding or event in Toronto." />
         
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
-        
         <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/reviews.css" />
-    
+
         <style>
+            /* Global Font Override */
+            body, input, select, textarea, .first-title-large, .subtitle-grey, .footer-quote, .copyright {
+                font-family: "Source Sans Pro", sans-serif !important;
+            }
+
             /* 1. Header & Logo Styling */
             #header .logo, #header .logo a {
                 font-weight: 300 !important;
@@ -19,9 +22,9 @@
                 text-transform: uppercase !important;
             }
 
-            /* 2. Top Header Section (White) */
+            /* 2. Top Header Section (White) - Fixed Diagonal Cutoff */
             .wrapper.style1 {
-                padding: 120px 0 60px 0 !important;
+                padding: 120px 0 100px 0 !important;
                 background-color: #ffffff !important; 
             }
 
@@ -48,40 +51,31 @@
 
             .subtitle-grey {
                 color: #8c8c8c;
-                font-size: 1rem;
-                margin-bottom: 0;
+                font-size: 1.1rem;
+                font-weight: 300;
                 display: block;
             }
 
             /* 3. Main Content Area (Off-White style2) */
             #main.wrapper.style2 {
                 background-color: #f9f9f9 !important; 
-                padding: 40px 0 80px 0 !important;
+                padding: 60px 0 100px 0 !important;
             }
 
-            /* 4. Updated Footer Styling */
+            /* 4. Footer Styling - Cohesive */
             #footer-wrapper {
                 background-color: #ffffff !important;
                 padding: 100px 0 60px 0 !important;
-                border-top: 1px solid #eee;
-            }
-
-            #footer-wrapper .inner {
-                text-align: center;
-                max-width: 1200px;
-                margin: 0 auto;
             }
 
             .footer-quote {
-                font-family: Georgia, serif !important;
                 font-style: italic !important;
                 color: #666 !important;
                 opacity: 0.9;
-                margin: 0 auto 30px auto;
-                font-size: 0.95rem; /* Smaller size */
-                line-height: 1.6;
-                max-width: 600px; /* Centered narrow width */
-                padding: 0 40px; /* Side padding */
+                margin-bottom: 30px;
+                font-size: 1.1rem;
+                text-align: center;
+                font-weight: 300;
             }
 
             .social-row {
@@ -111,18 +105,18 @@
 
             .copyright { 
                 color: #8c8c8c !important; 
-                font-size: 0.8rem !important; 
+                font-size: 0.85rem !important; 
                 margin-top: 20px !important; 
-                font-family: "Source Sans Pro", Helvetica, sans-serif !important;
-                text-transform: none !important; 
+                text-align: center;
+                font-weight: 300;
+                text-transform: none !important;
                 letter-spacing: 0 !important;
             }
 
             @media screen and (max-width: 736px) {
                 .first-title-large { font-size: 1.75rem !important; }
                 .wrapper.style1 { padding: 100px 0 40px 0 !important; }
-                #footer-wrapper { padding: 80px 0 40px 0 !important; }
-                .footer-quote { padding: 0 20px; }
+                #main.wrapper.style2 { padding: 40px 0 60px 0 !important; }
             }
         </style>
     </head>
@@ -134,17 +128,17 @@
             <a href="#menu" id="menuToggle"><span>Menu</span></a>
         </header>
 
-        <nav id="menu" class="menu">
+        <nav id="menu">
             <div class="inner">
                 <h2>Menu</h2>
                 <ul class="links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/bookings">Book Us</a></li>
                     <li><a href="/services">About Us</a></li>
-                  
+                    <li><a href="/repertoire">Repertoire</a></li>
                     <li><a href="/FAQ">FAQ</a></li>
                 </ul>
-                <a href="#" class="close"><span>Close</span></a>
+                <a class="close"><span>Close</span></a>
             </div>
         </nav>
 
@@ -152,9 +146,8 @@
             <div class="inner">
                 <div class="content">
                     <header>
-                        <h4 class="first-title-large">Pricing & Packages</h4>
+                        <h1 class="first-title-large">Pricing & Packages</h1>
                         <span class="subtitle-grey">Request a transparent, personalized quote for your event below.</span>
-                        <br>
                     </header>
                 </div>
             </div>
@@ -162,7 +155,7 @@
 
         <section id="main" class="wrapper style2">
             <div class="inner">
-                <iframe height="866" style="min-width: 100%; max-width: 300px; border: 0;" src="https://666038.17hats.com/p#/embed/ghwzkggnzbvhzwxgpptgbcbcxprbwsgr"></iframe>
+                <iframe height="866" style="min-width: 100%; border: 0;" src="https://666038.17hats.com/p#/embed/ghwzkggnzbvhzwxgpptgbcbcxprbwsgr"></iframe>
                 <script type="text/javascript" src="https://666038.17hats.com/vendor/iframeSizer.min.js"></script>
             </div>
         </section>
