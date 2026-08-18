@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The String Sisters — Harp &amp; Cello, Live</title>
+<meta name="description" content="Live harp and cello duo for weddings, corporate events, and special occasions across Toronto and the GTA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23241B16'/%3E%3Ctext x='50' y='64' font-size='44' font-family='Georgia,serif' fill='%23F0E9DC' text-anchor='middle' font-style='italic'%3ESS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#241B16;
+    --ink-soft:#3A2C24;
+    --parchment:#F1EADC;
+    --parchment-2:#E7DCC7;
+    --white:#FBF8F2;
+    --wine:#6E2A3A;
+    --wine-deep:#3F1620;
+    --brass:#A8834A;
+    --brass-soft:#C7A66C;
+
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --ease: cubic-bezier(.22,.68,0,1);
+    --dur: .9s;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  button{font:inherit; background:none; border:none; cursor:pointer; color:inherit;}
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.68rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--wine);
+    margin-bottom:1.1rem;
+  }
+  .eyebrow.center{text-align:center;}
+  .eyebrow.light{color:var(--brass-soft);}
+
+  :focus-visible{
+    outline:1px solid var(--brass);
+    outline-offset:4px;
+  }
+
+  /* ============ NAV ============ */
+  .site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.6rem clamp(1.25rem, 4vw, 3rem);
+    color:var(--white);
+    mix-blend-mode:difference;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.15rem;
+    letter-spacing:.02em;
+  }
+  .wordmark.small{font-size:1.05rem; mix-blend-mode:normal; color:var(--ink);}
+
+  .menu-btn{
+    display:flex; align-items:center; gap:.7rem;
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .menu-btn-lines{
+    display:flex; flex-direction:column; gap:5px; width:22px;
+  }
+  .menu-btn-lines span{
+    display:block; height:1px; width:100%; background:currentColor;
+    transition:transform .5s var(--ease), opacity .3s ease;
+  }
+
+  /* ============ OVERLAY MENU ============ */
+  .overlay-menu{
+    position:fixed; inset:0; z-index:80;
+    background:var(--ink);
+    color:var(--white);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(2.5rem, 6vh, 4rem);
+    opacity:0; visibility:hidden;
+    transition:opacity .6s var(--ease), visibility 0s linear .6s;
+  }
+  .overlay-menu.is-open{
+    opacity:1; visibility:visible;
+    transition:opacity .6s var(--ease), visibility 0s linear 0s;
+  }
+  .overlay-close{
+    position:absolute; top:1.65rem; right:clamp(1.25rem, 4vw, 3rem);
+    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
+    color:var(--white);
+  }
+  .overlay-links{
+    list-style:none;
+    display:flex; flex-direction:column; align-items:center; gap:1.1rem;
+    text-align:center;
+  }
+  .overlay-links a{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(2.2rem, 7vw, 3.4rem);
+    font-weight:400;
+    color:var(--parchment);
+    position:relative;
+    transition:color .4s ease;
+  }
+  .overlay-links a:hover, .overlay-links a:focus-visible{color:var(--brass-soft);}
+
+  .overlay-social{
+    display:flex; align-items:center; justify-content:center; gap:1.6rem;
+  }
+  .overlay-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:20px; height:20px;
+    color:var(--parchment);
+    opacity:.75;
+    transition:opacity .3s ease, transform .4s var(--ease);
+  }
+  .overlay-social a:hover{opacity:1; transform:translateY(-2px);}
+  .overlay-social svg{width:100%; height:100%;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    height:100svh; min-height:560px;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-slides{position:absolute; inset:0;}
+  .slide{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    opacity:0;
+    transform:scale(1.08);
+    transition:opacity 1.6s ease, transform 7s linear;
+  }
+  .slide.active{opacity:1; transform:scale(1);}
+  .hero-veil{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(36,27,22,.15) 0%, rgba(36,27,22,.05) 38%, rgba(36,27,22,.72) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:5;
+    width:100%;
+    padding:0 clamp(1.25rem, 4vw, 3rem) clamp(4.5rem, 11vh, 7rem);
+    color:var(--white);
+    text-align:center;
+  }
+  .hero-content .eyebrow{color:var(--brass-soft); text-align:center;}
+  .hero h1{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(2.8rem, 8.5vw, 5.6rem);
+    line-height:1;
+    letter-spacing:.005em;
+  }
+  .hero-sub{
+    max-width:34ch; margin:1.35rem auto 2.4rem;
+    font-size:clamp(.95rem, 1.6vw, 1.05rem);
+    line-height:1.65;
+    color:var(--parchment);
+    opacity:.88;
+    font-weight:400;
+  }
+
+  /* CTA — text button, plucked-string underline */
+  .cta{
+    position:relative;
+    display:inline-block;
+    font-family:var(--sans);
+    font-size:.76rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding-bottom:.6rem;
+  }
+  .cta::after{
+    content:'';
+    position:absolute; left:0; bottom:0; width:100%; height:1px;
+    background:currentColor;
+    transform-origin:center;
+  }
+  .cta:hover::after, .cta:focus-visible::after{
+    animation:twang .65s var(--ease);
+  }
+  @keyframes twang{
+    0%{transform:scaleY(1) translateY(0);}
+    20%{transform:scaleY(6) translateY(-2px);}
+    40%{transform:scaleY(4) translateY(2px);}
+    60%{transform:scaleY(2.4) translateY(-1px);}
+    80%{transform:scaleY(1.4) translateY(.5px);}
+    100%{transform:scaleY(1) translateY(0);}
+  }
+
+  .hero-progress{
+    position:absolute; left:clamp(1.25rem,4vw,3rem); right:clamp(1.25rem,4vw,3rem); bottom:1.6rem; z-index:5;
+    height:1px; background:rgba(251,248,242,.25);
+  }
+  .hero-progress-fill{
+    display:block; height:100%; width:20%;
+    background:var(--brass-soft);
+    transition:transform 1.6s var(--ease);
+  }
+
+  /* ============ ABOUT ============ */
+  .about{
+    max-width:640px; margin:0 auto;
+    padding:clamp(5.5rem,14vh,8.5rem) clamp(1.25rem,4vw,3rem) clamp(4rem,10vh,6rem);
+    text-align:center;
+  }
+  .about .eyebrow{text-align:center;}
+  .about-text{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(1.35rem, 2.6vw, 1.75rem);
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+
+  /* ============ STRING DIVIDER (signature element) ============ */
+  .string-divider{
+    display:flex; justify-content:center;
+    padding-bottom:clamp(3rem,8vh,5rem);
+  }
+  .string-divider svg{width:2px; height:96px; overflow:visible;}
+  .string-divider line{
+    stroke:var(--brass);
+    stroke-width:1;
+    stroke-dasharray:96;
+    stroke-dashoffset:96;
+    transition:stroke-dashoffset 1.4s var(--ease);
+  }
+  .string-divider.in-view line{stroke-dashoffset:0;}
+  .string-divider circle{
+    fill:var(--brass);
+    opacity:0;
+    transition:opacity .6s ease .9s;
+  }
+  .string-divider.in-view circle{opacity:1;}
+
+  /* ============ PROGRAM / EVENTS ============ */
+  .program{
+    padding:0 clamp(1.25rem,4vw,3rem) clamp(6rem,14vh,8.5rem);
+    max-width:1080px; margin:0 auto;
+  }
+  .program-row{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:.4rem 1.6rem;
+    align-items:baseline;
+    padding:2.2rem 0;
+    border-top:1px solid rgba(36,27,22,.15);
+    opacity:0; transform:translateY(18px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .program-row.in-view{opacity:1; transform:translateY(0);}
+  .program-row:last-child{border-bottom:1px solid rgba(36,27,22,.15);}
+  .numeral{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--wine);
+    align-self:start;
+    padding-top:.3rem;
+  }
+  .program-info h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.9rem, 4vw, 2.9rem);
+    line-height:1.05;
+  }
+  .program-sub{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    opacity:.65;
+    margin-top:.5rem;
+  }
+  .program-desc{
+    grid-column:2;
+    max-width:44ch;
+    font-size:.98rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin-top:.6rem;
+  }
+  @media (min-width: 780px){
+    .program-row{grid-template-columns:auto 1fr 1fr; column-gap:2.4rem;}
+    .program-desc{grid-column:3; margin-top:0; align-self:center; text-align:right; margin-left:auto;}
+  }
+
+  /* ============ REVIEWS ============ */
+  .reviews{
+    background:var(--ink);
+    color:var(--parchment);
+    padding:clamp(5.5rem,14vh,8rem) clamp(1.25rem,4vw,3rem);
+    text-align:center;
+    position:relative;
+  }
+  .review-carousel{
+    position:relative;
+    max-width:620px; margin:0 auto;
+    min-height:220px;
+  }
+  .review{
+    position:absolute; inset:0;
+    opacity:0; visibility:hidden;
+    transition:opacity .8s ease;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1.25rem;
+  }
+  .review.active{opacity:1; visibility:visible; position:relative;}
+  .stars{color:var(--brass-soft); font-size:.85rem; letter-spacing:.3em;}
+  .review-text{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.3rem, 3vw, 1.65rem);
+    line-height:1.55;
+    max-width:32ch;
+  }
+  .review-author{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass-soft);
+    opacity:.85;
+  }
+  .review-dots{
+    display:flex; justify-content:center; gap:.6rem; margin-top:2.6rem;
+  }
+  .review-dots button{
+    width:6px; height:6px; border-radius:50%;
+    background:rgba(251,248,242,.28);
+    transition:background .35s ease, transform .35s ease;
+  }
+  .review-dots button.active{background:var(--brass-soft); transform:scale(1.3);}
+
+  /* ============ FAQ ============ */
+  .faq{
+    max-width:680px; margin:0 auto;
+    padding:clamp(5.5rem,14vh,8rem) clamp(1.25rem,4vw,3rem) clamp(4rem,10vh,6rem);
+  }
+  .faq-item{border-bottom:1px solid rgba(36,27,22,.15);}
+  .faq-q{
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.5rem 0;
+    font-family:var(--serif);
+    font-size:clamp(1.15rem, 2.4vw, 1.4rem);
+    text-align:left;
+  }
+  .faq-icon{
+    position:relative; width:14px; height:14px; flex:0 0 auto; margin-left:1.2rem;
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:''; position:absolute; background:var(--wine);
+    top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .faq-icon::before{width:14px; height:1px;}
+  .faq-icon::after{width:1px; height:14px; transition:transform .4s var(--ease);}
+  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg) scale(0);}
+  .faq-a{
+    max-height:0; overflow:hidden;
+    transition:max-height .5s var(--ease);
+  }
+  .faq-a p{
+    padding-bottom:1.5rem;
+    font-size:.95rem; line-height:1.65; color:var(--ink-soft); max-width:52ch;
+  }
+
+  /* ============ FOOTER ============ */
+  .site-footer{
+    background:var(--wine-deep);
+    color:var(--white);
+    text-align:center;
+    padding:clamp(5rem,13vh,7.5rem) clamp(1.25rem,4vw,3rem) 2.2rem;
+  }
+  .site-footer .eyebrow{color:var(--brass-soft); text-align:center;}
+  .site-footer h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(2rem, 5vw, 3rem);
+    line-height:1.15;
+    max-width:16ch;
+    margin:0 auto 2.2rem;
+  }
+  .site-footer .cta{color:var(--parchment);}
+  .footer-bottom{
+    margin-top:clamp(4.5rem,11vh,6.5rem);
+    padding-top:1.8rem;
+    border-top:1px solid rgba(251,248,242,.14);
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+    gap:1.6rem 2rem;
+    font-size:.72rem; letter-spacing:.06em; color:rgba(251,248,242,.6);
+  }
+  .footer-bottom .wordmark.small{color:var(--parchment); mix-blend-mode:normal;}
+  .footer-social{display:flex; align-items:center; justify-content:center; gap:1.3rem;}
+  .footer-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:17px; height:17px; color:var(--parchment); opacity:.75;
+    transition:opacity .3s ease, transform .4s var(--ease);
+  }
+  .footer-social a:hover{opacity:1; transform:translateY(-2px);}
+  .footer-social svg{width:100%; height:100%;}
+
+  @media (min-width:640px){
+    .footer-bottom{justify-content:space-between; text-align:left;}
+  }
+
+</style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="#top" class="wordmark">The String Sisters</a>
+    <button class="menu-btn" id="menuOpen" aria-haspopup="true" aria-expanded="false" aria-controls="overlay-menu">
+      <span class="menu-btn-label">Menu</span>
+      <span class="menu-btn-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </header>
+
+  <nav id="overlay-menu" class="overlay-menu" aria-hidden="true">
+    <button class="overlay-close" id="menuClose" aria-label="Close menu">Close</button>
+    <ul class="overlay-links">
+      <li><a href="#connect" data-menu-link>Book Us</a></li>
+      <li><a href="#about" data-menu-link>About Us</a></li>
+      <li><a href="#faq" data-menu-link>FAQ</a></li>
+    </ul>
+    <div class="overlay-social">
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <section class="hero" id="hero">
+      <div class="hero-slides">
+        <div class="slide" style="background-image:url('image/slides/1.webp')"></div>
+        <div class="slide" style="background-image:url('image/slides/2.webp')"></div>
+        <div class="slide" style="background-image:url('image/slides/3.webp')"></div>
+        <div class="slide" style="background-image:url('image/slides/4.webp')"></div>
+        <div class="slide" style="background-image:url('image/slides/5.webp')"></div>
+      </div>
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Harp &amp; Cello — Live</p>
+        <h1>The String Sisters</h1>
+        <p class="hero-sub">Ceremony music, cocktail hour, and celebrations — arranged for two instruments, played live.</p>
+        <a class="cta" href="#connect">Inquire About Booking &amp; Availability</a>
+      </div>
+      <div class="hero-progress" aria-hidden="true"><span class="hero-progress-fill" id="heroProgress"></span></div>
+    </section>
+
+    <section class="about" id="about">
+      <p class="eyebrow">Two Instruments, One Voice</p>
+      <p class="about-text">The String Sisters pair harp and cello for weddings and events across Toronto and the GTA — live arrangements, thoughtfully built around your day, from processional to last dance.</p>
+    </section>
+
+    <div class="string-divider" aria-hidden="true">
+      <svg viewBox="0 0 2 96"><circle cx="1" cy="2" r="2.5"/><line x1="1" y1="0" x2="1" y2="96"/><circle cx="1" cy="94" r="2.5"/></svg>
+    </div>
+
+    <section class="program" id="program">
+      <p class="eyebrow center">The Program</p>
+
+      <div class="program-row">
+        <span class="numeral">I.</span>
+        <div class="program-info">
+          <h3>Weddings</h3>
+          <p class="program-sub">Ceremony &amp; Cocktail Hour</p>
+        </div>
+        <p class="program-desc">From the processional to the final toast, arranged for harp and cello and paced to the moments of your day.</p>
+      </div>
+
+      <div class="program-row">
+        <span class="numeral">II.</span>
+        <div class="program-info">
+          <h3>Corporate Events</h3>
+          <p class="program-sub">Galas &amp; Receptions</p>
+        </div>
+        <p class="program-desc">Refined live music for the room — welcome receptions, award dinners, and evenings that call for something more than a playlist.</p>
+      </div>
+
+      <div class="program-row">
+        <span class="numeral">III.</span>
+        <div class="program-info">
+          <h3>Special Occasions</h3>
+          <p class="program-sub">Private &amp; Milestone</p>
+        </div>
+        <p class="program-desc">Anniversaries, vow renewals, and celebrations worth marking properly, with music chosen for the people in the room.</p>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <p class="eyebrow center light">In Their Words</p>
+      <div class="review-carousel" id="reviewCarousel">
+        <div class="review active">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">They read the room perfectly — soft and unobtrusive during dinner, then somehow had the whole tent singing by the last song.</p>
+          <p class="review-author">Wedding, Graydon Hall</p>
+        </div>
+        <div class="review">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">Every guest asked who was playing. The cocktail hour arrangements felt like they were written just for us.</p>
+          <p class="review-author">Wedding, Casa Loma</p>
+        </div>
+        <div class="review">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">Professional from the first email to the last note. Exactly the tone we wanted for a room full of clients.</p>
+          <p class="review-author">Corporate Gala, Toronto</p>
+        </div>
+      </div>
+      <div class="review-dots" id="reviewDots"></div>
+    </section>
+
+    <section class="faq" id="faq">
+      <p class="eyebrow">FAQ</p>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you take song requests?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Yes — we build a custom repertoire around the music you love, alongside our arranged catalogue for ceremony and cocktail hour.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How much space do you need?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Very little. An area roughly six by six feet keeps both instruments comfortable, indoors or out.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How far do you travel?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>We're based in Toronto and travel throughout the GTA and beyond for the right occasion.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="connect">
+    <p class="eyebrow">Let's Talk</p>
+    <h2>Inquire About Booking &amp; Availability</h2>
+    <a class="cta" href="mailto:hello@thestringsisters.com">hello@thestringsisters.com</a>
+
+    <div class="footer-bottom">
+      <span class="wordmark small">The String Sisters</span>
+      <div class="footer-social">
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+      </div>
+      <span class="copyright">© 2026 The String Sisters. Toronto &amp; the GTA.</span>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Overlay menu ---- */
+  var menuOpen = document.getElementById('menuOpen');
+  var menuClose = document.getElementById('menuClose');
+  var overlay = document.getElementById('overlay-menu');
+  var menuLinks = overlay.querySelectorAll('[data-menu-link]');
+
+  function openMenu(){
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden','false');
+    menuOpen.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    menuClose.focus();
+  }
+  function closeMenu(){
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden','true');
+    menuOpen.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    menuOpen.focus();
+  }
+  menuOpen.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuLinks.forEach(function(l){ l.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
+  });
+
+  /* ---- Hero carousel ---- */
+  var slides = document.querySelectorAll('.hero .slide');
+  var progressFill = document.getElementById('heroProgress');
+  var current = 0;
+  var interval = 6000;
+  var timer;
+
+  function showSlide(i){
+    slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+    if(progressFill){
+      progressFill.style.transform = 'scaleX(1)';
+      progressFill.style.width = (100/slides.length) + '%';
+      progressFill.style.transformOrigin = 'left';
+      progressFill.getBoundingClientRect();
+      progressFill.style.transform = 'translateX(' + (i * 100) + '%)';
+    }
+  }
+  function nextSlide(){
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+  if(slides.length){
+    showSlide(0);
+    if(!reduceMotion){
+      timer = setInterval(nextSlide, interval);
+    }
+  }
+
+  /* ---- Scroll reveals ---- */
+  var revealTargets = document.querySelectorAll('.string-divider, .program-row');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .3 });
+    revealTargets.forEach(function(t){ io.observe(t); });
+  } else {
+    revealTargets.forEach(function(t){ t.classList.add('in-view'); });
+  }
+
+  /* ---- Reviews carousel ---- */
+  var reviews = document.querySelectorAll('.review');
+  var dotsWrap = document.getElementById('reviewDots');
+  var rIndex = 0;
+  var rTimer;
+
+  reviews.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Show review ' + (i+1));
+    if(i === 0) b.classList.add('active');
+    b.addEventListener('click', function(){ goToReview(i); resetReviewTimer(); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = dotsWrap.querySelectorAll('button');
+
+  function goToReview(i){
+    reviews.forEach(function(r, idx){ r.classList.toggle('active', idx === i); });
+    dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+    rIndex = i;
+  }
+  function nextReview(){ goToReview((rIndex + 1) % reviews.length); }
+  function resetReviewTimer(){
+    clearInterval(rTimer);
+    if(!reduceMotion) rTimer = setInterval(nextReview, 7000);
+  }
+  if(reviews.length) resetReviewTimer();
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        if(o !== item){
+          o.classList.remove('open');
+          o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      panel.style.maxHeight = !isOpen ? panel.scrollHeight + 'px' : null;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
