@@ -27,6 +27,7 @@
 
     --serif: 'Cormorant Garamond', 'Times New Roman', serif;
     --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --symbols: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Noto Sans Symbols', sans-serif;
 
     --ease: cubic-bezier(.22,.68,0,1);
     --dur: .9s;
@@ -354,6 +355,7 @@
   }
   .marquee-dot{
     display:inline-block;
+    font-family:var(--symbols);
     color:var(--brass-soft);
     font-size:.55rem;
     opacity:.7;
@@ -381,7 +383,7 @@
     gap:1.25rem;
   }
   .review.active{opacity:1; visibility:visible; position:relative;}
-  .stars{color:var(--brass-soft); font-size:.85rem; letter-spacing:.3em;}
+  .stars{font-family:var(--symbols); color:var(--brass-soft); font-size:.85rem; letter-spacing:.3em;}
   .review-text{
     font-family:var(--serif);
     font-style:italic;
@@ -515,16 +517,22 @@
   <main id="top">
 
     <section class="hero" id="hero">
-      <!-- Replace each data-src below with your own photography (recommend 1920px+ wide .webp or .jpg).
+      <!-- Photos load from /header/header1.webp .. header11.webp (root-level "header" folder).
            Slides preload in the script at the bottom of the page; if a file is missing or fails to
            load, that slide is skipped automatically and the gradient behind it is shown instead —
            the hero will never appear blank. -->
       <div class="hero-slides" id="heroSlides">
-        <div class="slide" data-src="images/slides/1.webp"></div>
-        <div class="slide" data-src="images/slides/2.webp"></div>
-        <div class="slide" data-src="images/slides/3.webp"></div>
-        <div class="slide" data-src="images/slides/4.webp"></div>
-        <div class="slide" data-src="images/slides/5.webp"></div>
+        <div class="slide" data-src="/header/header1.webp"></div>
+        <div class="slide" data-src="/header/header2.webp"></div>
+        <div class="slide" data-src="/header/header3.webp"></div>
+        <div class="slide" data-src="/header/header4.webp"></div>
+        <div class="slide" data-src="/header/header5.webp"></div>
+        <div class="slide" data-src="/header/header6.webp"></div>
+        <div class="slide" data-src="/header/header7.webp"></div>
+        <div class="slide" data-src="/header/header8.webp"></div>
+        <div class="slide" data-src="/header/header9.webp"></div>
+        <div class="slide" data-src="/header/header10.webp"></div>
+        <div class="slide" data-src="/header/header11.webp"></div>
       </div>
       <div class="hero-veil"></div>
       <div class="hero-content">
@@ -740,19 +748,33 @@
   }
   if(allSlides.length){
     var pending = allSlides.length;
+    var settled = false;
+    /* Safety net: even if a browser never fires load/error for some reason,
+       don't let the hero sit blank forever — start with whatever loaded. */
+    var forceStart = setTimeout(function(){
+      if(!settled){ settled = true; startCarousel(); }
+    }, 4000);
+    var maybeStart = function(){
+      pending--;
+      if(pending === 0 && !settled){
+        settled = true;
+        clearTimeout(forceStart);
+        startCarousel();
+      }
+    };
     allSlides.forEach(function(slideEl){
       var src = slideEl.getAttribute('data-src');
-      if(!src){ pending--; if(pending === 0) startCarousel(); return; }
+      if(!src){ maybeStart(); return; }
       var img = new Image();
       img.onload = function(){
         slideEl.style.backgroundImage = "url('" + src + "')";
         slides.push(slideEl);
-        pending--;
-        if(pending === 0) startCarousel();
+        console.log('[hero] loaded:', src);
+        maybeStart();
       };
       img.onerror = function(){
-        pending--;
-        if(pending === 0) startCarousel();
+        console.error('[hero] FAILED to load (check the file exists at this exact path/case):', src);
+        maybeStart();
       };
       img.src = src;
     });
