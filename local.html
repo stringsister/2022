@@ -4,8 +4,6 @@
   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#251720">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!-- ============ PRIMARY SEO ============ -->
 <title>Live Wedding &amp; Event Musicians in Toronto | The StringSisters</title>
 <meta name="description" content="Live harp &amp; cello music for weddings &amp; special events in Toronto &amp; the GTA, incl. Newmarket, Bradford, Arlington Estate &amp; Aurora. Check dates, book today.">
@@ -937,9 +935,34 @@
   }
   .footer-social svg{width:16px; height:16px; flex:none;}
 
+  /* ============ SAFARI STATUS-BAR COLOUR PROBE ============
+     iOS 26 Safari ("Liquid Glass") no longer reads <meta name="theme-color">
+     at all. Instead it samples the *computed background-color* of a fixed/
+     sticky element pinned to the viewport edge at first paint, falling back
+     to <body>'s background if none is found. Our real header is
+     intentionally transparent on load (so the hero photo shows through),
+     which means Safari was falling all the way back to <body>'s
+     --parchment colour instead of our ink brand colour.
+     This element exists purely to give Safari something solid to sample.
+     It's pinned only to the safe-area/notch strip at the very top, so on
+     notched/Dynamic-Island phones it sits behind the sensor housing and is
+     effectively invisible; it does not affect the transparent-over-hero
+     look of the visible nav bar below it. It has no content and is
+     hidden from assistive tech and pointer events. */
+  .safari-theme-probe{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:env(safe-area-inset-top, 0px);
+    background-color:var(--ink);
+    z-index:65;
+    pointer-events:none;
+  }
+
 </style>
 </head>
 <body>
+
+  <div class="safari-theme-probe" aria-hidden="true"></div>
 
   <header class="site-nav">
     <a href="#top" class="wordmark">The StringSisters</a>
