@@ -3,15 +3,14 @@
 <head>
   
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- ============ PRIMARY SEO ============ -->
 <title>Live Wedding &amp; Event Musicians in Toronto | The StringSisters</title>
 <meta name="description" content="Live harp &amp; cello music for weddings &amp; special events in Toronto &amp; the GTA, incl. Newmarket, Bradford, Arlington Estate &amp; Aurora. Check dates, book today.">
 <meta name="keywords" content="live music for special event Toronto, live music for special event GTA, live wedding music Toronto, harp and cello duo GTA, Toronto wedding musicians, corporate event musicians Toronto, Newmarket wedding musicians, Newmarket live music, Bradford wedding music, Bradford live music, Arlington Estate live music, Arlington Estate wedding musicians, The Arlington Estate Vaughan musicians, King City wedding musicians, Aurora wedding musicians, Vaughan live music, Richmond Hill event musicians, harp and cello duo Ontario, ceremony musicians GTA, cocktail hour musicians Toronto">
 <meta name="author" content="The StringSisters">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#251720" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#251720" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#251720">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="StringSisters">
@@ -937,30 +936,37 @@
   .footer-social svg{width:16px; height:16px; flex:none;}
 
   /* ============ SAFARI STATUS-BAR COLOUR PROBE ============
-     iOS 26 Safari ("Liquid Glass") no longer reads <meta name="theme-color">
-     at all. Instead it samples the *computed background-color* of a fixed/
-     sticky element pinned to the viewport edge at first paint, falling back
-     to <body>'s background if none is found. Our real header is
-     intentionally transparent on load (so the hero photo shows through),
-     which means Safari was falling all the way back to <body>'s
-     --parchment colour instead of our ink brand colour.
-     This element exists purely to give Safari something solid to sample.
-     It's pinned only to the safe-area/notch strip at the very top, so on
-     notched/Dynamic-Island phones it sits behind the sensor housing and is
-     effectively invisible; it does not affect the transparent-over-hero
-     look of the visible nav bar below it. It has no content and is
-     hidden from assistive tech and pointer events. */
+     iOS/iPadOS 26 Safari ("Liquid Glass") ignores <meta name="theme-color">
+     entirely. It colours its chrome from the <body> background-color,
+     UNLESS a position:fixed, full-width element sits at the very top of
+     the page with its own background-color — in which case that element's
+     colour wins. Our real header is intentionally transparent on load (so
+     the hero photo shows through), so without this probe Safari fell back
+     to <body>'s --parchment colour instead of our ink brand colour.
+
+     Two requirements Safari enforces, both previously unmet here:
+     1) the element needs env(safe-area-inset-top) to resolve — that
+        requires "viewport-fit=cover" on the viewport meta tag (added
+        above). Without it, the inset is always 0.
+     2) Safari only accepts a fixed element as its colour source if it's
+        at least ~6px tall. The old fallback (2px) was below that
+        threshold, so on any run where the inset resolved to 0 the probe
+        was invisible to Safari's detection, not just to the user.
+
+     This element is pinned to the notch/status-bar strip only, so on
+     notched/Dynamic-Island phones it sits fully behind the sensor
+     housing and is invisible; on other screens it's an 8px sliver of
+     brand colour at the very top edge. No content, no pointer events,
+     hidden from assistive tech. */
 .safari-theme-probe {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: max(2px, env(safe-area-inset-top));
+  height: max(8px, env(safe-area-inset-top));
   background-color: #251720;
   z-index: 9999;
   pointer-events: none;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 </style>
