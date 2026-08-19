@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The String Sisters — Harp &amp; Cello, Live</title>
+<meta name="description" content="Live harp and cello duo for weddings, corporate events, and special occasions across Toronto and the GTA.">
+<meta name="theme-color" content="#241B16">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23241B16'/%3E%3Ctext x='50' y='64' font-size='44' font-family='Georgia,serif' fill='%23F0E9DC' text-anchor='middle' font-style='italic'%3ESS%3C/text%3E%3C/svg%3E">
+<!-- Preload first hero slide only -->
+<link rel="preload" as="image" href="header/header1.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#241B16;
+    --ink-soft:#3A2C24;
+    --parchment:#F1EADC;
+    --parchment-2:#E7DCC7;
+    --white:#FBF8F2;
+    --wine:#6E2A3A;
+    --wine-deep:#3F1620;
+    --brass:#A8834A;
+    --brass-soft:#C7A66C;
+
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --symbols: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Noto Sans Symbols', sans-serif;
+
+    --ease: cubic-bezier(.22,.68,0,1);
+    --dur: .9s;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    overscroll-behavior-y:none;
+  }
+
+  a{color:inherit; text-decoration:none; -webkit-touch-callout:none;}
+  img{display:block; max-width:100%;}
+  button{font:inherit; background:none; border:none; cursor:pointer; color:inherit; touch-action:manipulation;}
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.68rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--wine);
+    margin-bottom:1.1rem;
+  }
+  .eyebrow.center{text-align:center;}
+  .eyebrow.light{color:var(--brass-soft);}
+
+  :focus-visible{
+    outline:1px solid var(--brass);
+    outline-offset:4px;
+  }
+
+  /* ============ NAV ============ */
+  .site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:calc(1.6rem + env(safe-area-inset-top)) clamp(1.25rem, 4vw, 3rem) 1.6rem;
+    color:var(--white);
+    background-color:transparent;
+    transition:background-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s var(--ease);
+  }
+  /* On scroll, the nav settles into the same solid ink tone as the reviews
+     section, so hero and reviews read as one continuous dark theme. */
+  .site-nav.scrolled{
+    background-color:var(--ink);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    padding-top:calc(1rem + env(safe-area-inset-top));
+    padding-bottom:1rem;
+    box-shadow:0 1px 0 rgba(240,233,220,.08);
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.15rem;
+    letter-spacing:.02em;
+  }
+  .menu-btn{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    padding:.9rem; margin:-.9rem;
+    transition:opacity .3s ease;
+  }
+  .menu-btn:hover{opacity:.7;}
+  .menu-btn-lines{
+    display:flex; flex-direction:column; gap:6px; width:24px;
+  }
+  .menu-btn-lines span{
+    display:block; height:1px; width:100%; background:currentColor;
+    transition:transform .5s var(--ease), opacity .3s ease, width .4s var(--ease);
+  }
+  .menu-btn-lines span:last-child{width:70%; align-self:flex-end;}
+  .menu-btn:hover .menu-btn-lines span:last-child{width:100%;}
+
+  /* ============ OVERLAY MENU ============ */
+  .overlay-menu{
+    position:fixed; inset:0; z-index:80;
+    background:var(--ink);
+    color:var(--white);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(2.5rem, 6vh, 4rem);
+    opacity:0; visibility:hidden;
+    transition:opacity .6s var(--ease), visibility 0s linear .6s;
+  }
+  .overlay-menu.is-open{
+    opacity:1; visibility:visible;
+    transition:opacity .6s var(--ease), visibility 0s linear 0s;
+  }
+  .overlay-close{
+    position:absolute; top:calc(1.65rem + env(safe-area-inset-top)); right:clamp(1.25rem, 4vw, 3rem);
+    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
+    color:var(--white);
+    padding:.9rem 1rem; margin:-.9rem -1rem;
+  }
+  .overlay-links{
+    list-style:none;
+    display:flex; flex-direction:column; align-items:center; gap:1.1rem;
+    text-align:center;
+  }
+  .overlay-links a{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(2.2rem, 7vw, 3.4rem);
+    font-weight:400;
+    color:var(--parchment);
+    position:relative;
+    transition:color .4s ease;
+  }
+  .overlay-links a:hover, .overlay-links a:focus-visible{color:var(--brass-soft);}
+
+  .overlay-social{
+    display:flex; align-items:center; justify-content:center; gap:1.6rem;
+  }
+  .overlay-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:20px; height:20px;
+    color:var(--parchment);
+    opacity:.75;
+    transition:opacity .3s ease, transform .4s var(--ease);
+  }
+  .overlay-social a:hover{opacity:1; transform:translateY(-2px);}
+  .overlay-social svg{width:100%; height:100%;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    height:100svh; min-height:560px;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-slides{position:absolute; inset:0; background:linear-gradient(160deg, var(--wine-deep), var(--ink) 60%, var(--wine-deep));}
+  .slide{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    opacity:0;
+    transform:scale(1.08);
+    transition:opacity 1.6s ease, transform 7s linear;
+  }
+  .slide.active{opacity:1; transform:scale(1);}
+  /* Elegant fallback texture shown behind each slide until its photo has loaded,
+     and permanently if the photo fails — the hero is never blank. */
+  .slide::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(120% 90% at 50% 15%, rgba(199,166,108,.16), transparent 60%),
+      linear-gradient(155deg, var(--wine-deep) 0%, var(--ink) 55%, var(--wine-deep) 100%);
+    z-index:-1;
+  }
+  .hero-veil{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(36,27,22,.15) 0%, rgba(36,27,22,.05) 38%, rgba(36,27,22,.72) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:5;
+    width:100%;
+    padding:0 clamp(1.25rem, 4vw, 3rem) clamp(2.75rem, 7vh, 4rem);
+    color:var(--white);
+    text-align:center;
+  }
+  .hero-content .eyebrow{color:var(--brass-soft); text-align:center;}
+  .hero h1{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(2.8rem, 8.5vw, 5.6rem);
+    line-height:1;
+    letter-spacing:.005em;
+  }
+  .hero-sub{
+    max-width:34ch; margin:1.35rem auto 2.4rem;
+    font-size:clamp(.95rem, 1.6vw, 1.05rem);
+    line-height:1.65;
+    color:var(--parchment);
+    opacity:.88;
+    font-weight:400;
+  }
+
+  /* CTA — pill button, plucked-string underline, subtle arrow */
+  .cta{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    font-family:var(--sans);
+    font-size:.76rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:1rem 1.6rem;
+    border:1px solid currentColor;
+    border-radius:999px;
+    -webkit-tap-highlight-color:transparent;
+    transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease), transform .3s var(--ease);
+  }
+  .hero-content .cta{color:var(--white);}
+  .hero-content .cta:hover, .hero-content .cta:focus-visible, .hero-content .cta:active{
+    background:var(--brass-soft);
+    border-color:var(--brass-soft);
+    color:var(--ink);
+  }
+  .cta-arrow{
+    display:inline-block; width:13px; height:9px; flex:0 0 auto;
+    transition:transform .45s var(--ease);
+  }
+  .cta:hover .cta-arrow, .cta:focus-visible .cta-arrow, .cta:active .cta-arrow{
+    transform:translateX(4px);
+  }
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ============ HERO MARQUEE — occasions banner ============
+     A quiet drift of occasions folded into the base of the hero itself,
+     so the page opens on one unbroken beat: image, headline, then this.
+     A fixed "Live Music For" label anchors the eye on the left (centered
+     above on small screens) so the row reads as a caption, not a ticker —
+     the moving list is a supporting detail, not the main event. A hairline
+     + soft gradient separate it from the photo without a hard edge, and
+     the mask fades both sides of the scroll so the loop point never reads
+     as a cut. Pauses on hover/focus and whenever the tab is hidden. */
+  .hero-marquee{
+    position:absolute;
+    left:0; right:0; bottom:0; z-index:6;
+    overflow:hidden;
+    padding:1rem 0 calc(1.1rem + env(safe-area-inset-bottom));
+    border-top:1px solid rgba(240,233,220,.14);
+    background:linear-gradient(180deg, rgba(36,27,22,0) 0%, rgba(36,27,22,.5) 45%, rgba(36,27,22,.74) 100%);
+  }
+  .hero-marquee-inner{
+    display:flex;
+    align-items:center;
+    gap:clamp(1.2rem, 3vw, 2.5rem);
+    max-width:1360px;
+    margin:0 auto;
+    padding:0 clamp(1.25rem, 4vw, 3rem);
+  }
+  .hero-marquee-label{
+    flex:none;
+    display:flex;
+    align-items:center;
+    gap:clamp(1.2rem, 3vw, 2.5rem);
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(.85rem, 1.3vw, .97rem);
+    letter-spacing:.01em;
+    color:var(--brass-soft);
+    white-space:nowrap;
+  }
+  .hero-marquee-label::after{
+    content:'';
+    width:1px;
+    height:1.15em;
+    background:rgba(240,233,220,.22);
+  }
+  .hero-marquee-viewport{
+    flex:1 1 auto;
+    min-width:0;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .hero-marquee-track{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    gap:clamp(1.3rem, 2.6vw, 2rem);
+    padding-right:clamp(1.3rem, 2.6vw, 2rem);
+    animation:program-marquee-scroll 62s linear infinite;
+    will-change:transform;
+  }
+  @media (min-width: 700px){
+    .hero-marquee-track{ animation-duration:80s; }
+  }
+  .hero-marquee:hover .hero-marquee-track,
+  .hero-marquee:focus-within .hero-marquee-track{
+    animation-play-state:paused;
+  }
+  @keyframes program-marquee-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .hero-marquee-item{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:.71rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:var(--parchment);
+    opacity:.6;
+    white-space:nowrap;
+    transition:opacity .3s var(--ease);
+  }
+  .hero-marquee:hover .hero-marquee-item{ opacity:.8; }
+  .hero-marquee-dot{
+    display:inline-block;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:var(--brass-soft);
+    opacity:.55;
+  }
+  @media (max-width: 640px){
+    .hero-marquee-inner{
+      flex-direction:column;
+      align-items:center;
+      gap:.6rem;
+      padding:0 clamp(1rem, 6vw, 1.5rem);
+    }
+    .hero-marquee-label{ gap:0; }
+    .hero-marquee-label::after{ display:none; }
+    .hero-marquee-viewport{ width:100%; }
+    /* Stacking the label above the scroll makes this banner roughly
+       1.5rem taller than the old single-row version. .hero-content's
+       bottom padding is what keeps the CTA clear of it (the marquee is
+       position:absolute over the hero), so it needs the same bump here
+       or the button and the banner start to overlap on short screens. */
+    .hero-content{
+      padding-bottom:clamp(4.75rem, 15vh, 6.25rem);
+    }
+  }
+
+  /* ============ REVIEWS ============ */
+  .reviews{
+    background:var(--ink);
+    color:var(--parchment);
+    padding:clamp(5.5rem,14vh,8rem) clamp(1.25rem,4vw,3rem);
+    text-align:center;
+    position:relative;
+    opacity:0; transform:translateY(14px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .reviews.in-view{opacity:1; transform:translateY(0);}
+  .review-carousel{
+    position:relative;
+    max-width:620px; margin:0 auto;
+    min-height:220px;
+  }
+  .review{
+    position:absolute; inset:0;
+    opacity:0; visibility:hidden;
+    transition:opacity .8s ease;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1.25rem;
+  }
+  .review.active{opacity:1; visibility:visible; position:relative;}
+  .stars{font-family:var(--symbols); color:var(--brass-soft); font-size:.85rem; letter-spacing:.3em;}
+  .review-text{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.3rem, 3vw, 1.65rem);
+    line-height:1.55;
+    max-width:32ch;
+  }
+  .review-author{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass-soft);
+    opacity:.85;
+  }
+  .review-dots{
+    display:flex; justify-content:center; gap:.6rem; margin-top:2.6rem;
+  }
+  .review-dots button{
+    width:6px; height:6px; border-radius:50%;
+    background:rgba(251,248,242,.28);
+    transition:background .35s ease, transform .35s ease;
+  }
+  .review-dots button.active{background:var(--brass-soft); transform:scale(1.3);}
+
+  /* ============ FAQ ============ */
+  .faq{
+    max-width:680px; margin:0 auto;
+    padding:clamp(5.5rem,14vh,8rem) clamp(1.25rem,4vw,3rem) clamp(4rem,10vh,6rem);
+  }
+  .faq-item{border-bottom:1px solid rgba(36,27,22,.15);}
+  .faq-q{
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.5rem 0;
+    font-family:var(--serif);
+    font-size:clamp(1.15rem, 2.4vw, 1.4rem);
+    text-align:left;
+  }
+  .faq-icon{
+    position:relative; width:14px; height:14px; flex:0 0 auto; margin-left:1.2rem;
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:''; position:absolute; background:var(--wine);
+    top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .faq-icon::before{width:14px; height:1px;}
+  .faq-icon::after{width:1px; height:14px; transition:transform .4s var(--ease);}
+  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg) scale(0);}
+  .faq-a{
+    max-height:0; overflow:hidden;
+    transition:max-height .5s var(--ease);
+  }
+  .faq-a p{
+    padding-bottom:1.5rem;
+    font-size:.95rem; line-height:1.65; color:var(--ink-soft); max-width:52ch;
+  }
+
+  /* ============ FOOTER ============
+     Matches the FAQ section's light parchment theme, so everything below
+     the reviews carousel reads as one continuous light half of the page. */
+  .site-footer{
+    background:var(--parchment);
+    color:var(--ink);
+    text-align:center;
+    padding:clamp(3rem,8vh,4.5rem) clamp(1.25rem,4vw,3rem) clamp(3rem,7vh,4rem);
+  }
+  .site-footer .eyebrow{color:var(--wine); text-align:center;}
+  .site-footer h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(2rem, 5vw, 3rem);
+    line-height:1.15;
+    max-width:16ch;
+    margin:0 auto 2.2rem;
+  }
+  .site-footer .cta{color:var(--ink);}
+  .site-footer .cta:hover, .site-footer .cta:focus-visible, .site-footer .cta:active{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--parchment);
+  }
+  .footer-bottom{
+    margin-top:clamp(3.5rem,9vh,5rem);
+    padding-top:1.8rem;
+    border-top:1px solid rgba(36,27,22,.14);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1.1rem;
+    font-size:.72rem; letter-spacing:.06em; color:rgba(36,27,22,.6);
+  }
+  .footer-social{display:flex; align-items:center; justify-content:center; gap:1.3rem;}
+  .footer-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:17px; height:17px; color:var(--ink); opacity:.65;
+    transition:opacity .3s ease, transform .4s var(--ease);
+  }
+  .footer-social a:hover{opacity:1; transform:translateY(-2px);}
+  .footer-social svg{width:100%; height:100%;}
+
+</style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="#top" class="wordmark">The String Sisters</a>
+    <button class="menu-btn" id="menuOpen" aria-haspopup="true" aria-expanded="false" aria-controls="overlay-menu" aria-label="Open menu">
+      <span class="menu-btn-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </header>
+
+  <nav id="overlay-menu" class="overlay-menu" aria-hidden="true">
+    <button class="overlay-close" id="menuClose" aria-label="Close menu">Close</button>
+    <ul class="overlay-links">
+      <li><a href="/bookings" data-menu-link>Book Us</a></li>
+      <li><a href="#reviews" data-menu-link>Reviews</a></li>
+      <li><a href="#faq" data-menu-link>FAQ</a></li>
+    </ul>
+    <div class="overlay-social">
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <section class="hero" id="hero">
+      <!-- Photos load from header/header1.webp .. header11.webp (relative "header" folder next to this page).
+           Only the first slide is fetched eagerly (fetchpriority="high" + the <link rel="preload">
+           in <head>); the rest use loading="lazy" so they don't compete with it for bandwidth. -->
+      <div class="hero-slides" id="heroSlides">
+        <img class="slide" src="header/header1.webp" alt="The String Sisters performing live on harp and cello at a Toronto wedding" fetchpriority="high" decoding="async">
+        <img class="slide" src="header/header2.webp" alt="Harp and cello duo playing during a ceremony" loading="lazy" decoding="async">
+        <img class="slide" src="header/header3.webp" alt="Close-up of harp strings being played" loading="lazy" decoding="async">
+        <img class="slide" src="header/header4.webp" alt="Cellist performing at a corporate event" loading="lazy" decoding="async">
+        <img class="slide" src="header/header5.webp" alt="The String Sisters performing together at an evening event" loading="lazy" decoding="async">
+        <img class="slide" src="header/header6.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+        <img class="slide" src="header/header7.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+        <img class="slide" src="header/header8.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+        <img class="slide" src="header/header9.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+        <img class="slide" src="header/header10.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+        <img class="slide" src="header/header11.webp" alt="The String Sisters performing live" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Harp &amp; Cello Duo</p>
+        <h1>The StringSisters</h1>
+        <p class="hero-sub">    Thoughtfully performed live music to create a beautiful atmosphere for every special occasion.</p>
+        <a class="cta" href="/bookings">
+          <span>Inquire About Booking &amp; Availability</span>
+          <svg class="cta-arrow" viewBox="0 0 13 9" fill="none" aria-hidden="true"><path d="M0 4.5h11.5M7.5 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="hero-marquee-inner">
+          <span class="hero-marquee-label">Live Music For</span>
+          <div class="hero-marquee-viewport">
+        <div class="hero-marquee-track" id="programMarquee">
+          <span class="hero-marquee-item">Weddings</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Anniversaries</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Birthdays</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Celebrations of Life</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Engagement Parties</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Corporate Events</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Cocktail Hours</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Vow Renewals</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Bridal Showers</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Holiday Parties</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Galas &amp; Fundraisers</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Private Dinners</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Graduations</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Milestone Celebrations</span>
+          <span class="hero-marquee-dot"></span>
+          <!-- duplicate set — enables the seamless 50% loop -->
+          <span class="hero-marquee-item">Weddings</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Anniversaries</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Birthdays</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Celebrations of Life</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Engagement Parties</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Corporate Events</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Cocktail Hours</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Vow Renewals</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Bridal Showers</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Holiday Parties</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Galas &amp; Fundraisers</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Private Dinners</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Graduations</span>
+          <span class="hero-marquee-dot"></span>
+          <span class="hero-marquee-item">Milestone Celebrations</span>
+          <span class="hero-marquee-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sr-only">Live music for weddings, anniversaries, birthdays, celebrations of life, engagement parties, corporate events, cocktail hours, vow renewals, bridal showers, holiday parties, galas &amp; fundraisers, private dinners, graduations, and milestone celebrations of every kind.</p>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <p class="eyebrow center light">In Their Words</p>
+      <div class="review-carousel" id="reviewCarousel">
+        <div class="review active">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">They read the room perfectly — soft and unobtrusive during dinner, then somehow had the whole tent singing by the last song.</p>
+          <p class="review-author">Wedding, Graydon Hall</p>
+        </div>
+        <div class="review">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">Every guest asked who was playing. The cocktail hour arrangements felt like they were written just for us.</p>
+          <p class="review-author">Wedding, Casa Loma</p>
+        </div>
+        <div class="review">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">Professional from the first email to the last note. Exactly the tone we wanted for a room full of clients.</p>
+          <p class="review-author">Corporate Gala, Toronto</p>
+        </div>
+      </div>
+      <div class="review-dots" id="reviewDots"></div>
+    </section>
+
+    <section class="faq" id="faq">
+      <p class="eyebrow">FAQ</p>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you take song requests?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Yes — we build a custom repertoire around the music you love, alongside our arranged catalogue for ceremony and cocktail hour.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How much space do you need?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Very little. An area roughly six by six feet keeps both instruments comfortable, indoors or out.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How far do you travel?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>We're based in Toronto and travel throughout the GTA and beyond for the right occasion.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="connect">
+    <p class="eyebrow">Let's Talk</p>
+    <h2>Inquire About Booking &amp; Availability</h2>
+    <a class="cta" href="/bookings">
+      <span>Check Availability</span>
+      <svg class="cta-arrow" viewBox="0 0 13 9" fill="none" aria-hidden="true"><path d="M0 4.5h11.5M7.5 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+      </div>
+      <span class="copyright">© 2026 The String Sisters. Toronto &amp; the GTA.</span>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Overlay menu ---- */
+  var menuOpen = document.getElementById('menuOpen');
+  var menuClose = document.getElementById('menuClose');
+  var overlay = document.getElementById('overlay-menu');
+  var menuLinks = overlay.querySelectorAll('[data-menu-link]');
+
+  function openMenu(){
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden','false');
+    menuOpen.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    menuClose.focus();
+  }
+  function closeMenu(){
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden','true');
+    menuOpen.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    menuOpen.focus();
+  }
+  menuOpen.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuLinks.forEach(function(l){ l.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
+  });
+  /* Close on any tap/click inside the overlay that isn't one of the menu links themselves
+     (backdrop, close button, and social icons all dismiss the menu). */
+  overlay.addEventListener('click', function(e){
+    if(!e.target.closest('[data-menu-link]')){
+      closeMenu();
+    }
+  });
+
+  /* ---- Hero carousel ---- */
+  var slides = document.querySelectorAll('.hero .slide');
+  var current = 0;
+  var interval = 6000;
+  var timer;
+
+  function showSlide(i){
+    slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+  }
+  function nextSlide(){
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+  if(slides.length){
+    showSlide(0);
+    if(slides.length > 1 && !reduceMotion){
+      timer = setInterval(nextSlide, interval);
+    }
+  }
+
+  /* ---- Scroll reveals ---- */
+  /* ---- Solid nav on scroll ---- */
+  var siteNav = document.querySelector('.site-nav');
+  if(siteNav){
+    var navToggle = function(){
+      siteNav.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    navToggle();
+    window.addEventListener('scroll', navToggle, { passive: true });
+  }
+
+  var revealTargets = document.querySelectorAll('.reviews');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .3 });
+    revealTargets.forEach(function(t){ io.observe(t); });
+  } else {
+    revealTargets.forEach(function(t){ t.classList.add('in-view'); });
+  }
+
+  /* ---- Reviews carousel ---- */
+  var reviews = document.querySelectorAll('.review');
+  var dotsWrap = document.getElementById('reviewDots');
+  var rIndex = 0;
+  var rTimer;
+
+  reviews.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Show review ' + (i+1));
+    if(i === 0) b.classList.add('active');
+    b.addEventListener('click', function(){ goToReview(i); resetReviewTimer(); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = dotsWrap.querySelectorAll('button');
+
+  function goToReview(i){
+    reviews.forEach(function(r, idx){ r.classList.toggle('active', idx === i); });
+    dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+    rIndex = i;
+  }
+  function nextReview(){ goToReview((rIndex + 1) % reviews.length); }
+  function resetReviewTimer(){
+    clearInterval(rTimer);
+    if(!reduceMotion) rTimer = setInterval(nextReview, 7000);
+  }
+  if(reviews.length) resetReviewTimer();
+
+  /* ---- Occasions marquee ----
+     Pure-CSS continuous loop; JS only pauses it politely if the tab is hidden,
+     and reduced-motion users already get a frozen frame via the global
+     prefers-reduced-motion rule at the top of the stylesheet. */
+  var marqueeTrack = document.getElementById('programMarquee');
+  if(marqueeTrack){
+    document.addEventListener('visibilitychange', function(){
+      marqueeTrack.style.animationPlayState = document.hidden ? 'paused' : 'running';
+    });
+  }
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        if(o !== item){
+          o.classList.remove('open');
+          o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      panel.style.maxHeight = !isOpen ? panel.scrollHeight + 'px' : null;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
