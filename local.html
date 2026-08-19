@@ -955,10 +955,12 @@
   top: 0;
   left: 0;
   right: 0;
-  height: max(1px, env(safe-area-inset-top));
-  background-color: var(--ink);
-  z-index: 65;
+  height: max(2px, env(safe-area-inset-top));
+  background-color: #251720;
+  z-index: 9999;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 </style>
