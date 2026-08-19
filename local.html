@@ -10,8 +10,9 @@
 <meta name="keywords" content="live music for special event Toronto, live music for special event GTA, live wedding music Toronto, harp and cello duo GTA, Toronto wedding musicians, corporate event musicians Toronto, Newmarket wedding musicians, Newmarket live music, Bradford wedding music, Bradford live music, Arlington Estate live music, Arlington Estate wedding musicians, The Arlington Estate Vaughan musicians, King City wedding musicians, Aurora wedding musicians, Vaughan live music, Richmond Hill event musicians, harp and cello duo Ontario, ceremony musicians GTA, cocktail hour musicians Toronto">
 <meta name="author" content="The StringSisters">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#251720">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#251720" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#251720" media="(prefers-color-scheme: dark)">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="StringSisters">
 <link rel="canonical" href="https://stringsisters.ca/">
@@ -949,14 +950,16 @@
      effectively invisible; it does not affect the transparent-over-hero
      look of the visible nav bar below it. It has no content and is
      hidden from assistive tech and pointer events. */
-  .safari-theme-probe{
-    position:fixed;
-    top:0; left:0; right:0;
-    height:env(safe-area-inset-top, 0px);
-    background-color:var(--ink);
-    z-index:65;
-    pointer-events:none;
-  }
+.safari-theme-probe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: max(1px, env(safe-area-inset-top));
+  background-color: var(--ink);
+  z-index: 65;
+  pointer-events: none;
+}
 
 </style>
 </head>
