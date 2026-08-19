@@ -110,9 +110,9 @@
     "addressCountry": "CA"
   },
   "sameAs": [
-    "https://www.instagram.com/thestringsisters",
-    "https://www.tiktok.com/@thestringsisters",
-    "https://www.youtube.com/@thestringsisters"
+    "https://www.instagram.com/stringsisterz",
+    "https://www.tiktok.com/@stringsisterz",
+    "https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA"
   ],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Ceremony & Cocktail Hour Music" } },
@@ -265,6 +265,84 @@
   .menu-btn-lines span:last-child{width:70%; align-self:flex-end;}
   .menu-btn:hover .menu-btn-lines span:last-child{width:100%;}
 
+  /* Desktop right-hand cluster — invisible below the breakpoint, where the
+     hamburger + overlay menu remain the interaction pattern. */
+  .nav-right{display:none;}
+
+  /* ============ NAV — DESKTOP LAYOUT ============
+     Wide viewports get a more considered header: the wordmark holds the
+     left edge on its own, and a single evenly-gapped cluster — page links,
+     socials, then the booking CTA — holds the right, so the two sides
+     read as deliberately balanced rather than a stretched mobile bar. */
+  @media (min-width:960px){
+    .site-nav{
+      padding-left:clamp(2.25rem, 4vw, 3.5rem);
+      padding-right:clamp(2.25rem, 4vw, 3.5rem);
+    }
+    .wordmark{font-size:1.3rem;}
+    .menu-btn{display:none;}
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:clamp(1.9rem, 2.6vw, 2.6rem);
+    }
+
+    .nav-link{
+      position:relative;
+      font-size:.72rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-weight:500;
+      color:var(--white);
+      opacity:.85;
+      padding:.3rem 0;
+      transition:opacity .3s ease;
+    }
+    .nav-link::after{
+      content:'';
+      position:absolute; left:0; right:100%; bottom:-1px;
+      height:1px;
+      background:var(--brass-soft);
+      transition:right .45s var(--ease);
+    }
+    .nav-link:hover, .nav-link:focus-visible{opacity:1;}
+    .nav-link:hover::after, .nav-link:focus-visible::after{right:0;}
+
+    .nav-divider{
+      width:1px; height:20px;
+      background:rgba(var(--brass-soft-rgb),.35);
+    }
+
+    .nav-social{display:flex; align-items:center; gap:1rem;}
+    .nav-social a{
+      display:flex; align-items:center; justify-content:center;
+      color:var(--white);
+      opacity:.8;
+      transition:opacity .3s ease, transform .35s var(--ease);
+    }
+    .nav-social a:hover, .nav-social a:focus-visible{opacity:1; transform:translateY(-1px);}
+    .nav-social svg{width:15px; height:15px;}
+
+    .nav-cta{
+      display:inline-flex; align-items:center;
+      font-size:.68rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:600;
+      color:var(--white);
+      border:1px solid rgba(var(--brass-soft-rgb),.55);
+      border-radius:999px;
+      padding:.65rem 1.4rem;
+      transition:background-color .35s ease, border-color .35s ease, color .35s ease;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible{
+      background:var(--brass-soft);
+      border-color:var(--brass-soft);
+      color:var(--ink);
+    }
+  }
+
   /* ============ OVERLAY MENU ============ */
   .overlay-menu{
     position:fixed; inset:0; z-index:80;
@@ -281,10 +359,17 @@
   }
   .overlay-close{
     position:absolute; top:calc(1.65rem + env(safe-area-inset-top)); right:clamp(1.25rem, 4vw, 3rem);
-    font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px;
     color:var(--white);
-    padding:.9rem 1rem; margin:-.9rem -1rem;
+    opacity:.78;
+    transition:opacity .35s var(--ease), color .35s var(--ease), transform .45s var(--ease);
   }
+  .overlay-close:hover, .overlay-close:focus-visible{
+    opacity:1; color:var(--brass-soft);
+    transform:rotate(90deg);
+  }
+  .overlay-close svg{width:15px; height:15px; flex:none;}
   .overlay-links{
     list-style:none;
     display:flex; flex-direction:column; align-items:center; gap:1.1rem;
@@ -415,6 +500,48 @@
   .sr-only{
     position:absolute; width:1px; height:1px; padding:0; margin:-1px;
     overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ============ HERO — DESKTOP LAYOUT ============
+     Below 960px: unchanged, everything centered and stacked (mobile-first
+     markup order is preserved so nothing here needs undoing). At 960px+,
+     the eyebrow + headline remain the centered "title" of the hero, and
+     just the row underneath — description and CTA — breaks apart into a
+     left/right pair around a thin vertical divider, so the two elements
+     read as deliberately placed rather than stacked on top of each other. */
+  .hero-content-divider{display:none;}
+
+  @media (min-width:960px){
+    .hero-content-split{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(2.25rem, 4vw, 3.5rem);
+      margin-top:1.6rem;
+      /* Invisible breathing room below the split row. On mobile the stacked
+         layout sits close to the marquee on purpose (hero-content's own
+         padding-bottom already clears it), but on desktop the wide
+         side-by-side row reads as cramped against the banner beneath it
+         without a bit of extra clearance here. */
+      margin-bottom:clamp(1.5rem, 4.5vh, 2.75rem);
+    }
+    .hero-sub{
+      flex:1 1 0;
+      margin:0;
+      max-width:none;
+      text-align:right;
+    }
+    .hero-content-divider{
+      display:block;
+      flex:none;
+      width:1px;
+      height:56px;
+      background:linear-gradient(180deg, transparent, rgba(var(--brass-soft-rgb),.5), transparent);
+    }
+    .cta{
+      flex:1 1 0;
+      justify-content:flex-start;
+    }
   }
 
   /* ============ HERO MARQUEE — occasions banner ============
@@ -630,10 +757,17 @@
      shown first/primary; Newmarket–Bradford (incl. Arlington Estate) is
      the featured secondary hub per the current SEO priority. */
   .areas{
+    /* Full-bleed background — previously this was capped at max-width:900px
+       with margin:0 auto, which left the parchment-2 tone floating as an
+       isolated island against the page's lighter parchment background on
+       wide desktop screens. Spanning the full width keeps it reading as an
+       intentional section break, in line with the hero/reviews above it. */
     background:var(--parchment-2);
+    text-align:center;
+  }
+  .areas-inner{
     max-width:900px; margin:0 auto;
     padding:clamp(4.5rem,11vh,6rem) clamp(1.25rem,4vw,3rem) clamp(3.5rem,9vh,5rem);
-    text-align:center;
   }
   .areas h2{
     font-family:var(--serif);
@@ -788,13 +922,30 @@
 
   <header class="site-nav">
     <a href="#top" class="wordmark">The String Sisters</a>
+
+    <!-- Desktop-only right-hand cluster: hidden by default, revealed at the
+         min-width:960px breakpoint below. The hamburger + overlay menu stay
+         the pattern for narrower screens. -->
+    <nav class="nav-right" aria-label="Primary">
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <div class="nav-social">
+        <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      </div>
+      <a class="nav-cta" href="/bookings">Book Us</a>
+    </nav>
+
     <button class="menu-btn" id="menuOpen" aria-haspopup="true" aria-expanded="false" aria-controls="overlay-menu" aria-label="Open menu">
       <span class="menu-btn-lines" aria-hidden="true"><span></span><span></span></span>
     </button>
   </header>
 
   <nav id="overlay-menu" class="overlay-menu" aria-hidden="true">
-    <button class="overlay-close" id="menuClose" aria-label="Close menu">Close</button>
+    <button class="overlay-close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 4.5l11 11M15.5 4.5l-11 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </button>
     <ul class="overlay-links">
       <li><a href="/bookings" data-menu-link>Book Us</a></li>
       <li><a href="#reviews" data-menu-link>Reviews</a></li>
@@ -803,9 +954,9 @@
     </ul>
     <div class="overlay-social">
       <!-- TODO: confirm these match your real handles (kept in sync with the JSON-LD "sameAs" list in <head>) -->
-      <a href="https://www.tiktok.com/@thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
-      <a href="https://www.instagram.com/thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
-      <a href="https://www.youtube.com/@thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+      <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+      <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="me noopener" aria-label="The String Sisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
     </div>
   </nav>
 
@@ -832,11 +983,14 @@
       <div class="hero-content">
         <p class="eyebrow">Harp &amp; Cello Duo</p>
         <h1>The String Sisters</h1>
-        <p class="hero-sub">    Thoughtfully performed live music for weddings and special occasions across Toronto and the GTA.</p>
-        <a class="cta" href="/bookings">
-          <span>Booking &amp; Availability</span>
-          <svg class="cta-arrow" viewBox="0 0 13 9" fill="none" aria-hidden="true"><path d="M0 4.5h11.5M7.5 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="hero-content-split">
+          <p class="hero-sub">Thoughtfully performed live music for weddings and special occasions across Toronto and the GTA.</p>
+          <span class="hero-content-divider" aria-hidden="true"></span>
+          <a class="cta" href="/bookings">
+            <span>Booking &amp; Availability</span>
+            <svg class="cta-arrow" viewBox="0 0 13 9" fill="none" aria-hidden="true"><path d="M0 4.5h11.5M7.5 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
       <div class="hero-marquee" aria-hidden="true">
         <div class="hero-marquee-inner">
@@ -931,39 +1085,41 @@
     </section>
 
 <section class="areas" id="areas">
-  <p class="eyebrow center">GTA &amp; BEYOND</p>
-  <h2>Live Music Across Ontario</h2>
-  <p class="areas-intro">We perform for weddings, corporate events, and special occasions throughout Toronto, the GTA, and some of Ontario’s most beautiful event destinations.</p>
+  <div class="areas-inner">
+    <p class="eyebrow center">GTA &amp; BEYOND</p>
+    <h2>Live Music Across Ontario</h2>
+    <p class="areas-intro">We perform for weddings, corporate events, and special occasions throughout Toronto, the GTA, and some of Ontario’s most beautiful event destinations.</p>
 
-  <div class="areas-grid">
-    <div class="areas-card">
-      <span class="tag">Greater Toronto Area</span>
-      <h3>Toronto &amp; the GTA</h3>
-      <p>We regularly perform throughout Toronto and the surrounding GTA, including beautiful local wedding venues such as <strong>Madison Greenhouse</strong> in Newmarket, <strong>Three Feathers Terrace</strong> in Lefroy, and <strong>The Arlington Estate</strong> in Vaughan.</p>
+    <div class="areas-grid">
+      <div class="areas-card">
+        <span class="tag">Greater Toronto Area</span>
+        <h3>Toronto &amp; the GTA</h3>
+        <p>We regularly perform throughout Toronto and the surrounding GTA, including beautiful local wedding venues such as <strong>Madison Greenhouse</strong> in Newmarket, <strong>Three Feathers Terrace</strong> in Lefroy, and <strong>The Arlington Estate</strong> in Vaughan.</p>
+      </div>
+
+      <div class="areas-card">
+        <span class="tag">Ontario Destinations</span>
+        <h3>Beyond the GTA</h3>
+        <p>We also travel to beautiful destinations across Ontario, from <strong>Muskoka</strong>, Barrie, and Innisfil to Niagara, Collingwood, and Prince Edward County.</p>
+      </div>
     </div>
 
-    <div class="areas-card">
-      <span class="tag">Ontario Destinations</span>
-      <h3>Beyond the GTA</h3>
-      <p>We also travel to beautiful destinations across Ontario, from <strong>Muskoka</strong>, Barrie, and Innisfil to Niagara, Collingwood, and Prince Edward County.</p>
-    </div>
+    <ul class="areas-list" aria-label="Areas we perform across Ontario">
+      <li>Toronto</li>
+      <li>Vaughan</li>
+      <li>King City</li>
+      <li>Newmarket</li>
+      <li>Bradford</li>
+      <li>Aurora</li>
+      <li>Barrie</li>
+      <li>Innisfil</li>
+      <li>Muskoka</li>
+      <li>Niagara</li>
+      <li>Collingwood</li>
+      <li>Prince Edward County</li>
+      <li>&amp; Destinations Across Ontario</li>
+    </ul>
   </div>
-
-  <ul class="areas-list" aria-label="Areas we perform across Ontario">
-    <li>Toronto</li>
-    <li>Vaughan</li>
-    <li>King City</li>
-    <li>Newmarket</li>
-    <li>Bradford</li>
-    <li>Aurora</li>
-    <li>Barrie</li>
-    <li>Innisfil</li>
-    <li>Muskoka</li>
-    <li>Niagara</li>
-    <li>Collingwood</li>
-    <li>Prince Edward County</li>
-    <li>&amp; Destinations Across Ontario</li>
-  </ul>
 </section>
 
     <section class="faq" id="faq">
@@ -1001,9 +1157,9 @@
     <div class="footer-bottom">
       <div class="footer-social">
         <!-- TODO: kept in sync with the overlay menu social links and the JSON-LD "sameAs" list — update all three together if a handle ever changes. -->
-        <a href="https://www.tiktok.com/@thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
-        <a href="https://www.instagram.com/thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
-        <a href="https://www.youtube.com/@thestringsisters" target="_blank" rel="me noopener" aria-label="The String Sisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+        <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+        <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The String Sisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="me noopener" aria-label="The String Sisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
       </div>
       <span class="copyright">© 2026 The String Sisters. Toronto &amp; the GTA.</span>
     </div>
