@@ -372,34 +372,22 @@
     100%{background-position:-220% 0;}
   }
 
-  .booking-fallback{
-    padding:0 clamp(1.5rem,4vw,2.75rem) clamp(1.75rem,4vw,2.5rem);
-    font-size:.8rem; color:var(--ink-soft);
-  }
-  .booking-fallback a{
-    color:var(--wine); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px;
-    transition:color .3s ease;
-  }
-  .booking-fallback a:hover, .booking-fallback a:focus-visible{color:var(--wine-deep);}
-
-  /* ---- Context strip (below the form, not beside it) ---- */
-  .booking-context{
-    display:flex; flex-direction:column; align-items:center; text-align:center;
-    gap:2.25rem;
-    padding-top:.5rem;
-  }
+  /* ---- Context strip (below the form, not beside it) ----
+     Desktop-only: on mobile this content is redundant with what the
+     hero and steps already cover, and hiding it lets the page get from
+     the form straight to the footer. */
+  .booking-context{display:none;}
   @media (min-width:700px){
     .booking-context{
-      flex-direction:row; align-items:center; justify-content:center; text-align:left;
+      display:flex; flex-direction:row; align-items:center; justify-content:center; text-align:left;
       gap:3rem;
     }
     .context-divider{
       width:1px; align-self:stretch; min-height:64px;
       background:rgba(var(--ink-rgb),.14); flex:none;
+      display:block;
     }
   }
-  .context-divider{display:none;}
-  @media (min-width:700px){.context-divider{display:block;}}
 
   .context-quote{
     font-family:var(--serif); font-style:italic; font-weight:500;
@@ -557,12 +545,10 @@
             ></iframe>
           </div>
 
-          <p class="booking-fallback">
-            Form not loading? <a href="https://666038.17hats.com/p#/embed/ghwzkggnzbvhzwxgpptgbcbcxprbwsgr" target="_blank" rel="noopener">Open it in a new tab</a> instead.
-          </p>
+
         </div>
 
-        <div class="booking-context" style="margin-top:2.5rem">
+        <div class="booking-context">
           <div class="context-quote-block">
             <p class="context-quote">&ldquo;Heather and Naomi made our ceremony feel like something out of a film. Guests are still talking about it.&rdquo;</p>
             <span class="context-quote-by">A recent StringSisters client</span>
