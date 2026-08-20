@@ -1,194 +1,675 @@
-<!DOCTYPE HTML>
-<html lang="en">
-    <head>
-        <title>Pricing & Packages | The StringSisters</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <meta name="description" content="View pricing and performance packages for The StringSisters. Get a transparent quote for live harp and cello music for your wedding or event in Toronto." />
-        
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
 
-        <style>
-            /* Global Font Override */
-            body, input, select, textarea, .first-title-large, .subtitle-grey, .footer-quote, .copyright {
-                font-family: "Source Sans Pro", sans-serif !important;
-            }
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<!-- ============ PRIMARY SEO ============ -->
+<title>Book The StringSisters | Harp &amp; Cello Duo, Toronto &amp; GTA</title>
+<meta name="description" content="Request a personalized quote to book The StringSisters — Heather (cello) and Naomi (harp) — for your wedding, corporate event or special occasion across Toronto and the GTA.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#251720">
+<link rel="canonical" href="https://stringsisters.ca/bookings">
 
-            /* 1. Header & Logo Styling */
-            #header .logo, #header .logo a {
-                font-weight: 300 !important;
-                letter-spacing: 0.1rem !important;
-                text-transform: uppercase !important;
-            }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The StringSisters">
+<meta property="og:locale" content="en_CA">
+<meta property="og:url" content="https://stringsisters.ca/bookings">
+<meta property="og:title" content="Book The StringSisters | Harp &amp; Cello Duo, Toronto &amp; GTA">
+<meta property="og:description" content="Request a personalized quote for your wedding, corporate event or special occasion.">
+<meta property="og:image" content="https://stringsisters.ca/header/naomi-main.webp">
 
-            /* 2. Top Header Section (White) - Fixed Diagonal Cutoff */
-            .wrapper.style1 {
-                padding: 120px 0 100px 0 !important;
-                background-color: #ffffff !important; 
-            }
+<link rel="icon" type="image/png" sizes="32x32" href="images/favi/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favi/favicon-16x16.png">
+<link rel="alternate icon" href="images/favi/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favi/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 
-            .wrapper.style1 .inner {
-                text-align: right !important;
-            }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-            .wrapper.style1 .content {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: flex-end !important; 
-                text-align: right !important;
-            }
+<!-- Resource hints so the booking engine's connection is warm before the iframe even requests it -->
+<link rel="dns-prefetch" href="https://666038.17hats.com">
+<link rel="preconnect" href="https://666038.17hats.com" crossorigin>
 
-            .first-title-large {
-                color: #444444 !important;
-                font-weight: 600 !important;
-                font-size: 2.25rem !important; 
-                letter-spacing: -0.02rem !important;
-                text-transform: none !important;
-                line-height: 1.2 !important;
-                margin-bottom: 1.5rem !important;
-            }
+<!-- ============ STRUCTURED DATA ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://stringsisters.ca/bookings",
+  "about": {
+    "@type": "MusicGroup",
+    "name": "The StringSisters"
+  }
+}
+</script>
 
-            .subtitle-grey {
-                color: #8c8c8c;
-                font-size: 1.1rem;
-                font-weight: 300;
-                display: block;
-            }
+<style>
 
-            /* 3. Main Content Area (Off-White style2) */
-            #main.wrapper.style2 {
-                background-color: #f9f9f9 !important; 
-                padding: 60px 0 100px 0 !important;
-            }
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#251720;
+    --ink-rgb:37,23,32;
+    --ink-soft:#4A3540;
+    --parchment:#F6ECE6;
+    --parchment-2:#EAD7CE;
+    --white:#FBF6F3;
+    --wine:#8A4658;
+    --wine-deep:#4A2436;
+    --brass:#C0937A;
+    --brass-soft:#E3C9AE;
+    --brass-soft-rgb:227,201,174;
 
-            /* 4. Footer Styling - Cohesive */
-            #footer-wrapper {
-                background-color: #ffffff !important;
-                padding: 100px 0 60px 0 !important;
-            }
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-            .footer-quote {
-                font-style: italic !important;
-                color: #666 !important;
-                opacity: 0.9;
-                margin-bottom: 30px;
-                font-size: 1.1rem;
-                text-align: center;
-                font-weight: 300;
-            }
+    --ease: cubic-bezier(.22,.68,0,1);
+  }
 
-            .social-row {
-                display: flex !important;
-                justify-content: center !important;
-                list-style: none !important;
-                padding: 0 !important;
-                margin: 0 0 20px 0 !important;
-            }
+  *{margin:0;padding:0;box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
 
-            .social-row li { padding: 0 15px !important; }
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-            .social-row img { 
-                width: 32px; 
-                height: 32px; 
-                display: block; 
-                filter: grayscale(1); 
-                opacity: 0.6; 
-                transition: all 0.3s ease;
-            }
+  a{color:inherit; text-decoration:none; -webkit-touch-callout:none;}
+  img{display:block; max-width:100%; height:auto;}
+  button{font:inherit; background:none; border:none; cursor:pointer; color:inherit; touch-action:manipulation;}
+  ul{list-style:none;}
 
-            .social-row img:hover {
-                filter: grayscale(0);
-                opacity: 1;
-                transform: scale(1.1);
-            }
+  :focus-visible{outline:1px solid var(--brass); outline-offset:4px;}
 
-            .copyright { 
-                color: #8c8c8c !important; 
-                font-size: 0.85rem !important; 
-                margin-top: 20px !important; 
-                text-align: center;
-                font-weight: 300;
-                text-transform: none !important;
-                letter-spacing: 0 !important;
-            }
+  /* ============ SCROLL REVEAL ============ */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity 1s var(--ease), transform 1s var(--ease);
+    will-change:opacity, transform;
+  }
+  .reveal.is-visible{opacity:1; transform:none;}
+  .no-js .reveal{opacity:1; transform:none;}
 
-            @media screen and (max-width: 736px) {
-                .first-title-large { font-size: 1.75rem !important; }
-                .wrapper.style1 { padding: 100px 0 40px 0 !important; }
-                #main.wrapper.style2 { padding: 40px 0 60px 0 !important; }
-            }
-        </style>
-    </head>
-<body class="is-preload">
-    <div id="page-wrapper">
-        
-        <header id="header">
-            <span class="logo"><a href="/">THE STRINGSISTERS</a></span>
-            <a href="#menu" id="menuToggle"><span>Menu</span></a>
-        </header>
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.68rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--wine);
+    margin-bottom:1.1rem;
+  }
+  .eyebrow.center{text-align:center;}
 
-        <nav id="menu">
-            <div class="inner">
-                <h2>Menu</h2>
-                <ul class="links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/bookings">Book Us</a></li>
-                    <li><a href="/services">About Us</a></li>
-                    <li><a href="/repertoire">Repertoire</a></li>
-                    <li><a href="/FAQ">FAQ</a></li>
-                </ul>
-                <a class="close"><span>Close</span></a>
-            </div>
-        </nav>
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
 
-        <section class="wrapper style1">
-            <div class="inner">
-                <div class="content">
-                    <header>
-                        <h1 class="first-title-large">Pricing & Packages</h1>
-                        <span class="subtitle-grey">Request a transparent, personalized quote for your event below.</span>
-                    </header>
-                </div>
-            </div>
-        </section>
+  /* ============ NAV ============ */
+  .site-nav{
+    position:sticky; top:0; left:0; right:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:calc(1.1rem + env(safe-area-inset-top)) clamp(1.25rem, 4vw, 3rem) 1.1rem;
+    background-color:var(--ink);
+    color:var(--white);
+    box-shadow:0 1px 0 rgba(240,233,220,.08);
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.15rem;
+    letter-spacing:.02em;
+  }
+  .menu-btn{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    padding:.9rem; margin:-.9rem;
+    transition:opacity .3s ease;
+  }
+  .menu-btn:hover{opacity:.7;}
+  .menu-btn-lines{display:flex; flex-direction:column; gap:6px; width:24px;}
+  .menu-btn-lines span{
+    display:block; height:1px; width:100%; background:currentColor;
+    transition:transform .5s var(--ease), opacity .3s ease, width .4s var(--ease);
+  }
+  .menu-btn-lines span:last-child{width:70%; align-self:flex-end;}
+  .menu-btn:hover .menu-btn-lines span:last-child{width:100%;}
 
-        <section id="main" class="wrapper style2">
-            <div class="inner">
-                <iframe height="866" style="min-width: 100%; border: 0;" src="https://666038.17hats.com/p#/embed/ghwzkggnzbvhzwxgpptgbcbcxprbwsgr"></iframe>
-                <script type="text/javascript" src="https://666038.17hats.com/vendor/iframeSizer.min.js"></script>
-            </div>
-        </section>
+  .nav-right{display:none;}
 
-        <footer id="footer-wrapper">
-            <div class="inner">
-                <p class="footer-quote">
-                    Bringing the elegance of harp and cello to your events, creating memorable live music for every occasion.
-                </p>
-                
-                <ul class="social-row">
-                    <li><a href="https://www.instagram.com/stringsisterz" target="_blank" rel="noopener"><img src="images/socials/instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="noopener"><img src="images/socials/youtube.png" alt="YouTube"></a></li>
-                    <li><a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="noopener"><img src="images/socials/tiktok.png" alt="TikTok"></a></li>
-                </ul>
-                
-                <p class="copyright">
-                    &copy; <span id="current-year"></span> The StringSisters. All rights reserved.
-                </p>
-            </div>
-        </footer>
+  @media (min-width:960px){
+    .site-nav{
+      padding-left:clamp(2.25rem, 4vw, 3.5rem);
+      padding-right:clamp(2.25rem, 4vw, 3.5rem);
+      padding-top:calc(1.1rem + env(safe-area-inset-top));
+    }
+    .wordmark{font-size:1.3rem;}
+    .menu-btn{display:none;}
+    .nav-right{
+      display:flex; align-items:center;
+      gap:clamp(1.9rem, 2.6vw, 2.6rem);
+    }
+    .nav-social{display:flex; align-items:center; gap:1rem;}
+    .nav-social a{
+      display:flex; align-items:center; justify-content:center;
+      color:var(--white); opacity:.85;
+      transition:opacity .3s ease, transform .35s var(--ease), color .3s ease;
+    }
+    .nav-social a:hover, .nav-social a:focus-visible{opacity:1; color:var(--brass-soft); transform:translateY(-1px);}
+    .nav-social svg{width:16px; height:16px; flex:none;}
+    .nav-cta{
+      display:inline-flex; align-items:center;
+      font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600;
+      color:var(--white);
+      border:1px solid rgba(var(--brass-soft-rgb),.55);
+      border-radius:999px; padding:.65rem 1.4rem;
+      transition:background-color .35s ease, border-color .35s ease, color .35s ease;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible{
+      background:var(--brass-soft); border-color:var(--brass-soft); color:var(--ink);
+    }
+  }
 
+  /* ============ OVERLAY MENU ============ */
+  .overlay-menu{
+    position:fixed; inset:0; z-index:80;
+    background:var(--ink); color:var(--white);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(2.5rem, 6vh, 4rem);
+    opacity:0; visibility:hidden;
+    transition:opacity .6s var(--ease), visibility 0s linear .6s;
+  }
+  .overlay-menu.is-open{
+    opacity:1; visibility:visible;
+    transition:opacity .6s var(--ease), visibility 0s linear 0s;
+  }
+  .overlay-close{
+    position:absolute; top:calc(1.65rem + env(safe-area-inset-top)); right:clamp(1.25rem, 4vw, 3rem);
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; color:var(--white); opacity:.78;
+    transition:opacity .35s var(--ease), color .35s var(--ease), transform .45s var(--ease);
+  }
+  .overlay-close:hover, .overlay-close:focus-visible{opacity:1; color:var(--brass-soft); transform:rotate(90deg);}
+  .overlay-close svg{width:15px; height:15px; flex:none;}
+  .overlay-links{
+    display:flex; flex-direction:column; align-items:center; gap:1.1rem; text-align:center;
+  }
+  .overlay-links a{
+    font-family:var(--serif); font-style:italic;
+    font-size:clamp(2.2rem, 7vw, 3.4rem); font-weight:400;
+    color:var(--parchment); transition:color .4s ease;
+  }
+  .overlay-links a:hover, .overlay-links a:focus-visible, .overlay-links a[aria-current="page"]{color:var(--brass-soft);}
+  .overlay-social{display:flex; align-items:center; justify-content:center; gap:1rem;}
+  .overlay-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:46px; height:46px; border-radius:50%;
+    border:1px solid rgba(var(--brass-soft-rgb),.3);
+    background:rgba(var(--brass-soft-rgb),.05);
+    color:var(--parchment); opacity:.85;
+    transition:opacity .3s ease, transform .4s var(--ease), background-color .3s ease, border-color .3s ease;
+  }
+  .overlay-social a:hover, .overlay-social a:focus-visible{
+    opacity:1; transform:translateY(-2px);
+    background:rgba(var(--brass-soft-rgb),.14); border-color:rgba(var(--brass-soft-rgb),.6);
+  }
+  .overlay-social svg{width:18px; height:18px; flex:none;}
+
+  /* ============ BOOKING HERO ============ */
+  .booking-hero{
+    padding:clamp(4.5rem,11vh,6.5rem) clamp(1.25rem,4vw,3rem) clamp(3rem,7vh,4rem);
+  }
+  .booking-hero-inner{
+    max-width:680px; margin:0 auto; text-align:center;
+  }
+  .booking-hero h1{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(2.6rem, 7vw, 4.4rem);
+    line-height:1.05;
+    color:var(--ink);
+  }
+  .booking-intro{
+    max-width:52ch; margin:1.5rem auto 0;
+    font-size:clamp(.95rem, 1.6vw, 1.05rem);
+    line-height:1.75;
+    color:var(--ink-soft);
+  }
+
+  /* ============ STEPS ============ */
+  .booking-steps{
+    max-width:1080px; margin:0 auto;
+    padding:0 clamp(1.25rem,4vw,3rem) clamp(4rem,9vh,5.5rem);
+    display:grid; grid-template-columns:1fr; gap:2rem;
+  }
+  @media (min-width:760px){
+    .booking-steps{grid-template-columns:repeat(3,1fr); gap:2.5rem;}
+  }
+  .step{
+    display:flex; flex-direction:column; align-items:flex-start; gap:.9rem;
+    padding-top:1.6rem;
+    border-top:1px solid rgba(var(--ink-rgb),.14);
+  }
+  .step-num{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:1.1rem; color:var(--wine);
+  }
+  .step h3{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:1.4rem; color:var(--ink);
+  }
+  .step p{
+    font-size:.9rem; line-height:1.7; color:var(--ink-soft); max-width:34ch;
+  }
+  .step-desc-short{display:none;}
+
+  /* On small screens the three steps compress into a tight, scannable
+     row — full sentences give way to a title and a few words, so a
+     mobile visitor can take in "how this works" at a glance and reach
+     the form in one shorter scroll rather than reading three paragraphs
+     first. Full detail stays intact from 760px up. */
+  @media (max-width:759px){
+    .booking-steps{
+      grid-template-columns:repeat(3,1fr);
+      gap:0; padding-bottom:2.25rem;
+    }
+    .step{
+      border-top:none; padding-top:0;
+      align-items:center; text-align:center; gap:.3rem;
+      padding:0 .5rem;
+    }
+    .step:not(:last-child){border-right:1px solid rgba(var(--ink-rgb),.12);}
+    .step-num{font-size:.8rem;}
+    .step h3{font-size:.98rem; line-height:1.25;}
+    .step p{display:none;}
+    .step-desc-short{
+      display:block;
+      font-size:.7rem; line-height:1.4; letter-spacing:.01em;
+      color:var(--ink-soft); max-width:15ch;
+    }
+  }
+
+
+
+  /* ============ FORM SECTION ============ */
+  .booking-form-section{
+    padding:0 clamp(1.25rem,4vw,3rem) clamp(6rem,13vh,7.5rem);
+  }
+  .booking-form-grid{
+    max-width:820px; margin:0 auto;
+    display:flex; flex-direction:column; gap:3rem;
+  }
+
+  .booking-form-card{
+    background:var(--white);
+    border-radius:6px;
+    box-shadow:0 24px 54px rgba(var(--ink-rgb),.12);
+    overflow:hidden;
+    position:relative;
+  }
+  .booking-form-card::before{
+    content:''; display:block; height:4px;
+    background:linear-gradient(90deg, var(--wine), var(--brass-soft));
+  }
+  .booking-form-card-header{
+    padding:clamp(2rem,4vw,2.75rem) clamp(1.5rem,4vw,2.75rem) 1.5rem;
+  }
+  .booking-form-card-header h2{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(1.7rem, 3.4vw, 2.15rem);
+    color:var(--ink);
+    margin-bottom:.6rem;
+  }
+  .booking-form-card-header p{
+    font-size:.9rem; line-height:1.7; color:var(--ink-soft); max-width:48ch;
+  }
+
+  .booking-iframe-wrap{
+    position:relative;
+    width:100%;
+    min-height:560px;
+    padding:0 clamp(1.5rem,4vw,2.75rem) clamp(2rem,4vw,2.75rem);
+  }
+  .booking-iframe-wrap iframe{
+    display:block;
+    width:100%;
+    min-height:866px;
+    border:0;
+    border-radius:4px;
+    opacity:0;
+    transition:opacity .6s var(--ease);
+  }
+  .booking-iframe-wrap iframe.is-loaded{opacity:1;}
+
+  .iframe-skeleton{
+    position:absolute; inset:0 clamp(1.5rem,4vw,2.75rem) clamp(2rem,4vw,2.75rem);
+    border-radius:4px;
+    background:linear-gradient(100deg, var(--parchment) 30%, var(--parchment-2) 50%, var(--parchment) 70%);
+    background-size:220% 100%;
+    animation:shimmer 1.6s ease-in-out infinite;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:.6rem;
+  }
+  .iframe-skeleton span{
+    font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; font-weight:500;
+    color:var(--ink-soft); opacity:.65;
+  }
+  .iframe-skeleton.is-hidden{display:none;}
+  @keyframes shimmer{
+    0%{background-position:0% 0;}
+    100%{background-position:-220% 0;}
+  }
+
+  /* ---- Context strip (below the form, not beside it) ----
+     Desktop-only: on mobile this content is redundant with what the
+     hero and steps already cover, and hiding it lets the page get from
+     the form straight to the footer. */
+  .booking-context{display:none;}
+  @media (min-width:700px){
+    .booking-context{
+      display:flex; flex-direction:row; align-items:center; justify-content:center; text-align:left;
+      gap:3rem;
+    }
+    .context-divider{
+      width:1px; align-self:stretch; min-height:64px;
+      background:rgba(var(--ink-rgb),.14); flex:none;
+      display:block;
+    }
+  }
+
+  .context-quote{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:1.15rem; line-height:1.5; color:var(--ink);
+    max-width:32ch;
+  }
+  .context-quote-by{
+    display:block; margin-top:.7rem;
+    font-family:var(--sans); font-style:normal;
+    font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+    color:var(--wine);
+  }
+
+  .context-info{
+    display:flex; flex-direction:column; gap:.8rem;
+    flex:none;
+  }
+  .context-info li{
+    display:flex; align-items:center; gap:.6rem;
+    font-size:.82rem; color:var(--ink-soft);
+    justify-content:center;
+  }
+  @media (min-width:700px){.context-info li{justify-content:flex-start;}}
+  .context-info svg{width:15px; height:15px; flex:none; color:var(--wine);}
+
+  /* ============ FOOTER ============ */
+  .site-footer{
+    background:var(--parchment);
+    color:var(--ink);
+    text-align:center;
+    padding:clamp(3rem,8vh,4.5rem) clamp(1.25rem,4vw,3rem) clamp(3rem,7vh,4rem);
+    border-top:1px solid rgba(var(--ink-rgb),.1);
+  }
+  .footer-inner{max-width:900px; margin:0 auto;}
+  .site-footer .eyebrow{color:var(--wine); text-align:center;}
+  .site-footer h2{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(2rem, 5vw, 3rem); line-height:1.15;
+    max-width:20ch; margin:0 auto .9rem;
+  }
+  .footer-note{
+    font-size:.88rem; color:var(--ink-soft); max-width:40ch; margin:0 auto;
+  }
+  .footer-note a{color:var(--wine); transition:color .3s ease;}
+  .footer-note a:hover, .footer-note a:focus-visible{color:var(--wine-deep);}
+  .footer-bottom{
+    margin-top:clamp(3rem,8vh,4rem); padding-top:1.8rem;
+    border-top:1px solid rgba(36,27,22,.14);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1.1rem;
+    font-size:.72rem; letter-spacing:.06em; color:rgba(36,27,22,.6);
+  }
+  .footer-social{display:flex; align-items:center; justify-content:center; gap:.9rem;}
+  .footer-social a{
+    display:flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid rgba(var(--ink-rgb),.16);
+    background:rgba(var(--ink-rgb),.03);
+    color:var(--ink); opacity:.75;
+    transition:opacity .3s ease, transform .4s var(--ease), background-color .3s ease, border-color .3s ease;
+  }
+  .footer-social a:hover, .footer-social a:focus-visible{
+    opacity:1; transform:translateY(-2px);
+    background:rgba(var(--ink-rgb),.08); border-color:rgba(var(--ink-rgb),.3);
+  }
+  .footer-social svg{width:16px; height:16px; flex:none;}
+
+</style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="/" class="wordmark">The StringSisters</a>
+
+    <nav class="nav-right" aria-label="Primary">
+      <div class="nav-social">
+        <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      </div>
+     
+    </nav>
+
+    <button class="menu-btn" id="menuOpen" aria-haspopup="true" aria-expanded="false" aria-controls="overlay-menu" aria-label="Open menu">
+      <span class="menu-btn-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </header>
+
+  <nav id="overlay-menu" class="overlay-menu" aria-hidden="true">
+    <button class="overlay-close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 4.5l11 11M15.5 4.5l-11 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="overlay-links">
+      <li><a href="/bookings" data-menu-link aria-current="page">Book Us</a></li>
+      <li><a href="/about" data-menu-link>About</a></li>
+      <li><a href="/faq" data-menu-link>FAQ</a></li>
+    </ul>
+    <div class="overlay-social">
+      <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+      <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+      <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="me noopener" aria-label="The StringSisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
     </div>
+  </nav>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    </script>
+  <main id="top">
+
+    <section class="booking-hero" aria-labelledby="booking-heading">
+      <div class="booking-hero-inner reveal">
+        <p class="eyebrow center">Inquire &amp; Book</p>
+        <h1 id="booking-heading">Reserve Your Date</h1>
+        <p class="booking-intro">Share a few details about your occasion and we'll follow up with a personalized quote and availability — usually within one to two business days.</p>
+      </div>
+    </section>
+
+    <section class="booking-steps" aria-label="How booking works">
+      <div class="step reveal">
+        <span class="step-num">01</span>
+        <h3>Send Your Inquiry</h3>
+        <p>Fill out the form with your date, venue and the moments you'd like scored — ceremony, cocktail hour, reception, or all three.</p>
+        <p class="step-desc-short">Your date &amp; venue</p>
+      </div>
+      <div class="step reveal" style="transition-delay:.08s">
+        <span class="step-num">02</span>
+        <h3>Receive Your Quote</h3>
+        <p>We'll reply with pricing tailored to your event, along with two complimentary song requests to build into your set.</p>
+        <p class="step-desc-short">Pricing, tailored to you</p>
+      </div>
+      <div class="step reveal" style="transition-delay:.16s">
+        <span class="step-num">03</span>
+        <h3>Confirm Your Date</h3>
+        <p>Once the details feel right, a contract and deposit lock in Heather and Naomi for your day.</p>
+        <p class="step-desc-short">Contract &amp; deposit</p>
+      </div>
+    </section>
+
+    <section class="booking-form-section" aria-labelledby="form-heading">
+      <div class="booking-form-grid">
+
+        <div class="booking-form-card">
+          <div class="booking-form-card-header">
+            <p class="eyebrow">Event Details</p>
+            <h2 id="form-heading">Request Your Quote</h2>
+            <p>Tell us a little about your event below. Every field carries through to Heather and Naomi directly — no third party ever sees your details.</p>
+          </div>
+
+          <div class="booking-iframe-wrap">
+            <div class="iframe-skeleton" id="iframeSkeleton" aria-hidden="true">
+              <span>Loading booking form…</span>
+            </div>
+            <iframe
+              id="bookingIframe"
+              title="The StringSisters booking inquiry form"
+              src="https://666038.17hats.com/p#/embed/ghwzkggnzbvhzwxgpptgbcbcxprbwsgr"
+              fetchpriority="high"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+
+        </div>
+
+        <div class="booking-context">
+          <div class="context-quote-block">
+            <p class="context-quote">&ldquo;Heather and Naomi made our ceremony feel like something out of a film. Guests are still talking about it.&rdquo;</p>
+            <span class="context-quote-by">A recent StringSisters client</span>
+          </div>
+
+          <div class="context-divider" aria-hidden="true"></div>
+
+          <ul class="context-info">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6.5l9 6 9-6"/><rect x="3" y="4.5" width="18" height="15" rx="2"/></svg>
+              <span>The form above is the fastest way to reach us</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 18h6"/></svg>
+              <span>Toronto &amp; the GTA</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/></svg>
+              <span>Replies within 1–2 business days</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner reveal">
+      <p class="eyebrow">Thank You</p>
+      <h2>We look forward to hearing from you.</h2>
+      <p class="footer-note">Questions before you send your inquiry? The form above is the best way to reach us.</p>
+
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCbJYz7DQmDzqoopXE74xDKA" target="_blank" rel="me noopener" aria-label="The StringSisters on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.4-.43-5a2.78 2.78 0 0 0-1.96-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.78 2.78 0 0 0-1.97 2C2 8.6 2 12 2 12s0 3.4.43 5a2.78 2.78 0 0 0 1.97 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.78 2.78 0 0 0 1.97-2c.43-1.6.43-5 .43-5zM9.8 15.3V8.7L15.5 12l-5.7 3.3z"/></svg></a>
+          <a href="https://www.tiktok.com/@stringsisterz" target="_blank" rel="me noopener" aria-label="The StringSisters on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.9-.87-1.45-2.06-1.5-3.32h-3.02v13.3c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 1 1 0-5.6c.28 0 .55.04.8.12V9.98a5.83 5.83 0 0 0-.8-.06 5.82 5.82 0 1 0 5.82 5.82V9.1a8.4 8.4 0 0 0 4.9 1.57V7.66a5.3 5.3 0 0 1-3.4-1.84z"/></svg></a>
+        </div>
+        <span class="copyright">&copy; <span id="current-year"></span> The StringSisters. Toronto &amp; the GTA.</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  /* ---- Overlay menu ---- */
+  var menuOpen = document.getElementById('menuOpen');
+  var menuClose = document.getElementById('menuClose');
+  var overlay = document.getElementById('overlay-menu');
+  var menuLinks = overlay.querySelectorAll('[data-menu-link]');
+
+  function openMenu(){
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden','false');
+    menuOpen.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    menuClose.focus();
+  }
+  function closeMenu(){
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden','true');
+    menuOpen.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    menuOpen.focus();
+  }
+  menuOpen.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuLinks.forEach(function(l){ l.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
+  });
+  overlay.addEventListener('click', function(e){
+    if(!e.target.closest('[data-menu-link]')){ closeMenu(); }
+  });
+
+  /* ---- Scroll reveal ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && revealEls.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* ---- Booking iframe: skeleton loader + graceful fallback ---- */
+  var iframe = document.getElementById('bookingIframe');
+  var skeleton = document.getElementById('iframeSkeleton');
+  var settled = false;
+
+  function settle(){
+    if(settled) return;
+    settled = true;
+    iframe.classList.add('is-loaded');
+    skeleton.classList.add('is-hidden');
+  }
+
+  iframe.addEventListener('load', settle);
+  // Safety net: some browsers fire "load" on the srcdoc shell before the
+  // remote 17hats content has painted, and a handful of ad/privacy
+  // blockers never fire it at all — reveal the frame either way so the
+  // page never appears stuck behind a permanent skeleton.
+  setTimeout(settle, 4000);
+
+  var iframeSizerScript = document.createElement('script');
+  iframeSizerScript.src = 'https://666038.17hats.com/vendor/iframeSizer.min.js';
+  iframeSizerScript.async = true;
+  document.body.appendChild(iframeSizerScript);
+
+  /* ---- Footer year ---- */
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+})();
+</script>
+
 </body>
 </html>
