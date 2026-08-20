@@ -124,9 +124,40 @@
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Ceremony & Cocktail Hour Music" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Event Live Music" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private Party & Celebration Music" } }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "3"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Wedding Guest" },
+      "reviewBody": "They read the room perfectly — soft and unobtrusive during dinner, then somehow had the whole tent singing by the last song.",
+      "itemReviewed": { "@id": "https://stringsisters.ca/#business" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Wedding Guest" },
+      "reviewBody": "Every guest asked who was playing. The cocktail hour arrangements felt like they were written just for us.",
+      "itemReviewed": { "@id": "https://stringsisters.ca/#business" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "author": { "@type": "Person", "name": "Corporate Client" },
+      "reviewBody": "Professional from the first email to the last note. Exactly the tone we wanted for a room full of clients.",
+      "itemReviewed": { "@id": "https://stringsisters.ca/#business" }
+    }
   ]
 }
 </script>
+<!-- TODO: reviewCount above reflects only the 3 testimonials shown on-page. Once a
+     Google Business Profile is live, update ratingValue/reviewCount to match its
+     real totals — schema ratings must reflect genuine, verifiable review data. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1008,6 +1039,8 @@
          min-width:960px breakpoint below. The hamburger + overlay menu stay
          the pattern for narrower screens. -->
     <nav class="nav-right" aria-label="Primary">
+      <a href="/about" class="nav-link">About</a>
+      <a href="/repertoire" class="nav-link">Repertoire</a>
       <a href="#faq" class="nav-link">FAQ</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <div class="nav-social">
@@ -1029,6 +1062,7 @@
     <ul class="overlay-links">
       <li><a href="/bookings" data-menu-link>Book Us</a></li>
       <li><a href="/about" data-menu-link>About</a></li>
+      <li><a href="/repertoire" data-menu-link>Repertoire</a></li>
       <li><a href="/faq" data-menu-link>FAQ</a></li>
     </ul>
     <div class="overlay-social">
@@ -1068,7 +1102,7 @@
         <p class="eyebrow">Harp &amp; Cello Duo</p>
         <h1>The StringSisters</h1>
         <div class="hero-content-split">
-          <p class="hero-sub">Thoughtfully performed live music for weddings and special occasions across Toronto and the GTA.</p>
+          <p class="hero-sub">Toronto's harp and cello duo for wedding ceremonies, cocktail hours, and receptions — plus corporate events and special occasions across the GTA.</p>
           <span class="hero-content-divider" aria-hidden="true"></span>
           <a class="cta" href="/bookings">
             <span>Booking &amp; Availability</span>
@@ -1165,6 +1199,10 @@
         </div>
       </div>
       <div class="review-dots" id="reviewDots"></div>
+      <!-- TODO: once your Google Business Profile is live, swap this href for the
+           direct GBP listing URL (share.google/... or g.page/...) instead of a
+           search query — that sends visitors to a real, review-collecting listing
+           and is a stronger local-SEO signal. -->
       <a class="review-more" href="https://www.google.com/search?q=The+StringSisters+Bradford" target="_blank" rel="noopener">Read More Reviews</a>
     </section>
 
@@ -1172,13 +1210,13 @@
   <div class="areas-inner">
     <p class="eyebrow center">GTA &amp; BEYOND</p>
     <h2>Live Music Across Ontario</h2>
-    <p class="areas-intro">We perform for weddings, corporate events, and special occasions throughout Toronto, the GTA, and some of Ontario’s most beautiful event destinations.</p>
+    <p class="areas-intro">As wedding musicians based in Toronto, we perform live harp and cello music for wedding ceremonies, cocktail hours, and receptions — plus corporate events and special occasions — throughout the GTA and some of Ontario’s most beautiful event destinations.</p>
 
     <div class="areas-grid">
       <div class="areas-card">
         <span class="tag">Greater Toronto Area</span>
         <h3>Toronto &amp; the GTA</h3>
-        <p>We regularly perform throughout Toronto and the surrounding GTA, including beautiful local wedding venues such as <strong>Madison Greenhouse</strong> in Newmarket, <strong>Three Feathers Terrace</strong> in Lefroy, and <strong>The Arlington Estate</strong> in Vaughan.</p>
+        <p>We regularly perform throughout Toronto and the surrounding GTA, including beautiful local wedding venues such as <strong>Madison Greenhouse</strong> in Newmarket, <strong>Three Feathers Terrace</strong> in Lefroy, and <strong>The Arlington Estate</strong> in Vaughan. We're also frequently booked in Aurora, King City, Richmond Hill, and Markham.</p>
       </div>
 
       <div class="areas-card">
@@ -1195,6 +1233,8 @@
       <li>Newmarket</li>
       <li>Bradford</li>
       <li>Aurora</li>
+      <li>Richmond Hill</li>
+      <li>Markham</li>
       <li>Barrie</li>
       <li>Innisfil</li>
       <li>Muskoka</li>
