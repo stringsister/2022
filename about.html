@@ -32,8 +32,8 @@
 <!-- Preload the two above-the-fold hero portraits so they start
      downloading immediately, instead of being discovered only once
      the HTML parser reaches the <img> tags further down. -->
-<link rel="preload" as="image" href="header/naomi-main.webp" fetchpriority="high">
-<link rel="preload" as="image" href="header/heather-main.webp" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="header/naomi-main-400.webp 400w, header/naomi-main-700.webp 700w, header/naomi-main-1000.webp 1000w, header/naomi-main-1400.webp 1400w" imagesizes="(min-width: 1120px) 520px, (min-width: 760px) 45vw, 148px" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="header/heather-main-400.webp 400w, header/heather-main-700.webp 700w, header/heather-main-1000.webp 1000w, header/heather-main-1400.webp 1400w" imagesizes="(min-width: 1120px) 520px, (min-width: 760px) 45vw, 148px" fetchpriority="high">
 
 <!-- ============ STRUCTURED DATA ============ -->
 <script type="application/ld+json">
@@ -592,13 +592,13 @@
       <div class="duo-media">
         <figure class="duo-media-item duo-media-naomi reveal">
           <div class="duo-media-frame">
-            <img src="header/naomi-main.webp" alt="Naomi performing on harp" loading="eager" fetchpriority="high" decoding="async">
+            <img src="header/naomi-main-700.webp" srcset="header/naomi-main-400.webp 400w, header/naomi-main-700.webp 700w, header/naomi-main-1000.webp 1000w, header/naomi-main-1400.webp 1400w" sizes="(min-width: 1120px) 520px, (min-width: 760px) 45vw, 148px" alt="Naomi performing on harp" loading="eager" fetchpriority="high" decoding="async">
           </div>
           <figcaption>Naomi — Harp</figcaption>
         </figure>
         <figure class="duo-media-item duo-media-heather reveal">
           <div class="duo-media-frame">
-            <img src="header/heather-main.webp" alt="Heather performing on cello" loading="eager" decoding="async">
+            <img src="header/heather-main-700.webp" srcset="header/heather-main-400.webp 400w, header/heather-main-700.webp 700w, header/heather-main-1000.webp 1000w, header/heather-main-1400.webp 1400w" sizes="(min-width: 1120px) 520px, (min-width: 760px) 45vw, 148px" alt="Heather performing on cello" loading="eager" decoding="async">
           </div>
           <figcaption>Heather — Cello</figcaption>
         </figure>
@@ -612,7 +612,7 @@
             <img class="profile-media-main" src="header/naomi-secondary.webp" alt="Naomi at a live performance" loading="lazy" decoding="async">
           </div>
           <div class="profile-media-loose">
-            <img class="profile-media-secondary" src="header/naomi-main.webp" alt="Naomi seated at the harp" loading="lazy" decoding="async">
+            <img class="profile-media-secondary" src="header/naomi-main-700.webp" srcset="header/naomi-main-400.webp 400w, header/naomi-main-700.webp 700w, header/naomi-main-1000.webp 1000w" sizes="240px" alt="Naomi seated at the harp" loading="lazy" decoding="async">
             <img class="profile-media-detail" src="header/harp.webp" alt="Close-up detail of harp strings" loading="lazy" decoding="async">
           </div>
         </div>
@@ -636,7 +636,7 @@
             <img class="profile-media-main" src="header/heather-secondary.webp" alt="Heather at a live performance" loading="lazy" decoding="async">
           </div>
           <div class="profile-media-loose">
-            <img class="profile-media-secondary" src="header/heather-main.webp" alt="Heather seated at the cello" loading="lazy" decoding="async">
+            <img class="profile-media-secondary" src="header/heather-main-700.webp" srcset="header/heather-main-400.webp 400w, header/heather-main-700.webp 700w, header/heather-main-1000.webp 1000w" sizes="240px" alt="Heather seated at the cello" loading="lazy" decoding="async">
             <img class="profile-media-detail" src="header/cello.webp" alt="Close-up detail of cello strings and bow" loading="lazy" decoding="async">
           </div>
         </div>
