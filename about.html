@@ -29,6 +29,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- Preload the two above-the-fold hero portraits so they start
+     downloading immediately, instead of being discovered only once
+     the HTML parser reaches the <img> tags further down. -->
+<link rel="preload" as="image" href="header/naomi-main.webp" fetchpriority="high">
+<link rel="preload" as="image" href="header/heather-main.webp" fetchpriority="high">
+
 <!-- ============ STRUCTURED DATA ============ -->
 <script type="application/ld+json">
 {
@@ -345,6 +351,8 @@
      specific to a duo whose whole craft is built from pairs. */
   .profile{
     border-top:1px solid rgba(var(--ink-rgb),.1);
+    content-visibility:auto;
+    contain-intrinsic-size:auto 820px;
   }
   .profile-inner{
     max-width:1080px; margin:0 auto;
@@ -451,6 +459,8 @@
   .faq{
     max-width:820px; margin:0 auto;
     padding:0 clamp(1.25rem,4vw,3rem) clamp(6rem,14vh,8rem);
+    content-visibility:auto;
+    contain-intrinsic-size:auto 700px;
   }
   .faq-item{border-bottom:1px solid rgba(var(--ink-rgb),.15);}
   .faq-q{
@@ -482,6 +492,8 @@
     text-align:center;
     padding:clamp(3rem,8vh,4.5rem) clamp(1.25rem,4vw,3rem) clamp(3rem,7vh,4rem);
     border-top:1px solid rgba(var(--ink-rgb),.1);
+    content-visibility:auto;
+    contain-intrinsic-size:auto 420px;
   }
   .footer-inner{max-width:900px; margin:0 auto;}
   .site-footer .eyebrow{color:var(--wine); text-align:center;}
@@ -580,13 +592,13 @@
       <div class="duo-media">
         <figure class="duo-media-item duo-media-naomi reveal">
           <div class="duo-media-frame">
-            <img src="header/naomi-main.webp" alt="Naomi performing on harp" loading="lazy" decoding="async">
+            <img src="header/naomi-main.webp" alt="Naomi performing on harp" loading="eager" fetchpriority="high" decoding="async">
           </div>
           <figcaption>Naomi — Harp</figcaption>
         </figure>
         <figure class="duo-media-item duo-media-heather reveal">
           <div class="duo-media-frame">
-            <img src="header/heather-main.webp" alt="Heather performing on cello" loading="lazy" decoding="async">
+            <img src="header/heather-main.webp" alt="Heather performing on cello" loading="eager" decoding="async">
           </div>
           <figcaption>Heather — Cello</figcaption>
         </figure>
