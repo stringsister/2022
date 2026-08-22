@@ -65,7 +65,7 @@
 <link rel="manifest" href="site.webmanifest">
 
 <!-- Preload first hero slide only -->
-<link rel="preload" as="image" imagesrcset="header/header3-640.webp 640w, header/header3-960.webp 960w, header/header3-1440.webp 1440w, header/header3-1920.webp 1920w, header/header3-2560.webp 2560w, header/header3-3200.webp 3200w, header/header3-3840.webp 3840w" imagesizes="115vw" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="header/header8-640.webp 640w, header/header8-960.webp 960w, header/header8-1440.webp 1440w, header/header8-1920.webp 1920w, header/header8-2560.webp 2560w, header/header8-3200.webp 3200w, header/header8-3840.webp 3840w" imagesizes="115vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Trimmed to only the weights/styles actually used in the stylesheet below:
@@ -454,10 +454,10 @@
   }
   .slide.active{opacity:1; transform:scale(1);}
 
-  /* Per-photo position tweaks (slide order: 3, 10, 1, 8, 4, 11, 7, 9, 6) */
-  .slide:nth-child(1){object-position:62% center;}  /* header3 — slightly right of centre */
-  .slide:nth-child(2){object-position:55% center;}  /* header10 — right of centre */
-  .slide:nth-child(4){object-position:60% center;}  /* header8 — right of centre */
+  /* Per-photo position tweaks (slide order: 8, 3, 10, 1, 4, 11, 7, 9, 6) */
+  .slide:nth-child(1){object-position:60% center;}  /* header8 — right of centre */
+  .slide:nth-child(2){object-position:62% center;}  /* header3 — slightly right of centre */
+  .slide:nth-child(3){object-position:55% center;}  /* header10 — right of centre */
   .slide:nth-child(7){object-position:61% center;}  /* header7 — slightly right of centre */
   /* Elegant fallback texture shown behind each slide until its photo has loaded,
      and permanently if the photo fails — the hero is never blank. */
@@ -1076,7 +1076,7 @@
   <main id="top">
 
     <section class="hero" id="hero">
-      <!-- Slide order: 3, 10, 1, 8, 4, 11, 7, 9, 6 (header2 and header5 excluded).
+      <!-- Slide order: 8, 3, 10, 1, 4, 11, 7, 9, 6 (header2 and header5 excluded).
            Only the first slide ships with a real src (fetchpriority="high" + the
            <link rel="preload"> in <head>) so it's the only photo competing for
            bandwidth during page load. The rest sit inert as data-src — because
@@ -1085,12 +1085,15 @@
            attribute here does NOT defer them; the browser fetches all nine at
            once regardless. The queueRemainingSlides script below fetches slides
            2-9 one at a time via requestIdleCallback, well after the LCP image,
-           fonts and critical CSS have already had first claim on the connection. -->
+           fonts and critical CSS have already had first claim on the connection.
+           header3 (now slide 2) points at its pre-resized 1920w file rather than
+           the raw original — already had it generated from its old slot-1 spell,
+           costs nothing extra to keep using it. -->
       <div class="hero-slides" id="heroSlides">
-        <img class="slide" src="header/header3-1920.webp" srcset="header/header3-640.webp 640w, header/header3-960.webp 960w, header/header3-1440.webp 1440w, header/header3-1920.webp 1920w, header/header3-2560.webp 2560w, header/header3-3200.webp 3200w, header/header3-3840.webp 3840w" sizes="115vw" alt="Close-up of harp strings being played" fetchpriority="high" decoding="async">
+        <img class="slide" src="header/header8-1920.webp" srcset="header/header8-640.webp 640w, header/header8-960.webp 960w, header/header8-1440.webp 1440w, header/header8-1920.webp 1920w, header/header8-2560.webp 2560w, header/header8-3200.webp 3200w, header/header8-3840.webp 3840w" sizes="115vw" alt="Live harp and cello music during a wedding cocktail hour" fetchpriority="high" decoding="async">
+        <img class="slide" data-src="header/header3-1920.webp" alt="Close-up of harp strings being played" decoding="async">
         <img class="slide" data-src="header/header10.webp" alt="Harpist and cellist performing together at a Toronto-area event" decoding="async">
         <img class="slide" data-src="header/header1.webp" alt="The StringSisters performing live on harp and cello at a Toronto wedding" decoding="async">
-        <img class="slide" data-src="header/header8.webp" alt="Live harp and cello music during a wedding cocktail hour" decoding="async">
         <img class="slide" data-src="header/header4.webp" alt="Cellist performing at a corporate event" decoding="async">
         <img class="slide" data-src="header/header11.webp" alt="The StringSisters performing live music for a special occasion" decoding="async">
         <img class="slide" data-src="header/header7.webp" alt="The StringSisters performing at an outdoor Toronto-area wedding ceremony" decoding="async">
